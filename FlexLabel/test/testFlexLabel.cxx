@@ -3,7 +3,7 @@
 /// @author  Mykola Dimura
 ///
 
-#include "FlexLabel/FlexLabel.h"
+#include <FlexLabel/FlexLabel.h>
 
 #include <assert.h>
 #include <iostream>
@@ -122,9 +122,10 @@ int main()
 				      discStep);
 	auto diff = std::chrono::steady_clock::now() - start;
 	double dtMs = std::chrono::duration<double, std::milli>(diff).count();
+	//Takes 20 ms on a laptop with Core i5-4200U processor
 	std::cout << "AV calculation took: " << dtMs << " ms" << std::endl;
-	savePqr("test.pqr", grid);
-	std::cout << std::setprecision(5) << std::fixed << checksum(grid);
+	//savePqr("test.pqr", grid);
+	//std::cout << std::setprecision(5) << std::fixed << checksum(grid)<< std::endl;
 	if (fabs(checksum(grid) - 614293.37500f) < 0.00001f) {
 		return 0;
 	}
