@@ -21,6 +21,10 @@ Eigen::Vector4f Vec4f(const std::array<uint32_t, 3> &arr)
 {
 	return Eigen::Vector4f(arr[0], arr[1], arr[2], 0.0f);
 }
+std::array<float, 3> StdArr3f(const Eigen::Vector4f &xyz)
+{
+	return std::array<float, 3>() = {xyz[0], xyz[1], xyz[2]};
+}
 
 struct Grid3DExt final : public Grid3D {
       public:
@@ -33,23 +37,26 @@ struct Grid3DExt final : public Grid3D {
                 }
         };
 
-	Grid3DExt(std::array<float, 3> originXYZ, const float edgeL,
+	Grid3DExt(const Eigen::Vector4f &originXYZ, const float edgeL,
 		  const float discStep, const float value)
-	    : Grid3D(originXYZ, edgeL, discStep, value)
+	    : Grid3D(StdArr3f(originXYZ), edgeL, discStep, value)
 	{
-		originAdj = Vec4f(originXYZ).array() - 0.5f * discStep;
+		originAdj = originXYZ.array() - 0.5f * discStep;
 		originAdj[3] = 0.0f;
 		shape4i << shape[0], shape[1], shape[2],
 			std::numeric_limits<int>::max();
 	}
-
-	/// @brief Converts an array of spherical obstacles to a 3D clash grid.
-	/// Cells inside obstacles are indicated by negative "density" values.
-	static Grid3DExt fromObstacles(const Eigen::Matrix4Xf &xyzR,
-				       const Eigen::Vector3f &sourceXyz,
-				       const float discStep,
-				       const float maxLength,
-				       const float extraClash = 0.0f);
+	static Grid3DExt fromSource(const Eigen::Vector3f &sourceXyz,
+				    const float discStep, const float maxLength,
+				    const float maxClashR)
+	{
+		const float adjL =
+			ceil((maxLength + maxClashR) / discStep) * discStep;
+		using Eigen::Vector4f;
+		const Vector4f origin = Vec4f(sourceXyz).array() - adjL;
+		const float maxFloat = std::numeric_limits<float>::max();
+		return Grid3DExt(origin, adjL * 2.0f, discStep, maxFloat);
+	}
 
 	inline void fillSpheres(const Eigen::Matrix4Xf &xyzR,
 				const float extraClash, const float gridRef);
@@ -316,29 +323,14 @@ void Grid3DExt::setAboveThreshold(const float threshold, const float rho)
 	}
 }
 
-Grid3DExt Grid3DExt::fromObstacles(const Eigen::Matrix4Xf &xyzR,
-				   const Eigen::Vector3f &sourceXyz,
-				   const float discStep, const float maxLength,
-				   const float extraClash)
-{
-	const float adjL = ceil(maxLength / discStep) * discStep;
-	std::array<float, 3> origin = {sourceXyz[0] - adjL, sourceXyz[1] - adjL,
-				       sourceXyz[2] - adjL};
-	using Eigen::Vector4f;
-	Grid3DExt grid(origin, adjL * 2.0f, discStep,
-		       std::numeric_limits<float>::max());
-	grid.fillSpheres(xyzR, extraClash, -1.0f);
-	return grid;
-}
-
 Grid3DExt minLinkerLength(const Eigen::Matrix4Xf &atomsXyzr,
 			  const Eigen::Vector3f &sourceXyz,
 			  const float linkerLength, const float linkerDiameter,
 			  const float discStep)
 {
 	Grid3DExt grid =
-		Grid3DExt::fromObstacles(atomsXyzr, sourceXyz, discStep,
-					 linkerLength, linkerDiameter * 0.5f);
+		Grid3DExt::fromSource(sourceXyz, discStep, linkerLength, 0.0f);
+	grid.fillSpheres(atomsXyzr, linkerDiameter * 0.5f, -1.0f);
 	Eigen::Vector4f exclusionArea = {sourceXyz[0], sourceXyz[1],
 					 sourceXyz[2], linkerLength};
 	grid.fillOutsideSphere(exclusionArea, -2.0f);
