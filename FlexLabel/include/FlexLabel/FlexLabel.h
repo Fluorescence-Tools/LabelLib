@@ -41,37 +41,38 @@ struct Grid3D {
 		grid.resize(iL * iL * iL, value);
 	}
 
+	float value(int ix, int iy, int iz) const
+	{
+		return grid[index1D(ix, iy, iz)];
+	}
+
 	int index1D(int ix, int iy, int iz) const
 	{
+		assert(ix >= 0 && ix < shape[0]);
+		assert(iy >= 0 && iy < shape[1]);
+		assert(iz >= 0 && iz < shape[2]);
 		return ix + shape[0] * (iy + iz * shape[1]);
 	}
 
 	std::array<int, 3> index3D(int i) const
 	{
-		std::array<int, 3> index;
-		index[2] = i / (shape[0] * shape[1]);
-		i -= (index[2] * shape[0] * shape[1]);
-		index[1] = i / shape[0];
-		index[0] = i % shape[0];
-		return index;
+		std::array<int, 3> ijk;
+		ijk[2] = i / (shape[0] * shape[1]);
+		i -= (ijk[2] * shape[0] * shape[1]);
+		ijk[1] = i / shape[0];
+		ijk[0] = i % shape[0];
+		assert(ijk[0] >= 0 && ijk[0] < shape[0]);
+		assert(ijk[1] >= 0 && ijk[1] < shape[1]);
+		assert(ijk[2] >= 0 && ijk[2] < shape[2]);
+		return ijk;
 	}
-
 	std::array<float, 3> xyz(int ix, int iy, int iz) const
 	{
-		std::array<float, 3> xyz = {ix, iy, iz};
-		for (int i = 0; i < xyz.size(); ++i) {
-			xyz[i] = xyz[i] * discStep + originXYZ[i];
+		std::array<float, 3> arr = {ix, iy, iz};
+		for (int i = 0; i < 3; ++i) {
+			arr[i] = arr[i] * discStep + originXYZ[i];
 		}
-		return xyz;
-	}
-
-	float &value(int ix, int iy, int iz)
-	{
-		return grid[index1D(ix, iy, iz)];
-	}
-	const float &value(int ix, int iy, int iz) const
-	{
-		return grid[index1D(ix, iy, iz)];
+		return arr;
 	}
 };
 
@@ -89,18 +90,18 @@ Grid3D minLinkerLength(const Eigen::Matrix4Xf &atomsXyzr,
 		       const float linkerLength, const float linkerDiameter,
 		       const float dyeRadius, const float discStep);
 
-/// \todo implement
 Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 		  const Eigen::Vector3f &sourceXyz, const float linkerLength,
 		  const float linkerDiameter, const float dyeRadius,
 		  const float discStep);
 // const float contactR=0.0f, const float trappedFrac=-1.0f);
+/// \todo implement Accessible and Contact Volume calculations
 
-/// \todo implement
 Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 		  const Eigen::Vector3f &sourceXyz, const float linkerLength,
 		  const float linkerDiameter, const Eigen::Vector3f &dyeRadii,
 		  const float discStep);
+
 
 /// \todo Implement python bindings
 #endif // LABELLIB_FLEXLABEL_H

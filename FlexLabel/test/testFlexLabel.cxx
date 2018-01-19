@@ -22,7 +22,7 @@ void savePqr(const std::string &fName, const Grid3D &grid)
 		for (int j = 0; j < grid.shape[1]; ++j) {
 			for (int i = 0; i < grid.shape[0]; ++i) {
 				float val = grid.value(i, j, k);
-				if (val < 0.0f) {
+				if (val <= 0.0f) {
 					continue;
 				}
 				val = std::min(val, 99999.9f);
@@ -86,6 +86,9 @@ float checksum(const Grid3D &grid)
 
 int main()
 {
+	using std::cout;
+	using std::endl;
+
 	Eigen::Vector3f source;
 	Eigen::Matrix4Xf atoms;
 
@@ -94,13 +97,13 @@ int main()
 	atoms.col(0) << 0.0f, -4.0f, 22.0f, 1.5f;
 	atoms.col(1) << 9.0f, 0.0f, 0.0f, 3.0f;
 	atoms.col(2) << 9.0f, 8.0f, 0.0f, 3.0f;
-	atoms.col(3) << 0.0f, -9.5f, 0.0f, 1.5f;
+	atoms.col(3) << 0.0f, -10.5f, 0.0f, 1.5f;
 	atoms.col(4) << 5.0f, 0.0f, 0.0f, 2.0f;
 	atoms.col(5) << 0.0f, -4.0f, -10.5f, 1.3f;
 	atoms.col(6) << 0.0f, -4.0f, -11.5f, 1.0f;
 	atoms.col(7) << 0.0f, -4.0f, -12.5f, 2.5f;
 	atoms.col(8) << 0.0f, -4.0f, -13.5f, 1.7f;
-	atoms.col(9) << 0.0f, -4.0f, -14.5f, 1.8;
+	atoms.col(9) << 0.0f, -4.0f, -14.5f, 1.8f;
 	atoms.col(10) << 0.0f, -4.0f, 28.0f, 1.5f;
 	for (int iat = 11; iat < nAtoms; ++iat) {
 		atoms.col(iat) = atoms.col(10);
@@ -115,19 +118,42 @@ int main()
 	const float discStep = 0.9f;
 	const float linkerL = 20.0f;
 	const float linkerD = 2.0f;
-	const float dyeR = 3.5f;
+	const Eigen::Vector3f dyeRadii(3.5f, 5.0f, 1.5f);
+	const float &dyeR = dyeRadii.coeffRef(0);
 
-	auto start = std::chrono::steady_clock::now();
 	Grid3D grid = minLinkerLength(atoms, source, linkerL, linkerD, dyeR,
 				      discStep);
+	// savePqr("testMinL.pqr", grid);
+	if (fabs(checksum(grid) - 621041.37500f) > 0.00001f) {
+		cout << "minLinkerLength() produced an unexpected result\n";
+		cout << "checksum = " << std::setprecision(5) << std::fixed
+		     << checksum(grid) << endl;
+		// return 1;
+	}
+
+	auto start = std::chrono::steady_clock::now();
+	grid = dyeDensity(atoms, source, linkerL, linkerD, dyeR, discStep);
 	auto diff = std::chrono::steady_clock::now() - start;
 	double dtMs = std::chrono::duration<double, std::milli>(diff).count();
-	//Takes 20 ms on a laptop with Core i5-4200U processor
-	std::cout << "AV calculation took: " << dtMs << " ms" << std::endl;
-	//savePqr("test.pqr", grid);
-	//std::cout << std::setprecision(5) << std::fixed << checksum(grid)<< std::endl;
-	if (fabs(checksum(grid) - 614293.37500f) < 0.00001f) {
-		return 0;
+	// Takes 37 ms on a desktop with Core i7-4930K CPU @ 3.40GHz
+	cout << "AV calculation took: " << dtMs << " ms" << std::endl;
+
+	// savePqr("testDensityAV1.pqr", grid);
+	if (fabs(checksum(grid) - 3461.28906f) > 0.00001f) {
+		cout << "dyeDensity() AV1 produced an unexpected result\n";
+		cout << "checksum = " << std::setprecision(5) << std::fixed
+		     << checksum(grid) << endl;
+		// return 2;
 	}
-	return 1;
+
+	grid = dyeDensity(atoms, source, linkerL, linkerD, dyeRadii, discStep);
+	// savePqr("testDensityAV3.pqr", grid);
+	if (fabs(checksum(grid) - 3270.10059f) > 0.00001f) {
+		cout << "dyeDensity() AV3 produced an unexpected result\n";
+		cout << "checksum = " << std::setprecision(5) << std::fixed
+		     << checksum(grid) << endl;
+		return 3;
+	}
+
+	return 0;
 }
