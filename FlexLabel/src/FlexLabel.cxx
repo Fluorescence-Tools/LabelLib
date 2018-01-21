@@ -227,10 +227,23 @@ void Grid3DExt::excludeConcentricSpheres(const Eigen::Matrix4Xf &xyzR,
 	const VectorXf sortedR = effR;
 	const VectorXf rhos = VectorXf::LinSpaced(numClashes + 1, 0.0f, maxRho);
 
+	const Vector4f center =
+	        Vec4f(shape) * discStep * 0.5f + Vec4f(originXYZ);
+	const float maxL = shape4i.minCoeff() * discStep * 0.5f;
+	const float l2out = std::pow(maxL + maxRclash, 2.0f);
+
+	Vector4f at;
+	float rAt;
 	for (int iAtom = 0; iAtom < xyzR.cols(); ++iAtom) {
-		const Vector4f &xyzRc = xyzR.col(iAtom);
-		Array4i ijk0 = getIjk(xyzRc);
-		effR = sortedR.array() + xyzRc.coeff(3);
+		at = xyzR.col(iAtom);
+		rAt = at[3];
+		at[3] = 0.0f;
+		const float dist2 = (center - at).squaredNorm();
+		if (dist2 > l2out) {
+			continue;
+		}
+		Array4i ijk0 = getIjk(at);
+		effR = sortedR.array() + rAt;
 		int iNei = 0;
 		for (int iClash = 0; iClash < numClashes; ++iClash) {
 			const float &curR = effR[iClash];
@@ -270,9 +283,20 @@ void Grid3DExt::fillSpheres(const Eigen::Matrix4Xf &xyzR,
 {
 	const float maxRclash = xyzR.row(3).maxCoeff() + extraClash;
 	setMaxNeighbourDistance(maxRclash);
-	Eigen::Vector4f at;
+
+	using Eigen::Vector4f;
+	Vector4f center = Vec4f(shape) * discStep * 0.5f + Vec4f(originXYZ);
+	const float maxL = shape4i.minCoeff() * discStep * 0.5f;
+	const float l2out = std::pow(maxL + maxRclash, 2.0f);
+
+	Vector4f at;
 	for (int iAtom = 0; iAtom < xyzR.cols(); ++iAtom) {
 		at = xyzR.col(iAtom);
+		center[3] = at[3];
+		const float dist2 = (center - at).squaredNorm();
+		if (dist2 > l2out) {
+			continue;
+		}
 		at[3] += extraClash;
 		fillSphere(at, value);
 	}

@@ -104,7 +104,7 @@ int main()
 	atoms.col(7) << 0.0f, -4.0f, -12.5f, 2.5f;
 	atoms.col(8) << 0.0f, -4.0f, -13.5f, 1.7f;
 	atoms.col(9) << 0.0f, -4.0f, -14.5f, 1.8f;
-	atoms.col(10) << 0.0f, -4.0f, 28.0f, 1.5f;
+	atoms.col(10) << 0.0f, -4.0f, 99.0f, 1.5f;
 	for (int iat = 11; iat < nAtoms; ++iat) {
 		atoms.col(iat) = atoms.col(10);
 	}
@@ -124,7 +124,7 @@ int main()
 	Grid3D grid = minLinkerLength(atoms, source, linkerL, linkerD, dyeR,
 				      discStep);
 	// savePqr("testMinL.pqr", grid);
-	if (fabs(checksum(grid) - 621041.37500f) > 0.00001f) {
+	if (fabs(checksum(grid) - 667073.62500f) > 0.00001f) {
 		cout << "minLinkerLength() produced an unexpected result\n";
 		cout << "checksum = " << std::setprecision(5) << std::fixed
 		     << checksum(grid) << endl;
@@ -135,11 +135,11 @@ int main()
 	grid = dyeDensity(atoms, source, linkerL, linkerD, dyeR, discStep);
 	auto diff = std::chrono::steady_clock::now() - start;
 	double dtMs = std::chrono::duration<double, std::milli>(diff).count();
-	// Takes 30 ms on a desktop with Core i7-4930K CPU @ 3.40GHz
+	// Takes 19 ms on a laptop with Core i5-4200U CPU
 	cout << "AV calculation took: " << dtMs << " ms" << std::endl;
 
 	// savePqr("testDensityAV1.pqr", grid);
-	if (fabs(checksum(grid) - 3461.28906f) > 0.00001f) {
+	if (fabs(checksum(grid) - 50183.00000f) > 0.00001f) {
 		cout << "dyeDensity() AV1 produced an unexpected result\n";
 		cout << "checksum = " << std::setprecision(5) << std::fixed
 		     << checksum(grid) << endl;
@@ -148,7 +148,7 @@ int main()
 
 	grid = dyeDensity(atoms, source, linkerL, linkerD, dyeRadii, discStep);
 	// savePqr("testDensityAV3.pqr", grid);
-	if (fabs(checksum(grid) - 3270.10059f) > 0.00001f) {
+	if (fabs(checksum(grid) - 49989.75391f) > 0.00001f) {
 		cout << "dyeDensity() AV3 produced an unexpected result\n";
 		cout << "checksum = " << std::setprecision(5) << std::fixed
 		     << checksum(grid) << endl;
