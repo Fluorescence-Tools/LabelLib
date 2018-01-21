@@ -13,9 +13,9 @@ Eigen::Vector4f Vec4f(const std::array<float, 3> &arr)
 {
 	return Eigen::Vector4f(arr[0], arr[1], arr[2], 0.0f);
 }
-Eigen::Vector4f Vec4f(const Eigen::Vector3f &vec)
+Eigen::Vector4f Vec4f(const Eigen::Vector3f &vec, const float v3 = 0.0f)
 {
-	return Eigen::Vector4f(vec[0], vec[1], vec[2], 0.0f);
+	return Eigen::Vector4f(vec[0], vec[1], vec[2], v3);
 }
 Eigen::Vector4f Vec4f(const std::array<uint32_t, 3> &arr)
 {
@@ -28,14 +28,22 @@ std::array<float, 3> StdArr3f(const Eigen::Vector4f &xyz)
 
 struct Grid3DExt final : public Grid3D {
       public:
-        struct edge_t {
-                Eigen::Array4i ijk;
-                float r;
-                bool operator>(const edge_t &other) const
-                {
-                        return r > other.r;
-                }
-        };
+	struct edge_t {
+		Eigen::Array4i ijk;
+		float r;
+		bool operator>(const edge_t &other) const
+		{
+			return r > other.r;
+		}
+	};
+	struct edge1D_t {
+		float r;
+		int idx;
+		bool operator>(const edge1D_t &other) const
+		{
+			return r > other.r;
+		}
+	};
 
 	Grid3DExt(const Eigen::Vector4f &originXYZ, const float edgeL,
 		  const float discStep, const float value)
@@ -50,12 +58,16 @@ struct Grid3DExt final : public Grid3D {
 				    const float discStep, const float maxLength,
 				    const float maxClashR)
 	{
-		const float adjL =
-			ceil((maxLength + maxClashR) / discStep) * discStep;
+		using std::max;
+		const float effL = maxLength + max(maxClashR, discStep * 3.0f);
+		const float adjL = ceil(effL / discStep) * discStep;
 		using Eigen::Vector4f;
 		const Vector4f origin = Vec4f(sourceXyz).array() - adjL;
 		const float maxFloat = std::numeric_limits<float>::max();
-		return Grid3DExt(origin, adjL * 2.0f, discStep, maxFloat);
+		Grid3DExt grid(origin, adjL * 2.0f, discStep, maxFloat);
+		const Vector4f exclusionArea = Vec4f(sourceXyz, maxLength);
+		grid.fillOutsideSphere(exclusionArea, -1.0f);
+		return grid;
 	}
 
 	inline void fillSpheres(const Eigen::Matrix4Xf &xyzR,
@@ -73,13 +85,13 @@ struct Grid3DExt final : public Grid3D {
 				      const float maxRho);
 
       private:
-        Eigen::Vector4f originAdj; // originXYZ - discStep*0.5
-        Eigen::Array4i shape4i;
-        float devNull;
-        Eigen::Array4i getIjk(const Eigen::Vector4f &xyz);
-        float &gridRef(const Eigen::Vector4f &xyz);
-        float &gridRef(const Eigen::Array4i &ijk);
-        float gridVal(const Eigen::Array4i &ijk);
+	Eigen::Vector4f originAdj; // originXYZ - discStep*0.5
+	Eigen::Array4i shape4i;
+	float devNull;
+	Eigen::Array4i getIjk(const Eigen::Vector4f &xyz);
+	float &gridRef(const Eigen::Vector4f &xyz);
+	float &gridRef(const Eigen::Array4i &ijk);
+	float gridVal(const Eigen::Array4i &ijk);
 
 	/// List of distances to the nearest neighbours and
 	/// corresponding offsets. The list is sorted by distance (small
@@ -93,6 +105,17 @@ struct Grid3DExt final : public Grid3D {
 	std::vector<edge_t> essentialNeighbours();
 
 
+	std::vector<edge1D_t> toEdges1D(const std::vector<edge_t> &in) const
+	{
+		std::vector<edge1D_t> out;
+		for (const edge_t &e : in) {
+			edge1D_t t;
+			t.r = e.r;
+			t.idx = index1D(e.ijk[0], e.ijk[1], e.ijk[2]);
+			out.push_back(t);
+		}
+		return out;
+	}
 	using Grid3D::index1D;
 	std::vector<edge_t> neighbourEdges(const float maxR) const;
 	void setMaxNeighbourDistance(const float maxR);
@@ -190,9 +213,9 @@ void Grid3DExt::excludeConcentricSpheres(const Eigen::Matrix4Xf &xyzR,
 					 const Eigen::VectorXf extraClashes,
 					 const float maxRho)
 {
+	using Eigen::Array4i;
 	using Eigen::Vector4f;
 	using Eigen::VectorXf;
-	using Eigen::Array4i;
 	using std::min;
 	const float maxRclash =
 		xyzR.row(3).maxCoeff() + extraClashes.maxCoeff();
@@ -284,32 +307,37 @@ void Grid3DExt::fillOutsideSphere(const Eigen::Vector4f &xyzR,
 void Grid3DExt::setPathLengths(const Eigen::Vector3f &source)
 {
 	// perform dijkstra algorithm
-	using Eigen::Vector4f;
+	// the grid must be padded, i.e. N outermost layers of edges must be set
+	// to a value < 0. Where N = the maximum depth of essentialNeighbours().
+	// This can be done by fillOutsideSphere()
 	using Eigen::Array4i;
+	using Eigen::Vector4f;
 	using std::vector;
-	const vector<edge_t> &edges = essentialNeighbours();
+	const vector<edge1D_t> &edges = toEdges1D(essentialNeighbours());
 	const Array4i ijk0 = getIjk(Vec4f(source));
-	gridRef(ijk0) = 0.0f;
+	const int i0 = index1D(ijk0[0], ijk0[1], ijk0[2]);
+	grid[i0] = 0.0f;
 
 	// it is possible to improve performance by 10-20%
 	// using more efficient heap/queue implementation like radix heap
-	std::priority_queue<edge_t, vector<edge_t>, std::greater<edge_t>> que;
-	que.push({ijk0, 0.0f});
+	std::priority_queue<edge1D_t, vector<edge1D_t>, std::greater<edge1D_t>>
+	        que;
+	que.push({0.0f, i0});
 	while (!que.empty()) {
-		const edge_t qt = que.top();
+		const edge1D_t qt = que.top();
 		que.pop();
-		if (qt.r > gridRef(qt.ijk))
+		if (qt.r > grid[qt.idx])
 			continue;
-		edge_t t;
-		for (const edge_t &e : edges) {
-			t.ijk = qt.ijk + e.ijk;
-			const float &val = gridVal(t.ijk);
+		edge1D_t t;
+		for (const edge1D_t &e : edges) {
+			t.idx = qt.idx + e.idx;
+			const float &val = grid[t.idx];
 			if (val < 0.0f) {
 				continue;
 			}
 			t.r = qt.r + e.r;
 			if (t.r < val) {
-				gridRef(t.ijk) = t.r;
+				grid[t.idx] = t.r;
 				que.push(t);
 			}
 		}
@@ -331,9 +359,6 @@ Grid3DExt minLinkerLength(const Eigen::Matrix4Xf &atomsXyzr,
 	Grid3DExt grid =
 		Grid3DExt::fromSource(sourceXyz, discStep, linkerLength, 0.0f);
 	grid.fillSpheres(atomsXyzr, linkerDiameter * 0.5f, -1.0f);
-	Eigen::Vector4f exclusionArea = {sourceXyz[0], sourceXyz[1],
-					 sourceXyz[2], linkerLength};
-	grid.fillOutsideSphere(exclusionArea, -2.0f);
 	grid.setPathLengths(sourceXyz);
 	return grid;
 }

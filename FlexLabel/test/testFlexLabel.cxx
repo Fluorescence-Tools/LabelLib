@@ -135,7 +135,7 @@ int main()
 	grid = dyeDensity(atoms, source, linkerL, linkerD, dyeR, discStep);
 	auto diff = std::chrono::steady_clock::now() - start;
 	double dtMs = std::chrono::duration<double, std::milli>(diff).count();
-	// Takes 37 ms on a desktop with Core i7-4930K CPU @ 3.40GHz
+	// Takes 30 ms on a desktop with Core i7-4930K CPU @ 3.40GHz
 	cout << "AV calculation took: " << dtMs << " ms" << std::endl;
 
 	// savePqr("testDensityAV1.pqr", grid);

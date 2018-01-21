@@ -48,9 +48,9 @@ struct Grid3D {
 
 	int index1D(int ix, int iy, int iz) const
 	{
-		assert(ix >= 0 && ix < shape[0]);
+		/*assert(ix >= 0 && ix < shape[0]);
 		assert(iy >= 0 && iy < shape[1]);
-		assert(iz >= 0 && iz < shape[2]);
+		assert(iz >= 0 && iz < shape[2]);*/
 		return ix + shape[0] * (iy + iz * shape[1]);
 	}
 
