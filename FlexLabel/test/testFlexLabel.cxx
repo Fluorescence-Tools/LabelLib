@@ -104,7 +104,7 @@ int main()
 	atoms.col(7) << 0.0f, -4.0f, -12.5f, 2.5f;
 	atoms.col(8) << 0.0f, -4.0f, -13.5f, 1.7f;
 	atoms.col(9) << 0.0f, -4.0f, -14.5f, 1.8f;
-	atoms.col(10) << 0.0f, -4.0f, 99.0f, 1.5f;
+	atoms.col(10) << 0.0f, -4.0f, 95.0f, 1.5f;
 	for (int iat = 11; iat < nAtoms; ++iat) {
 		atoms.col(iat) = atoms.col(10);
 	}

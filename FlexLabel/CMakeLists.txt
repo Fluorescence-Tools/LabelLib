@@ -35,6 +35,8 @@ endif()
 # This line finds the Eigen3 headers. 
 find_package(Eigen3 3.2 REQUIRED NO_MODULE)
 
+find_package(pybind11 QUIET)
+
 
 # This sets the include directory for the reference project. This is the -I flag in gcc.
 # All the includes should be in this variable To add new directories to the include path,
@@ -57,6 +59,9 @@ add_subdirectory(include)
 add_subdirectory(src)
 # add_subdirectory(doc)
 add_subdirectory(test)
+if(pybind11_FOUND)
+  add_subdirectory(python)
+endif()
 
 #
 # SYSTEM PACKAGING (RPM, TGZ, ...)

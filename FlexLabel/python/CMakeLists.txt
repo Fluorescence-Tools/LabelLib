@@ -1,0 +1,2 @@
+pybind11_add_module(LabelLib bindings.cpp)
+target_link_libraries(LabelLib PRIVATE FlexLabel)
