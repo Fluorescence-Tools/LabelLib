@@ -8,14 +8,14 @@ Ubuntu
 ------
 ### Requirements
 ```bash
-sudo apt-get install libeigen3-dev pybind11-dev
+sudo apt-get install libeigen3-dev
 ```
 On older Ubuntu versions (<17.10) Eigen3 package can contain a bug which prevents `cmake` from seeing it. To overcome this bug newer package version can be installed from Ubuntu 17.10 repository. Luckily Eigen3 is a header-only library, so it seems to work on older Ubuntu versions as well.
 ```bash
 wget http://mirrors.kernel.org/ubuntu/pool/universe/e/eigen3/libeigen3-dev_3.3.4-3_all.deb
 sudo dpkg -i libeigen3-dev_3.3.4-3_all.deb
 ```
-If pybind11>=2.2 is not available for your Ubuntu version, it can be installed from source:
+If you want to build python bindings from source, you will need pybind11-dev. If pybind11 v2.2 or newer is not available for your Ubuntu version, it can be installed from source:
 ```bash
 git clone https://github.com/pybind/pybind11.git
 mkdir pybind11/build
