@@ -15,10 +15,13 @@ On older Ubuntu versions (<17.10) Eigen3 package can contain a bug which prevent
 wget http://mirrors.kernel.org/ubuntu/pool/universe/e/eigen3/libeigen3-dev_3.3.4-3_all.deb
 sudo dpkg -i libeigen3-dev_3.3.4-3_all.deb
 ```
-If pybind11 is not available for your Ubuntu version, it can be installed from source, or using the package from Ubuntu 18.04:
+If pybind11>=2.2 is not available for your Ubuntu version, it can be installed from source:
 ```bash
-wget http://mirrors.kernel.org/ubuntu/pool/universe/p/pybind11/pybind11-dev_2.0.1-4_all.deb
-sudo dpkg -i pybind11-dev_2.0.1-4_all.deb
+git clone https://github.com/pybind/pybind11.git
+mkdir pybind11/build
+cd pybind11/build
+cmake .. -DPYBIND11_TEST=OFF
+sudo make install
 ```
 
 ### Compiling and installation
@@ -31,6 +34,8 @@ make package
 ##test [optional]
 make test
 sudo dpkg -i FlexLabel-*-Linux.deb
+##python bindings [optional]
+sudo pip install ..
 ##cleanup [optional]
 #cd ../.. && rm -rf ./LabelLib
 ```
