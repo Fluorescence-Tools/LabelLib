@@ -62,8 +62,11 @@ setup(
     author='Mykola Dimura',
     author_email='mykola.dimura@gmail.com',
     description='Python bindings for LabelLib',
-    long_description='',
+    long_description='Library for coarse-grained simulations of probes flexibly coupled to biomolecules.',
+    url='https://github.com/Fluorescence-Tools/LabelLib',
+    license='LGPL v2.1',
     ext_modules=[CMakeExtension('LabelLib')],
     cmdclass=dict(build_ext=CMakeBuild),
     zip_safe=False,
+    install_requires=['numpy'],
 )
