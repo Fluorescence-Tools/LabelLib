@@ -4,27 +4,25 @@ Library for coarse-grained simulations of probes flexibly coupled to biomolecule
 
 Building and installation
 =========================
-Ubuntu
-------
-### Requirements
-```bash
-sudo apt-get install libeigen3-dev
-```
-On older Ubuntu versions (<17.10) Eigen3 package can contain a bug which prevents `cmake` from seeing it. To overcome this bug newer package version can be installed from Ubuntu 17.10 repository. Luckily Eigen3 is a header-only library, so it seems to work on older Ubuntu versions as well.
-```bash
-wget http://mirrors.kernel.org/ubuntu/pool/universe/e/eigen3/libeigen3-dev_3.3.4-3_all.deb
-sudo dpkg -i libeigen3-dev_3.3.4-3_all.deb
-```
-
-### Compiling and installation
+C++ shared library
+------------------
 C++ shared library can be installed from source with cmake:
 ```bash
 git clone https://github.com/Fluorescence-Tools/LabelLib.git
 mkdir LabelLib/build
 cd LabelLib/build
+cmake ..
+sudo make install
+```
+On Linux you can also build and install a package (prefered):
+```bash
+...
 cmake .. && make package
 sudo dpkg -i FlexLabel-*-Linux.deb
 ```
+
+Python bindings
+---------------
 Python bindings can be installed via pip. Installation of the C++ library is not necessary for this.
 ```bash
 sudo pip install LabelLib
@@ -32,7 +30,8 @@ sudo pip install LabelLib
 
 Usage
 =====
-### C++
+C++
+---
 C++ usage example can be found at `LabelLib/FlexLabel/test/testFlexLabel.cxx`. Your own software could be compiled like this:
 ```bash
 cd LabelLib/FlexLabel/test
@@ -42,7 +41,8 @@ g++ -std=c++14 -O3 -o FlexLabelTest testFlexLabel.cxx -lFlexLabel
 Possible output:
 > AV calculation took: 20.783 ms
 
-### Python
+Python
+------
 LabelLib can be used from python code. Usage example is available at `LabelLib/FlexLabel/python/usage.py`
 ```python
 import LabelLib as ll

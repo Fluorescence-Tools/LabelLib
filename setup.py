@@ -58,7 +58,7 @@ class CMakeBuild(build_ext):
 
 setup(
     name='LabelLib',
-    version='0.0.1',
+    version='0.0.1c',
     author='Mykola Dimura',
     author_email='mykola.dimura@gmail.com',
     description='Python bindings for LabelLib',

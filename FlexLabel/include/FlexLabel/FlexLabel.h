@@ -110,4 +110,5 @@ Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 
 /// \todo Integrate Eigen3 and pybind11 as thirdparty
 /// \todo Switch to date based versioning
+/// \todo Enable doxygen documentation
 #endif // LABELLIB_FLEXLABEL_H

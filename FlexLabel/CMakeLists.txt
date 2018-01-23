@@ -32,13 +32,18 @@ if(GIT_FOUND)
     set (VCS_REVISION ${GIT_SHA1})
 endif()
 
-# This line finds the Eigen3 headers. 
-find_package(Eigen3 3.2 REQUIRED NO_MODULE)
+find_package(Eigen3 3.2 NO_MODULE)
+if (NOT TARGET Eigen3::Eigen)
+        message(STATUS "Using thirdparty/Eigen")
+        set(EIGEN3_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/thirdparty/eigen/Eigen)
+endif (NOT TARGET Eigen3::Eigen)
+include_directories(${EIGEN3_INCLUDE_DIR})
 
-find_package(pybind11 2.2 QUIET)
+find_package(pybind11 2.2)
 if(NOT pybind11_FOUND)
+        message(STATUS "Using thirdparty/pybind11")
         add_subdirectory(${CMAKE_SOURCE_DIR}/thirdparty/pybind11 pybind11_bin)
-endif()
+endif(NOT pybind11_FOUND)
 
 
 # This sets the include directory for the reference project. This is the -I flag in gcc.
