@@ -23,7 +23,7 @@ add_definitions("-DGIT_VERSION_STRING=\"${GIT_VERSION_STRING}\"")
 find_package(Eigen3 3.2 QUIET NO_MODULE)
 if (NOT TARGET Eigen3::Eigen)
         message(STATUS "Using thirdparty/Eigen")
-        set(EIGEN3_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/thirdparty/eigen/Eigen)
+        set(EIGEN3_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/thirdparty/eigen)
 endif (NOT TARGET Eigen3::Eigen)
 include_directories(${EIGEN3_INCLUDE_DIR})
 

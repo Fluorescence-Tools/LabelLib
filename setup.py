@@ -56,9 +56,12 @@ class CMakeBuild(build_ext):
         subprocess.check_call(['cmake', ext.sourcedir] + cmake_args, cwd=self.build_temp, env=env)
         subprocess.check_call(['cmake', '--build', '.'] + build_args, cwd=self.build_temp)
 def gitVersionString():
-  out = subprocess.check_output(['git', 'show', '-s', '--format=%cd', '--date=short'])
-  out = out.decode().replace('-','.')
-  return out
+  try:
+    out = subprocess.check_output(['git', 'show', '-s', '--format=%cd', '--date=short'])
+    out = out.decode().replace('-','.')
+    return out
+  except:
+    return "2018.1.23rc3"
 setup(
     name='LabelLib',
     version=gitVersionString(),
