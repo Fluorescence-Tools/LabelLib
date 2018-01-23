@@ -14,7 +14,7 @@ cd LabelLib/build
 cmake ..
 sudo make install
 ```
-On Linux you can also build and install a package (prefered):
+On Linux you can build and install a package instead (prefered):
 ```bash
 ...
 cmake .. && make package
