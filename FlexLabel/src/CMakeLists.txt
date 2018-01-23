@@ -1,5 +1,4 @@
 set(LIB_HEADERS
-  "${CMAKE_CURRENT_BINARY_DIR}/../include/FlexLabel/Version.h" # Generated header
   ../include/FlexLabel/FlexLabel.h # Normal header
 )
 
@@ -24,7 +23,7 @@ set_target_properties(${LIBRARY_NAME}_static PROPERTIES POSITION_INDEPENDENT_COD
 # Set the build version. It will be used in the name of the lib, with corresponding
 # symlinks created. SOVERSION could also be specified for api version. 
 set_target_properties(${LIBRARY_NAME} PROPERTIES
-  VERSION ${VERSION}  # ${VERSION} was defined in the main CMakeLists.
+  VERSION ${GIT_VERSION_STRING}
   FRAMEWORK FALSE
   PUBLIC_HEADER "${LIB_HEADERS}" # specify the public headers
 )

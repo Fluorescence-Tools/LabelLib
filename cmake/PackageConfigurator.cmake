@@ -4,7 +4,7 @@
 # They are installed in lib/cmake/<projectname>.
 #
 # Required variables :
-#  - VERSION
+#  - GIT_VERSION_STRING
 #  - PROJECT_NAME
 #
 
@@ -13,7 +13,7 @@ include(CMakePackageConfigHelpers)
 
 write_basic_package_version_file(
   "${CMAKE_CURRENT_BINARY_DIR}/cmake/${PROJECT_NAME}ConfigVersion.cmake"
-  VERSION ${VERSION}
+  VERSION ${GIT_VERSION_STRING}
   COMPATIBILITY AnyNewerVersion
 )
 

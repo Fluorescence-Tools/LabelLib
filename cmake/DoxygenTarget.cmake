@@ -19,6 +19,6 @@ function(PrepareDocTarget)
   set(INSTALL_DOC_DIR ${CMAKE_BINARY_DIR}/doc/${PROJECT_NAME}/html)
   file(MAKE_DIRECTORY ${INSTALL_DOC_DIR}) # needed for install
 
-  install(DIRECTORY ${INSTALL_DOC_DIR} DESTINATION share/${PROJECT_NAME}-${VERSION_MAJOR} COMPONENT doc)
+  install(DIRECTORY ${INSTALL_DOC_DIR} DESTINATION share/${PROJECT_NAME}-${GIT_VERSION_STRING} COMPONENT doc)
 
 endfunction()

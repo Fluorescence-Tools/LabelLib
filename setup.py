@@ -55,10 +55,13 @@ class CMakeBuild(build_ext):
             os.makedirs(self.build_temp)
         subprocess.check_call(['cmake', ext.sourcedir] + cmake_args, cwd=self.build_temp, env=env)
         subprocess.check_call(['cmake', '--build', '.'] + build_args, cwd=self.build_temp)
-
+def gitVersionString():
+  out = subprocess.check_output(['git', 'show', '-s', '--format=%cd', '--date=short'])
+  out = out.replace('-','.')
+  return out
 setup(
     name='LabelLib',
-    version='0.0.1c',
+    version=gitVersionString(),
     author='Mykola Dimura',
     author_email='mykola.dimura@gmail.com',
     description='Python bindings for LabelLib',

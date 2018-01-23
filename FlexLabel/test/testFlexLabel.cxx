@@ -136,6 +136,7 @@ int main()
 	auto diff = std::chrono::steady_clock::now() - start;
 	double dtMs = std::chrono::duration<double, std::milli>(diff).count();
 	// Takes 19 ms on a laptop with Core i5-4200U CPU
+	cout << "FlexLabel version " << GIT_VERSION_STRING << std::endl;
 	cout << "AV calculation took: " << dtMs << " ms" << std::endl;
 
 	// savePqr("testDensityAV1.pqr", grid);
