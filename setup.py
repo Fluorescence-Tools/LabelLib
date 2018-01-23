@@ -57,7 +57,7 @@ class CMakeBuild(build_ext):
         subprocess.check_call(['cmake', '--build', '.'] + build_args, cwd=self.build_temp)
 def gitVersionString():
   out = subprocess.check_output(['git', 'show', '-s', '--format=%cd', '--date=short'])
-  out = out.replace('-','.')
+  out = out.decode().replace('-','.')
   return out
 setup(
     name='LabelLib',
