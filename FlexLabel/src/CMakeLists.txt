@@ -18,6 +18,8 @@ set(LIBRARY_NAME FlexLabel)
 
 # Define the library
 add_library(${LIBRARY_NAME} SHARED ${LIB_SOURCES})
+add_library(${LIBRARY_NAME}_static STATIC ${LIB_SOURCES})
+set_target_properties(${LIBRARY_NAME}_static PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 # Set the build version. It will be used in the name of the lib, with corresponding
 # symlinks created. SOVERSION could also be specified for api version. 

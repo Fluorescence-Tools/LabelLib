@@ -103,5 +103,11 @@ Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 		  const float discStep);
 
 
-/// \todo Implement python bindings
+/// \todo Implement distance calculation
+/// float meanDistance()
+/// float meanEfficiency()
+/// float distanceFromEfficiency()
+
+/// \todo Integrate Eigen3 and pybind11 as thirdparty
+/// \todo Switch to date based versioning
 #endif // LABELLIB_FLEXLABEL_H
