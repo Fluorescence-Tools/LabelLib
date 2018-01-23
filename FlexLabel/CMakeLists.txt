@@ -35,7 +35,10 @@ endif()
 # This line finds the Eigen3 headers. 
 find_package(Eigen3 3.2 REQUIRED NO_MODULE)
 
-find_package(pybind11 QUIET)
+find_package(pybind11 2.2 QUIET)
+if(NOT pybind11_FOUND)
+        add_subdirectory(${CMAKE_SOURCE_DIR}/thirdparty/pybind11 pybind11_bin)
+endif()
 
 
 # This sets the include directory for the reference project. This is the -I flag in gcc.
@@ -59,9 +62,7 @@ add_subdirectory(include)
 add_subdirectory(src)
 # add_subdirectory(doc)
 add_subdirectory(test)
-if(pybind11_FOUND)
-  add_subdirectory(python)
-endif()
+add_subdirectory(python)
 
 #
 # SYSTEM PACKAGING (RPM, TGZ, ...)

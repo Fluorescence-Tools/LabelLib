@@ -15,14 +15,6 @@ On older Ubuntu versions (<17.10) Eigen3 package can contain a bug which prevent
 wget http://mirrors.kernel.org/ubuntu/pool/universe/e/eigen3/libeigen3-dev_3.3.4-3_all.deb
 sudo dpkg -i libeigen3-dev_3.3.4-3_all.deb
 ```
-If you want to build python bindings from source, you will need pybind11-dev. If pybind11 v2.2 or newer is not available for your Ubuntu version, it can be installed from source:
-```bash
-git clone https://github.com/pybind/pybind11.git
-mkdir pybind11/build
-cd pybind11/build
-cmake .. -DPYBIND11_TEST=OFF
-sudo make install
-```
 
 ### Compiling and installation
 C++ shared library can be installed from source with cmake:
