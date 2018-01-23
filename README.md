@@ -25,19 +25,17 @@ sudo make install
 ```
 
 ### Compiling and installation
+C++ shared library can be installed from source with cmake:
 ```bash
 git clone https://github.com/Fluorescence-Tools/LabelLib.git
 mkdir LabelLib/build
 cd LabelLib/build
-cmake ..
-make package
-##test [optional]
-make test
+cmake .. && make package
 sudo dpkg -i FlexLabel-*-Linux.deb
-##python bindings [optional]
-sudo pip install ..
-##cleanup [optional]
-#cd ../.. && rm -rf ./LabelLib
+```
+Python bindings can be installed via pip. Installation of the C++ library is not necessary for this.
+```bash
+sudo pip install LabelLib
 ```
 
 Usage
@@ -53,7 +51,7 @@ Possible output:
 > AV calculation took: 20.783 ms
 
 ### Python
-LabelLib can be used from python code, once python bindings are installed. Usage example is available at `LabelLib/FlexLabel/python/usage.py`
+LabelLib can be used from python code. Usage example is available at `LabelLib/FlexLabel/python/usage.py`
 ```python
 import LabelLib as ll
 av1 = ll.dyeDensityAV1(atoms, source, 20.0, 2.0, 3.5, 0.9)
