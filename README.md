@@ -8,7 +8,7 @@ C++ shared library
 ------------------
 C++ shared library can be installed from source with cmake:
 ```bash
-git clone https://github.com/Fluorescence-Tools/LabelLib.git
+git clone --recursive https://github.com/Fluorescence-Tools/LabelLib.git
 mkdir LabelLib/build
 cd LabelLib/build
 cmake ..
