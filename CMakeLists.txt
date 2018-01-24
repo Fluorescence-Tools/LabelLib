@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
+
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 set(default_build_type "Release")
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
@@ -9,6 +10,15 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS
     "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
 endif()
+
+find_package(Git QUIET)
+set (GIT_VERSION_STRING "version-unknown")
+if(GIT_FOUND)
+    include(GitDateVersion)
+    gitDateVersionString(GIT_VERSION_STRING)
+    message(STATUS "GIT version: ${GIT_VERSION_STRING}")
+endif()
+add_definitions("-DGIT_VERSION_STRING=\"${GIT_VERSION_STRING}\"")
 
 enable_testing() # needed on top-level CMakeLists.txt
 

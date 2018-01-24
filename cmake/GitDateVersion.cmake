@@ -29,6 +29,7 @@ function (gitDateVersionString _verStr)
     set(branch "nobranch")
   endif()
   STRING(REPLACE "* " "" branch ${branch})
+  STRING(REGEX REPLACE "\n.*" "" branch ${branch})
   
   execute_process(
     COMMAND "${GIT_EXECUTABLE}" show -s --format=%cd --date=short ${hash}

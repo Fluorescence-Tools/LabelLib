@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0.2)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/../cmake) # main (top) cmake dir
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake) # project specific cmake dir
-set(CMAKE_CXX_STANDARD 14) # tODO move up to a general cmake config for all sub projects ?
+set(CMAKE_CXX_STANDARD 14) # TODO move up to a general cmake config for all sub projects ?
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib") 
@@ -10,15 +10,6 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 project("FlexLabel")
 
 include(Common)
-
-find_package(Git QUIET)
-set (GIT_VERSION_STRING "version-unknown")
-if(GIT_FOUND)
-    include(GitDateVersion)
-    gitDateVersionString(GIT_VERSION_STRING)
-    message(STATUS "GIT version: ${GIT_VERSION_STRING}")
-endif()
-add_definitions("-DGIT_VERSION_STRING=\"${GIT_VERSION_STRING}\"")
 
 find_package(Eigen3 3.2 QUIET NO_MODULE)
 if (NOT TARGET Eigen3::Eigen)
