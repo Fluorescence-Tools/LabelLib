@@ -32,7 +32,7 @@ Usage
 =====
 C++
 ---
-C++ usage example can be found at `LabelLib/FlexLabel/test/testFlexLabel.cxx`. Your own software could be compiled like this:
+C++ usage example can be found in [testFlexLabel.cxx](FlexLabel/test/testFlexLabel.cxx). Your own software could be compiled like this:
 ```bash
 cd LabelLib/FlexLabel/test
 g++ -std=c++14 -O3 -o FlexLabelTest testFlexLabel.cxx -lFlexLabel
@@ -43,7 +43,7 @@ Possible output:
 
 Python
 ------
-LabelLib can be used from python code. Usage example is available at `LabelLib/FlexLabel/python/usage.py`
+LabelLib can be used from python code. Usage example is available in [usage.py](FlexLabel/python/usage.py)
 ```python
 import LabelLib as ll
 import numpy as np
