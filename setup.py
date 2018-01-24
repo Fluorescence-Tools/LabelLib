@@ -61,7 +61,7 @@ def gitVersionString():
     out = out.decode().replace('-','.')
     return out
   except:
-    return "2018.1.23rc3"
+    return "unknown-version"
 setup(
     name='LabelLib',
     version=gitVersionString(),

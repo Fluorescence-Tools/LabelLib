@@ -52,7 +52,9 @@ set(CMAKE_MACOSX_RPATH ON)
 enable_testing()
 add_subdirectory(src)
 # add_subdirectory(doc)
-add_subdirectory(test)
+if(NOT PYTHON_LIBRARY_OUTPUT_DIRECTORY)
+  add_subdirectory(test)
+endif()
 add_subdirectory(python)
 
 #
