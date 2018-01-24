@@ -46,7 +46,8 @@ Python
 LabelLib can be used from python code. Usage example is available at `LabelLib/FlexLabel/python/usage.py`
 ```python
 import LabelLib as ll
-av1 = ll.dyeDensityAV1(atoms, source, 20.0, 2.0, 3.5, 0.9)
+import numpy as np
+av1 = ll.dyeDensityAV1(np.zeros((4,11)), np.zeros(3), 20.0, 2.0, 3.5, 0.9)
 ```
 
 Citation

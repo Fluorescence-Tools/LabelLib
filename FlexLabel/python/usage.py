@@ -2,27 +2,39 @@ import LabelLib as ll
 import numpy as np
 
 def savePqr(fileName, grid):
-  out = open(fileName, "w")
+  with open(fileName, "w") as out:
+      area = grid.shape[0] * grid.shape[1]
+      nx, ny, nz = grid.shape
+      ox, oy, oz = grid.originXYZ
+      dx = grid.discStep
+      g = np.array(grid.grid).reshape((nx, ny, nz),order='F')
+      
+      iat = 0
+      for iz in range(nz):
+        for iy in range(ny):
+          for ix in range(nx):
+            val = g[ix, iy, iz]
+            if val <= 0.0:
+              continue
+            
+            iat += 1
+            resi = int(iat / 10)
+            
+            x = ix * dx + ox
+            y = iy * dx + oy
+            z = iz * dx + oz
+            
+            sz = 'ATOM{0: 7}   AV  AV{1: 6}{2:12.1f}{3:8.1f}{4:8.1f}{5:8.2f}{6:7.3f}\n'
+            sz = sz.format(iat, resi, x, y, z, val, dx * 0.5)
+            out.write(sz)
 
-  area=grid.shape[0]*grid.shape[1]
-  for idx in range(len(grid.grid)):
-    val = grid.grid[idx]
-    if val<=0.0:
-      continue
+def savePqrFromAtoms(fileName, atoms):
+  sz = 'ATOM{0: 7}    X   X{1: 6}{2:12.1f}{3:8.1f}{4:8.1f}{5:8.2f}{6:7.3f}\n'
+  with open(fileName, "w") as out:
+    for i,at in enumerate(atoms.T):
+      out.write(sz.format(i, i, at[0], at[1], at[2], 1.0, at[3]))
     
-    k = int(idx / area)
-    tmp = idx - k * area
-    j = int(tmp / grid.shape[0])
-    i = int(tmp % grid.shape[0])
-    
-    x = i * grid.discStep + grid.originXYZ[0]
-    y = j * grid.discStep + grid.originXYZ[1]
-    z = k * grid.discStep + grid.originXYZ[2]
-    
-    sz = 'ATOM{0: 7}   AV  AV{1: 6}{2:12.1f}{3:8.1f}{4:8.1f}{5:8.2f}{6:7.3f}\n'
-    sz = sz.format(idx, idx, x, y, z, val, grid.discStep * 0.5)
-    out.write(sz)
-
+  
 atoms=np.array([
 [0.0, -4.0, 22.0, 1.5],
 [9.0, 0.0, 0.0, 3.0],
@@ -35,11 +47,13 @@ atoms=np.array([
 [0.0, -4.0, -13.5, 1.7],
 [0.0, -4.0, -14.5, 1.8],
 [0.0, -4.0, 95.0, 1.5]]).astype(float).T
-source=np.array([[0.0, -4.0, 0.0],]).astype(float).T
+source=np.array([0.0, -4.0, 0.0]).astype(float)
 
 av1 = ll.dyeDensityAV1(atoms, source, 20.0, 2.0, 3.5, 0.9)
 minLengthGrid = ll.minLinkerLength(atoms, source, 20.0, 2.0, 3.5, 0.9)
 
-print('Saving AVs. This can take ~10 min...')
-#savePqr('AV1.pqr', av1)
+print('Saving AVs...')
+savePqrFromAtoms('atoms.pqr', atoms)
+savePqr('AV1.pqr', av1)
 savePqr('minLinkerLength.pqr', minLengthGrid)
+print('done.')
