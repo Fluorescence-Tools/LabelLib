@@ -3,9 +3,10 @@ import chempy
 import numpy as np
 import LabelLib as ll
 
-# Usage example: 
-# genAV('chain A', 'chain A and resi 123 and name CB')
-def genAV(obstacles, attachment, linker_length=20.0, linker_diameter=2.0, dye_radius=3.5, disc_step=0.9, name=None, state=1, stripAttSC=True):
+# Usage example:
+# fetch 1BNA, async=0
+# genAV('1BNA and not solvent and not /1BNA//B/19/C7+C4+O4+C6', '/1BNA//B/19/C5')
+def genAV(obstacles, attachment, linker_length=20.0, linker_diameter=2.0, dye_radius=3.5, disc_step=0.9, name=None, state=1, stripsc=True):
   
   source = np.array(cmd.get_model(attachment, state).get_coord_list())
   if (source.shape[0]!=1):
@@ -17,7 +18,7 @@ def genAV(obstacles, attachment, linker_length=20.0, linker_diameter=2.0, dye_ra
   srcModelName = cmd.get_names('objects',0,attachment)[0]
   
   obstacles = '(' + obstacles + ') and not (' + attachment + ')'
-  if stripAttSC:
+  if stripsc and isAA(srcAt.resn):
     obstacles += ' and not (' + srcModelName
     if len(srcAt.chain)>0:
       obstacles += ' and chain ' + srcAt.chain
@@ -31,6 +32,9 @@ def genAV(obstacles, attachment, linker_length=20.0, linker_diameter=2.0, dye_ra
   
   av1=ll.dyeDensityAV1(xyzRT.T,source,linker_length, linker_diameter, dye_radius, disc_step)
   m=avToModel(av1)
+  if len(m.atom)==0:
+    print('Failed: Empty AV. Is attachment position buried?')
+    return
   if name is None:
     name = srcModelName + '_'
     if len(srcAt.chain)>0:
@@ -38,10 +42,19 @@ def genAV(obstacles, attachment, linker_length=20.0, linker_diameter=2.0, dye_ra
     name +=  srcAt.resi + '-' + srcAt.name
   cmd.load_model(m, name)
 
-def makeAtom(index, xyz, vdw):
+def isAA(resn):
+  names=['ALA', 'ARG', 'ASN', 'ASP', 'ASX',
+	 'CYS', 'GLU', 'GLN', 'GLX', 'GLY',
+	 'HIS', 'ILE', 'LEU', 'LYS', 'MET',
+	 'PHE', 'PRO', 'SER', 'THR', 'TRP', 'TYR', 'VAL']
+  if resn in names:
+    return True
+  return False
+
+def makeAtom(index, xyz, vdw, name='AV'):
     atom = chempy.Atom()
     atom.index = index
-    atom.name = 'AV'
+    atom.name = name
     atom.symbol = 'AV'
     atom.resn = 'AV'
     atom.chain = 'A'
@@ -61,6 +74,8 @@ def avToModel(av):
   dx = av.discStep
   g = np.array(av.grid).reshape((nx, ny, nz),order='F')
   
+  MP=np.array([0.0,0.0,0.0])
+  vol=0.0
   iat = 0
   for iz in range(nz):
     for iy in range(ny):
@@ -76,11 +91,16 @@ def avToModel(av):
         y = iy * dx + oy
         z = iz * dx + oz
         
+        MP+=np.array([x,y,z])*val
+        vol+=val
+        
         m.add_atom(makeAtom(iat,[x,y,z],dx * 0.5))
   
+  MP=MP/vol
+  if iat>0:
+    m.add_atom(makeAtom(iat+1,list(MP),2.0,'AVmp'))
+  
   m.update_index()
-  if iat==0:
-    print('Empty AV. Is attachment position buried?')
   return m
 
 
