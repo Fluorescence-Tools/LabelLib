@@ -18,7 +18,7 @@ if (NOT TARGET Eigen3::Eigen)
 endif (NOT TARGET Eigen3::Eigen)
 include_directories(${EIGEN3_INCLUDE_DIR})
 
-find_package(pybind11 QUIET 2.2)
+find_package(pybind11 2.2 QUIET)
 if(NOT pybind11_FOUND)
         message(STATUS "Using thirdparty/pybind11")
         add_subdirectory(${CMAKE_SOURCE_DIR}/thirdparty/pybind11 pybind11_bin)
