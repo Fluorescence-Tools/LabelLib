@@ -3,7 +3,9 @@ import chempy
 import numpy as np
 import LabelLib as ll
 
-def genAV(obstacles, attachment, linker_length=20.0, linker_diameter=2.0, dye_radius=3.5, disc_step=0.9, name=None, state=1):
+# Usage example: 
+# genAV('chain A', 'chain A and resi 123 and name CB')
+def genAV(obstacles, attachment, linker_length=20.0, linker_diameter=2.0, dye_radius=3.5, disc_step=0.9, name=None, state=1, stripAttSC=True):
   
   source = np.array(cmd.get_model(attachment, state).get_coord_list())
   if (source.shape[0]!=1):
@@ -11,7 +13,16 @@ def genAV(obstacles, attachment, linker_length=20.0, linker_diameter=2.0, dye_ra
     return
   source=source.reshape(3)
   
-  obstacles=obstacles+' and not ('+attachment+')'
+  srcAt = cmd.get_model(attachment, state).atom[0]
+  srcModelName = cmd.get_names('objects',0,attachment)[0]
+  
+  obstacles = '(' + obstacles + ') and not (' + attachment + ')'
+  if stripAttSC:
+    obstacles += ' and not (' + srcModelName
+    if len(srcAt.chain)>0:
+      obstacles += ' and chain ' + srcAt.chain
+    obstacles+=' and resi '+srcAt.resi+' and sidechain'+')'
+  
   atoms=cmd.get_model(obstacles, state).atom
   nAtoms=len(atoms)
   xyzRT=np.zeros((nAtoms,4))
@@ -21,8 +32,7 @@ def genAV(obstacles, attachment, linker_length=20.0, linker_diameter=2.0, dye_ra
   av1=ll.dyeDensityAV1(xyzRT.T,source,linker_length, linker_diameter, dye_radius, disc_step)
   m=avToModel(av1)
   if name is None:
-    name = cmd.get_names('objects',0,attachment)[0] + '_'
-    srcAt = cmd.get_model(attachment, state).atom[0]
+    name = srcModelName + '_'
     if len(srcAt.chain)>0:
       name += srcAt.chain + '-'
     name +=  srcAt.resi + '-' + srcAt.name
@@ -70,7 +80,7 @@ def avToModel(av):
   
   m.update_index()
   if iat==0:
-    print('Empty AV. Is attachment atom buried?')
+    print('Empty AV. Is attachment position buried?')
   return m
 
 
