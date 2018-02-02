@@ -6,7 +6,7 @@ import LabelLib as ll
 # Usage example:
 # fetch 1BNA, async=0
 # genAV('1BNA and not solvent and not /1BNA//B/19/C7+C4+O4+C6', '/1BNA//B/19/C5')
-def genAV(obstacles, attachment, linker_length=20.0, linker_diameter=2.0, dye_radius=3.5, disc_step=0.9, name=None, state=1, stripsc=True):
+def genAV(obstacles, attachment, linker_length=20.0, linker_diameter=2.0, dye_radius=3.5, disc_step=0.9, name=None, state=1, stripsc=True, smoothSurf=True):
   
   source = np.array(cmd.get_model(attachment, state).get_coord_list())
   if (source.shape[0]!=1):
@@ -41,6 +41,16 @@ def genAV(obstacles, attachment, linker_length=20.0, linker_diameter=2.0, dye_ra
       name += srcAt.chain + '-'
     name +=  srcAt.resi + '-' + srcAt.name
   cmd.load_model(m, name)
+  
+  if smoothSurf:
+    surfName=name+'_surf'
+    mapName=name+'_map'
+    gRes=cmd.get('gaussian_resolution')
+    cmd.set('gaussian_resolution',3.0)
+    cmd.map_new(mapName,'gaussian', 1.0, name, 6)
+    cmd.isosurface(surfName,mapName,0.9)
+    cmd.set('gaussian_resolution',gRes)
+    cmd.disable(name)
 
 def isAA(resn):
   names=['ALA', 'ARG', 'ASN', 'ASP', 'ASX',
@@ -63,6 +73,8 @@ def makeAtom(index, xyz, vdw, name='AV'):
     atom.coord = xyz
     atom.vdw=vdw
     atom.hetatm = False
+    atom.b = 100
+    atom.q = 1
     return atom
 
 def avToModel(av):
