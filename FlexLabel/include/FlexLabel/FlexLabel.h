@@ -68,7 +68,7 @@ struct Grid3D {
 	}
 	std::array<float, 3> xyz(int ix, int iy, int iz) const
 	{
-		std::array<float, 3> arr = {ix, iy, iz};
+		std::array<float, 3> arr = {float(ix), float(iy), float(iz)};
 		for (int i = 0; i < 3; ++i) {
 			arr[i] = arr[i] * discStep + originXYZ[i];
 		}
