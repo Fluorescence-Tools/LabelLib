@@ -2,6 +2,8 @@ LabelLib
 ========
 Library for coarse-grained simulations of probes flexibly coupled to biomolecules.
 
+![dsDNA and an AV surface][2]
+
 Building and installation
 =========================
 C++ shared library
@@ -30,6 +32,20 @@ sudo pip install LabelLib
 
 Usage
 =====
+
+Pymol
+-----
+To add LabelLib functionality in [Pymol][1], first you will need to run the [LabelLib_pymol.py](FlexLabel/python/LabelLib_pymol.py) from Pymol's command line. Once it is loaded in Pymol, you can build Accessible Volumes(AV) from Pymol's command line as shown below:
+```python
+run ./LabelLib/FlexLabel/python/LabelLib_pymol.py
+fetch 1BNA, async=0
+genAV(obstacles='1BNA and not solvent and not /1BNA//B/19/C7+C4+O4+C6', \
+attachment='/1BNA//B/19/C5', linker_length=20.0, linker_diameter=2.0, dye_radius=3.5)
+```
+As a result you should see something like this:
+
+![dsDNA and an AV surface][2]
+
 C++
 ---
 C++ usage example can be found in [testFlexLabel.cxx](FlexLabel/test/testFlexLabel.cxx). Your own software could be compiled like this:
@@ -57,3 +73,6 @@ If you have used LabelLib in a scientific publication, we would appreciate citat
 
 Additional information is available in FPS toolkit paper: [![DOI for citing FPS](https://img.shields.io/badge/DOI-10.1038%2Fnmeth.2222-blue.svg)](https://doi.org/10.1038/nmeth.2222)
 > Kalinin, S., Peulen, T., Sindbert, S., Rothwell, P.J., Berger, S., Restle, T., Goody, R.S., Gohlke, H. and Seidel, C.A., 2012. A toolkit and benchmark study for FRET-restrained high-precision structural modeling. Nature methods, 9(12), pp.1218-1225.
+
+[1]: https://pymol.org/ "Pymol"
+[2]: FlexLabel/doc/pymol_example.png "dsDNA and an AV surface"
