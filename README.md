@@ -40,7 +40,6 @@ To add LabelLib functionality in [Pymol][1], first you will need to run the [Lab
 cmd.do('run ./LabelLib/FlexLabel/python/LabelLib_pymol.py')
 cmd.fetch('1BNA', async=0)
 genAV(obstacles='1BNA and not solvent and not (c. B and i. 19 and name C7+C4+O4+C6)', attachment='1BNA and c. B and i. 19 and name C5', linker_length=20.0, linker_diameter=2.0, dye_radius=3.5)
-cmd.enable('1BNA_B-19-C5')
 ```
 As a result you should see something like this:
 

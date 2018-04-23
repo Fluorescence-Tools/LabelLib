@@ -5,7 +5,7 @@ import LabelLib as ll
 
 # Usage example:
 # fetch 1BNA, async=0
-# genAV('1BNA and not solvent and not /1BNA//B/19/C7+C4+O4+C6', '/1BNA//B/19/C5')
+# genAV('polymer and not (c. B and i. 19 and name C7+C4+O4+C6)', '1BNA and c. B and i. 19 and name C5')
 def genAV(obstacles, attachment, linker_length=20.0, linker_diameter=2.0, dye_radius=3.5, disc_step=0.9, name=None, state=1, stripsc=True, smoothSurf=True):
   
   source = np.array(cmd.get_model(attachment, state).get_coord_list())
@@ -65,7 +65,7 @@ def makeAtom(index, xyz, vdw, name='AV'):
     atom = chempy.Atom()
     atom.index = index
     atom.name = name
-    atom.symbol = 'AV'
+    atom.symbol = 'He'
     atom.resn = 'AV'
     atom.chain = 'A'
     atom.resi = 1
