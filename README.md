@@ -1,13 +1,16 @@
-LabelLib
-========
-Library for coarse-grained simulations of probes flexibly coupled to biomolecules.
+# LabelLib
+
+## Description
+LabelLib is a library for the simulation of small probes flexibly coupled to biomolecules. Such probes are for instance dyes for fluorescence spectroscopy, spin-labels for EPR and NMR, or chemical cross-links for mass-spectrometry. LabelLib uses a coarse-grained approach to simulate the spatial distribution of probes around their attachment point. 
+In this approach linker connecting the probe to the biomolecule and the probe are approximated by a tube and ellipsoids, respectively. 
+
 
 ![dsDNA and an AV surface][2]
 
-Building and installation
-=========================
-C++ shared library
-------------------
+# Building and installation
+
+## C++ shared library
+
 C++ shared library can be installed from source with cmake:
 ```bash
 git clone --recursive https://github.com/Fluorescence-Tools/LabelLib.git
@@ -23,18 +26,17 @@ cmake .. && make package
 sudo dpkg -i FlexLabel-*-Linux.deb
 ```
 
-Python bindings
----------------
+## Python bindings
+
 Python bindings can be installed via pip. Installation of the C++ library is not necessary for this.
 ```bash
 sudo pip install LabelLib
 ```
 
-Usage
-=====
+# Usage
 
-Pymol
------
+## Pymol
+
 To add LabelLib functionality in [Pymol][1], first you will need to run the [LabelLib_pymol.py](FlexLabel/python/LabelLib_pymol.py) from Pymol's command line. Once it is loaded in Pymol, you can build Accessible Volumes(AV) from Pymol's command line as shown below:
 ```
 cmd.do('run ./LabelLib/FlexLabel/python/LabelLib_pymol.py')
@@ -45,8 +47,8 @@ As a result you should see something like this:
 
 ![dsDNA and an AV surface][2]
 
-C++
----
+## C++
+
 C++ usage example can be found in [testFlexLabel.cxx](FlexLabel/test/testFlexLabel.cxx). Your own software could be compiled like this:
 ```bash
 cd LabelLib/FlexLabel/test
@@ -56,8 +58,8 @@ g++ -std=c++14 -O3 -o FlexLabelTest testFlexLabel.cxx -lFlexLabel
 Possible output:
 > AV calculation took: 20.783 ms
 
-Python
-------
+## Python
+
 LabelLib can be used from python code. Usage example is available in [usage.py](FlexLabel/python/usage.py)
 ```python
 import LabelLib as ll
@@ -65,8 +67,7 @@ import numpy as np
 av1 = ll.dyeDensityAV1(np.zeros((4,11)), np.zeros(3), 20.0, 2.0, 3.5, 0.9)
 ```
 
-Citation
-========
+# Citation
 If you have used LabelLib in a scientific publication, we would appreciate citations to the following paper: [![DOI for citing LabelLib](https://img.shields.io/badge/DOI-10.1016%2Fj.sbi.2016.11.012-blue.svg)](https://doi.org/10.1016/j.sbi.2016.11.012)
 > Dimura, M., Peulen, T.O., Hanke, C.A., Prakash, A., Gohlke, H. and Seidel, C.A., 2016. Quantitative FRET studies and integrative modeling unravel the structure and dynamics of biomolecular systems. Current opinion in structural biology, 40, pp.163-185.
 
