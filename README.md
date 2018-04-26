@@ -41,7 +41,11 @@ sudo pip install LabelLib
 
 ## Pymol
 
-To add LabelLib functionality in [Pymol][1], first you will need to run the [LabelLib_pymol.py](FlexLabel/python/LabelLib_pymol.py) from Pymol's command line. Once it is loaded in Pymol, you can build Accessible Volumes(AV) from Pymol's command line as shown below:
+To access the functionality of LabelLib in PyMOL two basic prerequisites need to be fulfilled:
+  1) LabelLib needs to be installed in the Python installation used by PyMOL
+  2) The file [LabelLib_pymol.py](FlexLabel/python/LabelLib_pymol.py) needs to be downloaded and executed from PyMOL's command line interace. 
+  
+The file "LabelLib_pymol.py" is executed from PyMOL's command line interface by entering "run LabelLib_pymol.py". Once "LabelLib_pymol.py" is executed Accessible Volumes(AV) can be simulated from PyMOL's command line. The procedure of running "LabelLib_pymol.py" and simulating an AV is shown below for an example:
 ```
 cmd.do('run ./LabelLib/FlexLabel/python/LabelLib_pymol.py')
 cmd.fetch('1BNA', async=0)
