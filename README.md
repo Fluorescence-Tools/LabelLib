@@ -1,9 +1,13 @@
 # LabelLib
 
-## Description
-LabelLib is a library for the simulation of small probes flexibly coupled to biomolecules. Such probes are for instance dyes for fluorescence spectroscopy, spin-labels for EPR and NMR, or chemical cross-links for mass-spectrometry. LabelLib uses a coarse-grained approach to simulate the spatial distribution of probes around their attachment point. 
-In this approach linker connecting the probe to the biomolecule and the probe are approximated by a tube and ellipsoids, respectively. 
+## General description
+LabelLib is a library for the simulation of small probes flexibly coupled to biomolecules. Such probes are for instance dyes for fluorescence spectroscopy, spin-labels for EPR and NMR, or chemical cross-links for mass-spectrometry. 
 
+LabelLib uses a coarse-grained approach to simulate the spatial distribution of probes around their attachment point. In this coarse-grained approach LabelLib determines the sterically accessible volume of the probe considering the linker length and the spatial dimensions of the probe. The linker connecting the probe to the biomolecule and the probe are approximated by a tube and ellipsoids, respectively. Details are provided in the publications [![DOI for citing FPS](https://img.shields.io/badge/DOI-10.1038%2Fnmeth.2222-blue.svg)](https://doi.org/10.1038/nmeth.2222)
+[![DOI for citing FPS](https://img.shields.io/badge/DOI-10.1021%2Fja105725e-blue.svg)](https://doi.org/10.1021/ja105725e).
+
+
+LabelLib is mainly intented to be used by programmers and provides APIs for C/C++ and Python. Furthermore, LabelLib can be integrated into PyMOL installations as described below. This allows to vizualize the distributions of molecular probes.
 
 ![dsDNA and an AV surface][2]
 
