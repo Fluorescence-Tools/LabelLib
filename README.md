@@ -68,12 +68,20 @@ Possible output:
 
 ## Python
 
-LabelLib can be used from python code. Usage example is available in [usage.py](FlexLabel/python/usage.py)
+The LabelLib can be used from python as shown below in a code example.
+LabelLib requires the Cartesian-coordinates, xyz, and van der Waals radii, vdW, of the biomolecule the label is attached to. The Cartesian coordinates and the vdW radii are passed to LabelLib as a single array (see example below). 
 ```python
 import LabelLib as ll
 import numpy as np
-av1 = ll.dyeDensityAV1(np.zeros((4,11)), np.zeros(3), 20.0, 2.0, 3.5, 0.9)
+atoms = np.zeros((4,11))
+linker_length = 20.0
+linker_width = 2.0
+dye_radius = 3.5
+simulation_grid_spacing = 0.9
+dye_attachment_point = np.zeros(3)
+av1 = ll.dyeDensityAV1(atoms, dye_attachment_point, linker_length, linker_width, dye_radius, simulation_grid_spacing)
 ```
+Another usage example is available in [usage.py](FlexLabel/python/usage.py)
 
 # Citation
 If you have used LabelLib in a scientific publication, we would appreciate citations to the following paper: [![DOI for citing LabelLib](https://img.shields.io/badge/DOI-10.1016%2Fj.sbi.2016.11.012-blue.svg)](https://doi.org/10.1016/j.sbi.2016.11.012)
