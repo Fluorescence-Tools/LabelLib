@@ -18,7 +18,8 @@ struct Grid3D {
 	/// @brief   space discretization step
 	float discStep;
 
-	/// @brief   true coordinates of the grid[0,0,0] cell
+	/// @brief   cartisian coordinates of the grid origin (grid[0,0,0]) with respect to the origin of
+	/// the atoms which were used to calculate the AV
 	std::array<float, 3> originXYZ;
 
 	/// @brief   Number of cels in each (X, Y and Z) direction.
