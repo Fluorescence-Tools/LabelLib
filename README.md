@@ -80,6 +80,19 @@ dye_radius = 3.5
 simulation_grid_spacing = 0.9
 dye_attachment_point = np.zeros(3)
 av1 = ll.dyeDensityAV1(atoms, dye_attachment_point, linker_length, linker_width, dye_radius, simulation_grid_spacing)
+
+# The object av1 has the property grid, which stores
+# the distances to the attachment point within the reach of the dye linker 
+# as a positive number. For points out of out reach of the linker, the the 
+# grid contains negative numbers.
+grid = av1.grid
+
+# The shape of the grid is defined by the property '.shape'
+shape = av1.shape
+
+# The 3D grid is a flat 1D python list in 'Fortran' order
+grid3d = np.array(grid).reshape(shape, order='F')
+
 ```
 Another usage example is available in [usage.py](FlexLabel/python/usage.py)
 
