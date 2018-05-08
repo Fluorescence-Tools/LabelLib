@@ -82,8 +82,8 @@ dye_attachment_point = np.zeros(3)
 av1 = ll.dyeDensityAV1(atoms, dye_attachment_point, linker_length, linker_width, dye_radius, simulation_grid_spacing)
 
 # The object av1 has the property grid, which stores
-# the distances to the attachment point within the reach of the dye linker 
-# as a positive number. For points out of out reach of the linker, the the 
+# the dye densities within the reach of the dye linker as a positive number. 
+# For points out of out reach of the linker, the the 
 # grid contains negative numbers.
 grid = av1.grid
 
