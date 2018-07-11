@@ -73,6 +73,7 @@ LabelLib requires the Cartesian-coordinates, xyz, and van der Waals radii, vdW, 
 ```python
 import LabelLib as ll
 import numpy as np
+
 atoms_xyz = np.zeros((3,11))
 atoms_vdw = np.zeros(11)
 atoms = np.vstack([atoms_xyz, atoms_vdw])
