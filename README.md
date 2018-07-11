@@ -73,7 +73,10 @@ LabelLib requires the Cartesian-coordinates, xyz, and van der Waals radii, vdW, 
 ```python
 import LabelLib as ll
 import numpy as np
-atoms = np.zeros((4,11))
+atoms_xyz = np.zeros((3,11))
+atoms_vdw = np.zeros(11)
+atoms = np.vstack([atoms_xyz, atoms_vdw])
+
 linker_length = 20.0
 linker_width = 2.0
 dye_radius = 3.5
