@@ -6,8 +6,8 @@
 #include "FlexLabel/FlexLabel.h"
 
 #include <algorithm>
-#include <set>
 #include <queue>
+#include <set>
 
 Eigen::Vector4f Vec4f(const std::array<float, 3> &arr)
 {
@@ -26,8 +26,10 @@ std::array<float, 3> StdArr3f(const Eigen::Vector4f &xyz)
 	return std::array<float, 3>() = {xyz[0], xyz[1], xyz[2]};
 }
 
+using Matrix5Xf = Eigen::Matrix<float, 5, Eigen::Dynamic>;
+
 struct Grid3DExt final : public Grid3D {
-      public:
+public:
 	struct edge_t {
 		Eigen::Array4i ijk;
 		float r;
@@ -46,17 +48,25 @@ struct Grid3DExt final : public Grid3D {
 	};
 
 	Grid3DExt(const Eigen::Vector4f &originXYZ, const float edgeL,
-		  const float discStep, const float value)
+	          const float discStep, const float value)
 	    : Grid3D(StdArr3f(originXYZ), edgeL, discStep, value)
 	{
 		originAdj = originXYZ.array() - 0.5f * discStep;
 		originAdj[3] = 0.0f;
 		shape4i << shape[0], shape[1], shape[2],
-			std::numeric_limits<int>::max();
+		        std::numeric_limits<int>::max();
 	}
+	Grid3DExt(const Grid3D &grid) : Grid3D(grid)
+	{
+		originAdj = Vec4f(originXYZ).array() - 0.5f * discStep;
+		originAdj[3] = 0.0f;
+		shape4i << shape[0], shape[1], shape[2],
+		        std::numeric_limits<int>::max();
+	}
+
 	static Grid3DExt fromSource(const Eigen::Vector3f &sourceXyz,
-				    const float discStep, const float maxLength,
-				    const float maxClashR)
+	                            const float discStep, const float maxLength,
+	                            const float maxClashR)
 	{
 		using std::max;
 		const float effL = maxLength + max(maxClashR, discStep * 3.0f);
@@ -71,20 +81,21 @@ struct Grid3DExt final : public Grid3D {
 	}
 
 	inline void fillSpheres(const Eigen::Matrix4Xf &xyzR,
-				const float extraClash, const float gridRef);
+	                        const float extraClash, const float gridRef);
 
 	void fillOutsideSphere(const Eigen::Vector4f &xyzR,
-			       const float gridRef);
+	                       const float gridRef);
 
 	void setPathLengths(const Eigen::Vector3f &source);
 
 	void setAboveThreshold(const float threshold, const float rho);
 
 	void excludeConcentricSpheres(const Eigen::Matrix4Xf &xyzR,
-				      const Eigen::VectorXf extraClashes,
-				      const float maxRho);
+	                              const Eigen::VectorXf extraClashes,
+	                              const float maxRho);
+	void addDensity(const Matrix5Xf &xyzRQ);
 
-      private:
+private:
 	Eigen::Vector4f originAdj; // originXYZ - discStep*0.5
 	Eigen::Array4i shape4i;
 	float devNull;
@@ -103,7 +114,6 @@ struct Grid3DExt final : public Grid3D {
 	// For example, including edges to only 6 nearest neighbours will result
 	// in isopath surfaces that are cubic instead of spherical.
 	std::vector<edge_t> essentialNeighbours();
-
 
 	std::vector<edge1D_t> toEdges1D(const std::vector<edge_t> &in) const
 	{
@@ -194,8 +204,8 @@ std::vector<Grid3DExt::edge_t> Grid3DExt::neighbourEdges(const float maxR) const
 	}
 	idxs.shrink_to_fit();
 	std::sort(
-		idxs.begin(), idxs.end(),
-		[](const auto &lhs, const auto &rhs) { return lhs.r < rhs.r; });
+	        idxs.begin(), idxs.end(),
+	        [](const auto &lhs, const auto &rhs) { return lhs.r < rhs.r; });
 	return idxs;
 }
 
@@ -210,15 +220,15 @@ void Grid3DExt::setMaxNeighbourDistance(const float maxR)
 }
 
 void Grid3DExt::excludeConcentricSpheres(const Eigen::Matrix4Xf &xyzR,
-					 const Eigen::VectorXf extraClashes,
-					 const float maxRho)
+                                         const Eigen::VectorXf extraClashes,
+                                         const float maxRho)
 {
 	using Eigen::Array4i;
 	using Eigen::Vector4f;
 	using Eigen::VectorXf;
 	using std::min;
 	const float maxRclash =
-		xyzR.row(3).maxCoeff() + extraClashes.maxCoeff();
+	        xyzR.row(3).maxCoeff() + extraClashes.maxCoeff();
 	setMaxNeighbourDistance(maxRclash);
 
 	const int numClashes = extraClashes.size();
@@ -259,6 +269,45 @@ void Grid3DExt::excludeConcentricSpheres(const Eigen::Matrix4Xf &xyzR,
 	}
 }
 
+void Grid3DExt::addDensity(const Matrix5Xf &xyzRQ)
+{
+	using Eigen::Array4i;
+	using Eigen::Vector4f;
+	using Eigen::VectorXf;
+	using std::min;
+	const float maxRclash = xyzRQ.row(3).maxCoeff();
+	setMaxNeighbourDistance(maxRclash + discStep);
+
+	const Vector4f center =
+	        Vec4f(shape) * discStep * 0.5f + Vec4f(originXYZ);
+	const float maxL = shape4i.minCoeff() * discStep * 0.5f;
+	const float loutSq = std::pow(maxL + maxRclash, 2.0f);
+
+	Vector4f xyz;
+	float rAt;
+	for (int iAtom = 0; iAtom < xyzRQ.cols(); ++iAtom) {
+		xyz = xyzRQ.col(iAtom).head<4>();
+		const float newDensity = xyzRQ(4, iAtom);
+		const float curR = xyz[3];
+		xyz[3] = 0.0f;
+		const float dist2 = (center - xyz).squaredNorm();
+		if (dist2 > loutSq) {
+			continue;
+		}
+
+		const Array4i ijkAt = getIjk(xyz);
+		int iNei = 0;
+		for (; neighbours[iNei].r <= curR; ++iNei) {
+			assert(iNei < neighbours.size());
+			Array4i ijk = ijkAt + neighbours[iNei].ijk;
+			float &ref = gridRef(ijk);
+			if (ref > 0) {
+				ref += newDensity;
+			}
+		}
+	}
+}
+
 Eigen::Array4i Grid3DExt::getIjk(const Eigen::Vector4f &xyz)
 {
 	Eigen::Array4i ijk = ((xyz - originAdj) / discStep).cast<int>();
@@ -279,7 +328,7 @@ inline void Grid3DExt::fillSphere(const Eigen::Vector4f &xyzR, const float val)
 }
 
 void Grid3DExt::fillSpheres(const Eigen::Matrix4Xf &xyzR,
-			    const float extraClash, const float value)
+                            const float extraClash, const float value)
 {
 	const float maxRclash = xyzR.row(3).maxCoeff() + extraClash;
 	setMaxNeighbourDistance(maxRclash);
@@ -303,11 +352,11 @@ void Grid3DExt::fillSpheres(const Eigen::Matrix4Xf &xyzR,
 }
 
 void Grid3DExt::fillOutsideSphere(const Eigen::Vector4f &xyzR,
-				  const float value)
+                                  const float value)
 {
 	const Eigen::Array4i ijk0 = getIjk(xyzR);
 	const int maxRSq = static_cast<int>(
-		xyzR[3] * xyzR[3] / (discStep * discStep) + 0.5f);
+	        xyzR[3] * xyzR[3] / (discStep * discStep) + 0.5f);
 
 	int i = 0, dSq;
 	Eigen::Array4i ijk(0, 0, 0, 0);
@@ -376,35 +425,36 @@ void Grid3DExt::setAboveThreshold(const float threshold, const float rho)
 }
 
 Grid3DExt minLinkerLength(const Eigen::Matrix4Xf &atomsXyzr,
-			  const Eigen::Vector3f &sourceXyz,
-			  const float linkerLength, const float linkerDiameter,
-			  const float discStep)
+                          const Eigen::Vector3f &sourceXyz,
+                          const float linkerLength, const float linkerDiameter,
+                          const float discStep)
 {
 	Grid3DExt grid =
-		Grid3DExt::fromSource(sourceXyz, discStep, linkerLength, 0.0f);
+	        Grid3DExt::fromSource(sourceXyz, discStep, linkerLength, 0.0f);
 	grid.fillSpheres(atomsXyzr, linkerDiameter * 0.5f, -1.0f);
 	grid.setPathLengths(sourceXyz);
 	return grid;
 }
 
 Grid3D minLinkerLength(const Eigen::Matrix4Xf &atomsXyzr,
-		       const Eigen::Vector3f &sourceXyz,
-		       const float linkerLength, const float linkerDiameter,
-		       const float dyeRadius, const float discStep)
+                       const Eigen::Vector3f &sourceXyz,
+                       const float linkerLength, const float linkerDiameter,
+                       const float dyeRadius, const float discStep)
 {
 	Grid3DExt grid = minLinkerLength(atomsXyzr, sourceXyz, linkerLength,
-					 linkerDiameter, discStep);
+	                                 linkerDiameter, discStep);
 	grid.fillSpheres(atomsXyzr, dyeRadius, -3.0f);
 	return grid;
 }
 
-Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
-		  const Eigen::Vector3f &sourceXyz, const float linkerLength,
-		  const float linkerDiameter, const Eigen::VectorXf &dyeRadii,
-		  const float discStep)
+
+Grid3DExt dyeDensityExt(const Eigen::Matrix4Xf &atomsXyzr,
+                        const Eigen::Vector3f &sourceXyz,
+                        const float linkerLength, const float linkerDiameter,
+                        const Eigen::VectorXf &dyeRadii, const float discStep)
 {
 	Grid3DExt grid = minLinkerLength(atomsXyzr, sourceXyz, linkerLength,
-					 linkerDiameter, discStep);
+	                                 linkerDiameter, discStep);
 	grid.setAboveThreshold(linkerLength, -4.0f);
 	grid.setAboveThreshold(0.0f, 1.0f);
 	grid.excludeConcentricSpheres(atomsXyzr, dyeRadii, 1.0f);
@@ -412,21 +462,28 @@ Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 }
 
 Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
-		  const Eigen::Vector3f &sourceXyz, const float linkerLength,
-		  const float linkerDiameter, const float dyeRadius,
-		  const float discStep)
+                  const Eigen::Vector3f &sourceXyz, const float linkerLength,
+                  const float linkerDiameter, const float dyeRadius,
+                  const float discStep)
 {
 	Eigen::VectorXf dyeRadii(1);
 	dyeRadii << dyeRadius;
-	return dyeDensity(atomsXyzr, sourceXyz, linkerLength, linkerDiameter,
-			  dyeRadii, discStep);
+	return dyeDensityExt(atomsXyzr, sourceXyz, linkerLength, linkerDiameter,
+	                     dyeRadii, discStep);
 }
 
 Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
-		  const Eigen::Vector3f &sourceXyz, const float linkerLength,
-		  const float linkerDiameter, const Eigen::Vector3f &dyeRadii,
-		  const float discStep)
+                  const Eigen::Vector3f &sourceXyz, const float linkerLength,
+                  const float linkerDiameter, const Eigen::Vector3f &dyeRadii,
+                  const float discStep)
 {
-	return dyeDensity(atomsXyzr, sourceXyz, linkerLength, linkerDiameter,
-			  Eigen::VectorXf(dyeRadii), discStep);
+	return dyeDensityExt(atomsXyzr, sourceXyz, linkerLength, linkerDiameter,
+	                     Eigen::VectorXf(dyeRadii), discStep);
+}
+
+Grid3D addWeights(const Grid3D &grid, const Matrix5Xf &xyzRQ)
+{
+	Grid3DExt ext(grid);
+	ext.addDensity(xyzRQ);
+	return ext;
 }

@@ -56,4 +56,11 @@ print('Saving AVs...')
 savePqrFromAtoms('atoms.pqr', atoms)
 savePqr('AV1.pqr', av1)
 savePqr('minLinkerLength.pqr', minLengthGrid)
+
+#Contact volume (re)weigting
+labels=np.full([1,surfaceAtoms.shape[1]],10.123) # density close to surfaceAtoms will be 10.123 units higher
+surfaceAtoms=np.vstack([atoms,labels])
+surfaceAtoms[3]+=2.34 #contact radius is larger than vdW radius
+acv = ll.addWeights(av1,surfaceAtoms)
+savePqr('ACV.pqr', acv)
 print('done.')

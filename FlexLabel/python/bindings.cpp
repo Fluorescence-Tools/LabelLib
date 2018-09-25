@@ -41,6 +41,9 @@ PYBIND11_MODULE(LabelLib, m)
 	      py::arg("atomsXyzr"), py::arg("sourceXyz"),
 	      py::arg("linkerLength"), py::arg("linkerDiameter"),
 	      py::arg("dyeRadii"), py::arg("discStep"));
+	m.def("addWeights", &addWeights,
+	      "Returns a Grid3D with modified weights", py::arg("grid"),
+	      py::arg("xyzRQ"));
 
 	py::class_<Grid3D>(m, "Grid3D")
 		.def_readonly("discStep", &Grid3D::discStep)

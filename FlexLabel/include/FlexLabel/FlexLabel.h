@@ -18,8 +18,9 @@ struct Grid3D {
 	/// @brief   space discretization step
 	float discStep;
 
-	/// @brief   cartisian coordinates of the grid origin (grid[0,0,0]) with respect to the origin of
-	/// the atoms which were used to calculate the AV
+	/// @brief   cartisian coordinates of the grid origin (grid[0,0,0]) with
+	/// respect to the origin of the atoms which were used to calculate the
+	/// AV
 	std::array<float, 3> originXYZ;
 
 	/// @brief   Number of cels in each (X, Y and Z) direction.
@@ -94,7 +95,7 @@ Grid3D minLinkerLength(const Eigen::Matrix4Xf &atomsXyzr,
 Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 		  const Eigen::Vector3f &sourceXyz, const float linkerLength,
 		  const float linkerDiameter, const float dyeRadius,
-		  const float discStep);
+                  const float discStep);
 // const float contactR=0.0f, const float trappedFrac=-1.0f);
 /// \todo implement Accessible and Contact Volume calculations
 
@@ -102,6 +103,14 @@ Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 		  const Eigen::Vector3f &sourceXyz, const float linkerLength,
 		  const float linkerDiameter, const Eigen::Vector3f &dyeRadii,
 		  const float discStep);
+
+/// @brief Adds extra weights to the cells close to the specified points
+/// @param grid (In) Original grid object
+/// @param xyzRQ (In) Coordinates(xyz), "active" radius(R) and extra density(Q)
+/// for each point
+/// @return Returns a Grid3D with modified weights.
+Grid3D addWeights(const Grid3D &grid,
+                  const Eigen::Matrix<float, 5, Eigen::Dynamic> &xyzRQ);
 
 
 /// \todo Implement distance calculation

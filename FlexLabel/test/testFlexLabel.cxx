@@ -90,6 +90,7 @@ int main()
 	using std::endl;
 
 	Eigen::Vector3f source;
+	source << 0.0f, -4.0f, 0.0f;
 	Eigen::Matrix4Xf atoms;
 
 	const int nAtoms = 2000;
@@ -109,7 +110,6 @@ int main()
 		atoms.col(iat) = atoms.col(10);
 	}
 
-	source << 0.0f, -4.0f, 0.0f;
 
 	/*atoms= readPqr("short_helix.pqr");
 	atoms(3, 56) = 0.0f; //remove the attachment atom itself
@@ -137,7 +137,7 @@ int main()
 	double dtMs = std::chrono::duration<double, std::milli>(diff).count();
 	// Takes 19 ms on a laptop with Core i5-4200U CPU
 	cout << "FlexLabel version " << GIT_VERSION_STRING << std::endl;
-	cout << "AV calculation took: " << dtMs << " ms" << std::endl;
+	cout << "AV1 calculation took: " << dtMs << " ms" << std::endl;
 
 	// savePqr("testDensityAV1.pqr", grid);
 	if (fabs(checksum(grid) - 50183.00000f) > 0.00001f) {
@@ -147,7 +147,12 @@ int main()
 		// return 2;
 	}
 
+	start = std::chrono::steady_clock::now();
 	grid = dyeDensity(atoms, source, linkerL, linkerD, dyeRadii, discStep);
+	diff = std::chrono::steady_clock::now() - start;
+	dtMs = std::chrono::duration<double, std::milli>(diff).count();
+	// Takes 16 ms on a Core i7-4930K CPU
+	cout << "AV3 calculation took: " << dtMs << " ms" << std::endl;
 	// savePqr("testDensityAV3.pqr", grid);
 	if (fabs(checksum(grid) - 49989.75391f) > 0.00001f) {
 		cout << "dyeDensity() AV3 produced an unexpected result\n";
@@ -156,5 +161,19 @@ int main()
 		return 3;
 	}
 
+	Eigen::Matrix<float, 5, Eigen::Dynamic> xyzRQ;
+	xyzRQ.resize(5, nAtoms);
+	xyzRQ.col(0) << 0.0f, -4.0f, 0.0f, 3.0f, 100.0f;
+	xyzRQ.col(1) << 13.0f, -4.0f, 13.0f, 4.0f, 0.12f;
+	for (int iat = 2; iat < nAtoms; ++iat) {
+		xyzRQ.col(iat) = xyzRQ.col(1);
+	}
+	start = std::chrono::steady_clock::now();
+	grid = addWeights(grid, xyzRQ);
+	diff = std::chrono::steady_clock::now() - start;
+	dtMs = std::chrono::duration<double, std::milli>(diff).count();
+	// Takes 4.2 ms on a Core i7-4930K CPU
+	cout << "addWeights took: " << dtMs << " ms" << std::endl;
+	// savePqr("testContactDensityAV3.pqr", grid);
 	return 0;
 }

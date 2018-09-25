@@ -2,14 +2,10 @@
 
 
 ## General description
-LabelLib is a low-level C++ library for the simulation of small probes flexibly coupled to biomolecules for the development of higher-level applications and libraries. LabelLib can calculate the distribution of flexible labels around attachment points. Such probes are for instance dyes for fluorescence spectroscopy, spin-labels for EPR and 
-NMR, or chemical cross-links for mass-spectrometry. Typically, these labels are fluorescent dyes. For such dyes 
-LabelLib can calculate FRET observables. 
+LabelLib is a low-level C++ library for the simulation of small probes flexibly coupled to biomolecules for the development of higher-level applications and libraries. LabelLib can calculate the distribution of flexible labels around attachment points. Such probes are for instance dyes for fluorescence spectroscopy, spin-labels for EPR and NMR, or chemical cross-links for mass-spectrometry. Typically, these labels are fluorescent dyes. For such dyes LabelLib can calculate FRET observables. 
 
-LabelLib uses a coarse-grained approach to simulate the spatial distribution of probes around their attachment point. 
-In this coarse-grained approach, LabelLib determines the sterically accessible volume of the probe considering the linker length and the spatial dimensions of the probe. The linker connecting the probe to the biomolecule and the probe are approximated by a tube and ellipsoids, respectively. Details are provided in the 
-publications [![DOI for citing FPS](https://img.shields.io/badge/DOI-10.1038%2Fnmeth.2222-blue.svg)](https://doi.org/10.1038/nmeth.2222)
-[![DOI for citing FPS](https://img.shields.io/badge/DOI-10.1021%2Fja105725e-blue.svg)](https://doi.org/10.1021/ja105725e).
+LabelLib uses a coarse-grained approach to simulate the spatial distribution of probes around their attachment point. In this coarse-grained approach, LabelLib determines the sterically accessible volume of the probe considering the linker length and the spatial dimensions of the probe. The linker connecting the probe to the biomolecule and the probe are approximated by a tube and soft sphere, respectively. Details are provided in the publications [![DOI for citing FPS](https://img.shields.io/badge/DOI-10.1038%2Fnmeth.2222-blue.svg)](https://doi.org/10.1038/nmeth.2222)[![DOI for citing FPS](https://img.shields.io/badge/DOI-10.1021%2Fja105725e-blue.svg)](https://doi.org/10.1021/ja105725e).
+
 
 ![dsDNA and an AV surface][2]
 
@@ -66,7 +62,7 @@ sudo pip install LabelLib
 To access the functionality of LabelLib in PyMOL two basic prerequisites need to be fulfilled:
   1) LabelLib needs to be installed in the Python installation used by PyMOL
   2) The file [LabelLib_pymol.py](FlexLabel/python/LabelLib_pymol.py) needs to be downloaded and executed from PyMOL's command line interace. 
-  
+
 The file "LabelLib_pymol.py" is executed from PyMOL's command line interface by entering "run LabelLib_pymol.py". Once "LabelLib_pymol.py" is executed Accessible Volumes(AV) can be simulated from PyMOL's command line. The procedure of running "LabelLib_pymol.py" and simulating an AV is shown below for an example:
 ```
 cmd.do('run ./LabelLib/FlexLabel/python/LabelLib_pymol.py')
