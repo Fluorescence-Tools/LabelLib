@@ -1,15 +1,37 @@
 # LabelLib
 
-## General description
-LabelLib is a library for the simulation of small probes flexibly coupled to biomolecules. Such probes are for instance dyes for fluorescence spectroscopy, spin-labels for EPR and NMR, or chemical cross-links for mass-spectrometry. 
 
-LabelLib uses a coarse-grained approach to simulate the spatial distribution of probes around their attachment point. In this coarse-grained approach LabelLib determines the sterically accessible volume of the probe considering the linker length and the spatial dimensions of the probe. The linker connecting the probe to the biomolecule and the probe are approximated by a tube and ellipsoids, respectively. Details are provided in the publications [![DOI for citing FPS](https://img.shields.io/badge/DOI-10.1038%2Fnmeth.2222-blue.svg)](https://doi.org/10.1038/nmeth.2222)
+## General description
+LabelLib is a low-level C++ library for the simulation of small probes flexibly coupled to biomolecules for the development of higher-level applications and libraries. LabelLib can calculate the distribution of flexible labels around attachment points. Such probes are for instance dyes for fluorescence spectroscopy, spin-labels for EPR and 
+NMR, or chemical cross-links for mass-spectrometry. Typically, these labels are fluorescent dyes. For such dyes 
+LabelLib can calculate FRET observables. 
+
+LabelLib uses a coarse-grained approach to simulate the spatial distribution of probes around their attachment point. 
+In this coarse-grained approach, LabelLib determines the sterically accessible volume of the probe considering the linker length and the spatial dimensions of the probe. The linker connecting the probe to the biomolecule and the probe are approximated by a tube and ellipsoids, respectively. Details are provided in the 
+publications [![DOI for citing FPS](https://img.shields.io/badge/DOI-10.1038%2Fnmeth.2222-blue.svg)](https://doi.org/10.1038/nmeth.2222)
 [![DOI for citing FPS](https://img.shields.io/badge/DOI-10.1021%2Fja105725e-blue.svg)](https://doi.org/10.1021/ja105725e).
 
-
-LabelLib is mainly intented to be used by programmers and provides APIs for C/C++ and Python. Furthermore, LabelLib can be integrated into PyMOL installations as described below. This allows to vizualize the distributions of molecular probes.
-
 ![dsDNA and an AV surface][2]
+
+LabelLib is a library for programmers and provides APIs for C/C++ and Python. Furthermore, LabelLib can be integrated into PyMOL installations as described below. This allows to visualize the distributions of molecular probes.
+
+## Relation of other software and libraries
+
+LabelLib serves as core low-level library for the software Olga and the higher-level Python library AvTraj. The
+deprecated software FPS is independent of LabelLib.
+
+![LabelLib and other software/libraries][3]
+
+[Olga](https://github.com/Fluorescence-Tools/Olga) is a software dedicated towards experimentalists. Olga provides a graphical user interface for the calculation of accessible volumes (AVs), screen a set of structural models against experimental observables, rigid-body docking, 
+and the optimal design of new FRET experiments. 
+
+[AvTraj](https://github.com/Fluorescence-Tools/avtraj)
+AvTraj is a Python library for the calculation of accessible volumes (AVs), screening. AvTraj facilitates the development of new analytical approaches for FRET-based structural models. Avtraj facilitates processing of 
+MD-simulations and the development of Python scripts handling FRET-based structural models. 
+
+[FPS](http://www.mpc.hhu.de/software/fps.html) is a software with a graphical user interface for the FRET-based structural modeling. FPS can calculate accessible volumes (AVs), screen a set of structural models against experimental observables, and can generate new structural 
+models by rigid-body docking using experimental FRET data.
+
 
 # Building and installation
 
@@ -109,3 +131,4 @@ Additional information is available in FPS toolkit paper: [![DOI for citing FPS]
 
 [1]: https://pymol.org/ "Pymol"
 [2]: FlexLabel/doc/pymol_example.png "dsDNA and an AV surface"
+[3]: FlexLabel/doc/software_overview.png "LabelLib and other software/libraries"
