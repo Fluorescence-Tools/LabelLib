@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -9,55 +7,14 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="166.37349mm"
-   height="59.084709mm"
-   viewBox="0 0 166.37349 59.084709"
-   version="1.1"
-   id="svg8"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="software_overview.svg">
-  <defs
-     id="defs2">
-    <clipPath
-       id="clipWmfPath1"
-       clipPathUnits="userSpaceOnUse">
-      <path
-         id="path10"
-         d="M 0,0 H 636.33333 V 234.83333 H 0 Z"
-         inkscape:connector-curvature="0" />
-    </clipPath>
-    <pattern
-       y="0"
-       x="0"
-       height="6"
-       width="6"
-       patternUnits="userSpaceOnUse"
-       id="WMFhbasepattern" />
-  </defs>
-  <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="140.12087"
-     inkscape:cy="248.79901"
-     inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
-     showgrid="false"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0"
-     inkscape:window-width="1495"
-     inkscape:window-height="738"
-     inkscape:window-x="1358"
-     inkscape:window-y="78"
-     inkscape:window-maximized="0" />
+   version="1.0"
+   width="168.40729mm"
+   height="62.177083mm"
+   id="svg338"
+   sodipodi:docname="software_overview.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
   <metadata
-     id="metadata5">
+     id="metadata342">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -68,519 +25,795 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1280"
+     inkscape:window-height="971"
+     id="namedview340"
+     showgrid="false"
+     inkscape:zoom="1.3864886"
+     inkscape:cx="237.906"
+     inkscape:cy="-20.331289"
+     inkscape:window-x="-8"
+     inkscape:window-y="48"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg338" />
+  <defs
+     id="defs14">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipWmfPath1">
+      <path
+         d="M 0,0 L 636.33333,0 L 636.33333,234.83333 L 0,234.83333 z"
+         id="path10" />
+    </clipPath>
+    <pattern
+       id="WMFhbasepattern"
+       patternUnits="userSpaceOnUse"
+       width="6"
+       height="6"
+       x="0"
+       y="0" />
+  </defs>
+  <path
+     style="fill:#bfbfbf;fill-rule:evenodd;fill-opacity:1;stroke:none;"
+     d="  M 420.64881,80.518859   L 420.64881,175.9249   L 631.53323,175.9249   L 631.53323,80.518859   L 420.64881,80.518859  z "
+     id="path16" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:0.6400134px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;"
+     d="  M 420.64881,80.518859   L 631.53323,80.518859   L 631.53323,175.9249   L 420.64881,175.9249  z "
+     id="path18" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:0.6400134px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;"
+     d="  M 390.24818,185.04931   L 390.08817,186.00977   L 389.92817,186.97023   L 389.44816,187.9307   L 388.96815,188.89116   L 388.32814,189.85162   L 387.68812,190.65201   L 386.88811,191.4524   L 385.92809,192.25278   L 384.80806,192.89309   L 383.68804,193.37332   L 382.56802,194.01363   L 381.28799,194.33379   L 379.84796,194.65394   L 378.40793,194.9741   L 376.9679,195.13417   L 375.52787,195.13417   L 211.84444,195.13417   L 210.24441,195.29425   L 208.80438,195.45433   L 207.36434,195.61441   L 206.08432,195.93456   L 204.80429,196.41479   L 203.52426,196.89502   L 202.40424,197.53533   L 201.28422,198.17564   L 200.4842,198.81595   L 199.52418,199.61634   L 198.88417,200.41672   L 198.24415,201.37719   L 197.76414,202.33765   L 197.28413,203.29811   L 197.12413,204.25858   L 197.12413,205.37912   L 196.96413,204.25858   L 196.80412,203.29811   L 196.32411,202.33765   L 195.8441,201.37719   L 195.20409,200.41672   L 194.56408,199.61634   L 193.76406,198.81595   L 192.80404,198.17564   L 191.68402,197.53533   L 190.56399,196.89502   L 189.44397,196.41479   L 188.16394,195.93456   L 186.72391,195.61441   L 185.28388,195.45433   L 183.84385,195.29425   L 182.40382,195.13417   L 18.720392,195.13417   L 17.120359,195.13417   L 15.680329,194.9741   L 14.240298,194.65394   L 12.960272,194.33379   L 11.680245,194.01363   L 10.400218,193.37332   L 9.2801945,192.89309   L 8.160171,192.25278   L 7.3601542,191.4524   L 6.4001341,190.65201   L 5.7601207,189.85162   L 5.1201073,188.89116   L 4.6400972,187.9307   L 4.1600872,186.97023   L 4.0000838,186.00977   L 4.0000838,185.04931  "
+     id="path20" />
   <g
-     inkscape:label="Ebene 1"
-     inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(-68.759687,-155.57669)">
-    <g
-       id="g340"
-       transform="matrix(0.26458333,0,0,0.26458333,67.955337,155.40724)">
-      <path
-         id="path16"
-         d="M 420.64881,80.518859 V 175.9249 H 631.53323 V 80.518859 Z"
-         style="fill:#bfbfbf;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path18"
-         d="M 420.64881,80.518859 H 631.53323 V 175.9249 H 420.64881 Z"
-         style="fill:none;stroke:#000000;stroke-width:0.6400134px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path20"
-         d="m 390.24818,185.04931 -0.16001,0.96046 -0.16,0.96046 -0.48001,0.96047 -0.48001,0.96046 -0.64001,0.96046 -0.64002,0.80039 -0.80001,0.80039 -0.96002,0.80038 -1.12003,0.64031 -1.12002,0.48023 -1.12002,0.64031 -1.28003,0.32016 -1.44003,0.32015 -1.44003,0.32016 -1.44003,0.16007 h -1.44003 -163.68343 l -1.60003,0.16008 -1.44003,0.16008 -1.44004,0.16008 -1.28002,0.32015 -1.28003,0.48023 -1.28003,0.48023 -1.12002,0.64031 -1.12002,0.64031 -0.80002,0.64031 -0.96002,0.80039 -0.64001,0.80038 -0.64002,0.96047 -0.48001,0.96046 -0.48001,0.96046 -0.16,0.96047 v 1.12054 l -0.16,-1.12054 -0.16001,-0.96047 -0.48001,-0.96046 -0.48001,-0.96046 -0.64001,-0.96047 -0.64001,-0.80038 -0.80002,-0.80039 -0.96002,-0.64031 -1.12002,-0.64031 -1.12003,-0.64031 -1.12002,-0.48023 -1.28003,-0.48023 -1.44003,-0.32015 -1.44003,-0.16008 -1.44003,-0.16008 -1.44003,-0.16008 H 18.720392 17.120359 l -1.44003,-0.16007 -1.440031,-0.32016 -1.280026,-0.32015 -1.280027,-0.32016 -1.280027,-0.64031 -1.1200235,-0.48023 -1.1200235,-0.64031 -0.8000168,-0.80038 -0.9600201,-0.80039 -0.6400134,-0.80039 -0.6400134,-0.96046 -0.4800101,-0.96046 -0.48001,-0.96047 -0.1600034,-0.96046 v -0.96046"
-         style="fill:none;stroke:#000000;stroke-width:0.6400134px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         inkscape:connector-curvature="0" />
-      <g
-         id="g28"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text26"
-           y="0"
-           x="0"
-           transform="translate(172.64362,222.18723)"
-           style="font-style:normal;font-variant:normal;font-weight:700;font-size:14.0625px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan24"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan22"
-               style="font-style:normal;font-variant:normal;font-weight:700;font-size:14.0625px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">current</tspan></tspan></text>
-      </g>
-      <g
-         id="g36"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text34"
-           y="0"
-           x="0"
-           transform="translate(483.21012,221.22677)"
-           style="font-style:normal;font-variant:normal;font-weight:700;font-size:14.0625px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan32"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan30"
-               style="font-style:normal;font-variant:normal;font-weight:700;font-size:14.0625px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">deprecated</tspan></tspan></text>
-      </g>
-      <path
-         id="path38"
-         d="M 4.4800939,0.96046353 V 60.349125 H 390.88819 V 0.96046353 Z"
-         style="fill:#ed7d31;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path40"
-         d="M 4.4800939,0.96046353 H 390.88819 V 60.349125 H 4.4800939 Z"
-         clip-path="url(#clipWmfPath1)"
-         style="fill:none;stroke:#000000;stroke-width:0.6400134px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         inkscape:connector-curvature="0" />
-      <g
-         id="g48"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text46"
-           y="0"
-           x="0"
-           transform="translate(85.9218,20.009657)"
-           style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan44"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan42"
-               style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">LabelLib</tspan></tspan></text>
-      </g>
-      <g
-         id="g56"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text54"
-           y="0"
-           x="0"
-           transform="translate(145.92306,20.009657)"
-           style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan52"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan50"
-               style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">(Low level C++library)</tspan></tspan></text>
-      </g>
-      <path
-         id="path58"
-         d="m 85.9218,21.130198 h 51.68108 51.68109 51.68108 51.68108 v 1.12054 H 240.96505 189.28397 137.60288 85.9218 Z"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <g
-         id="g66"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text64"
-           y="0"
-           x="0"
-           transform="translate(480.65007,96.846739)"
-           style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan62"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan60"
-               style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">FPS (Software)</tspan></tspan></text>
-      </g>
-      <path
-         id="path68"
-         d="m 480.65007,98.127357 h 23.36049 23.36049 23.20049 23.36049 v 1.120541 h -23.36049 -23.20049 -23.36049 -23.36049 z"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path70"
-         d="M 3.3600704,75.23631 V 178.48614 H 194.40407 V 75.23631 Z"
-         style="fill:#c5e0b4;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path72"
-         d="M 3.3600704,75.23631 H 194.40407 V 178.48614 H 3.3600704 Z"
-         style="fill:none;stroke:#000000;stroke-width:0.6400134px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         inkscape:connector-curvature="0" />
-      <g
-         id="g80"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text78"
-           y="0"
-           x="0"
-           transform="translate(59.041237,93.004885)"
-           style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan76"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan74"
-               style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">Olga (Software)</tspan></tspan></text>
-      </g>
-      <path
-         id="path82"
-         d="m 59.041237,94.285503 h 24.960523 24.96052 25.12053 24.96052 v 1.120541 H 134.08281 108.96228 84.00176 59.041237 Z"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <g
-         id="g90"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text88"
-           y="0"
-           x="0"
-           transform="translate(10.240215,112.21416)"
-           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan86"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan84"
-               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">1. Graphical user interface</tspan></tspan></text>
-      </g>
-      <g
-         id="g98"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text96"
-           y="0"
-           x="0"
-           transform="translate(10.240215,126.62111)"
-           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan94"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan92"
-               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">1. Calculation of AVs</tspan></tspan></text>
-      </g>
-      <g
-         id="g106"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text104"
-           y="0"
-           x="0"
-           transform="translate(10.240215,141.02806)"
-           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan102"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan100"
-               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">2. Screening</tspan></tspan></text>
-      </g>
-      <g
-         id="g114"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text112"
-           y="0"
-           x="0"
-           transform="translate(10.240215,155.43501)"
-           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan110"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan108"
-               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">3. Docking</tspan></tspan></text>
-      </g>
-      <g
-         id="g122"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text120"
-           y="0"
-           x="0"
-           transform="translate(10.240215,169.84197)"
-           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan118"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan116"
-               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">4. Experiment design</tspan></tspan></text>
-      </g>
-      <path
-         id="path124"
-         d="M 199.04417,76.356851 V 178.96637 H 390.24818 V 76.356851 Z"
-         style="fill:#f8cbad;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path126"
-         d="M 199.04417,76.356851 H 390.24818 V 178.96637 H 199.04417 Z"
-         style="fill:none;stroke:#000000;stroke-width:0.6400134px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         inkscape:connector-curvature="0" />
-      <g
-         id="g134"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text132"
-           y="0"
-           x="0"
-           transform="translate(213.92448,93.485117)"
-           style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan130"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan128"
-               style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">avtraj</tspan></tspan></text>
-      </g>
-      <g
-         id="g142"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text140"
-           y="0"
-           x="0"
-           transform="translate(260.48546,93.485117)"
-           style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan138"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan136"
-               style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">(Python library)</tspan></tspan></text>
-      </g>
-      <path
-         id="path144"
-         d="m 213.76448,94.765735 h 38.4008 38.2408 38.40081 38.2408 v 1.120541 h -38.2408 -38.40081 -38.2408 -38.4008 z"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <g
-         id="g152"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text150"
-           y="0"
-           x="0"
-           transform="translate(206.40432,117.17655)"
-           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan148"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan146"
-               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">1. Calculation of AVs</tspan></tspan></text>
-      </g>
-      <g
-         id="g160"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text158"
-           y="0"
-           x="0"
-           transform="translate(206.40432,131.5835)"
-           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan156"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan154"
-               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">2. Screening</tspan></tspan></text>
-      </g>
-      <g
-         id="g168"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text166"
-           y="0"
-           x="0"
-           transform="translate(206.40432,145.99046)"
-           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan164"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan162"
-               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">3. Programming scripts</tspan></tspan></text>
-      </g>
-      <g
-         id="g176"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text174"
-           y="0"
-           x="0"
-           transform="translate(428.80898,121.01841)"
-           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan172"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan170"
-               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">1. Graphical user interface</tspan></tspan></text>
-      </g>
-      <g
-         id="g184"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text182"
-           y="0"
-           x="0"
-           transform="translate(428.80898,135.42536)"
-           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan180"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan178"
-               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">1. Calculation of AVs</tspan></tspan></text>
-      </g>
-      <g
-         id="g192"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text190"
-           y="0"
-           x="0"
-           transform="translate(428.80898,149.83231)"
-           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan188"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan186"
-               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">2. Screening</tspan></tspan></text>
-      </g>
-      <g
-         id="g200"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text198"
-           y="0"
-           x="0"
-           transform="translate(428.80898,164.23926)"
-           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan196"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan194"
-               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">3. Docking</tspan></tspan></text>
-      </g>
-      <path
-         id="path202"
-         d="m 625.61311,181.68768 -0.16,0.96047 -0.16001,0.96046 -0.48001,0.96047 -0.48001,0.96046 -0.64001,0.96046 -0.64001,0.80039 -0.80002,0.80038 -0.96002,0.64031 -1.12003,0.80039 -1.12002,0.48023 -1.12002,0.48023 -1.28003,0.48024 -1.44003,0.32015 -1.44003,0.32015 -1.44003,0.16008 h -1.44003 -73.60154 -1.60004 l -1.44003,0.16008 -1.28002,0.32015 -1.44003,0.32016 -1.28003,0.48023 -1.12002,0.48023 -1.28003,0.64031 -0.96002,0.64031 -0.96002,0.64031 -0.80002,0.80038 -0.80001,0.80039 -0.64002,0.96046 -0.48001,0.96047 -0.32,0.96046 -0.32001,0.96047 v 1.12054 -1.12054 l -0.32001,-0.96047 -0.32,-0.96046 -0.48001,-0.96047 -0.64002,-0.96046 -0.80001,-0.80039 -0.80002,-0.80038 -0.96002,-0.64031 -0.96002,-0.64031 -1.12002,-0.64031 -1.28003,-0.48023 -1.28003,-0.48023 -1.28002,-0.32016 -1.44004,-0.32015 -1.44003,-0.16008 h -1.44003 -73.76154 -1.44003 l -1.44003,-0.16008 -1.44003,-0.32015 -1.28003,-0.32015 -1.28003,-0.48024 -1.28002,-0.48023 -1.12003,-0.48023 -1.12002,-0.80039 -0.80002,-0.64031 -0.96002,-0.80038 -0.64001,-0.80039 -0.64001,-0.96046 -0.48001,-0.96046 -0.48001,-0.96047 -0.16001,-0.96046 v -0.96047"
-         style="fill:none;stroke:#000000;stroke-width:0.6400134px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path204"
-         d="M 407.36854,0.96046353 V 4.8023177 h -0.96002 V 0.96046353 Z m 0,6.72324467 v 3.8418538 h -0.96002 V 7.6837082 Z m 0,6.7232448 v 3.841854 h -0.96002 v -3.841854 z m 0,6.723245 v 3.841854 h -0.96002 v -3.841854 z m 0,6.723244 v 3.841855 h -0.96002 v -3.841855 z m 0,6.723245 v 3.841854 h -0.96002 v -3.841854 z m 0,6.723245 v 3.841854 h -0.96002 v -3.841854 z m 0,6.723245 v 3.841854 h -0.96002 v -3.841854 z m 0,6.723244 v 3.841854 h -0.96002 v -3.841854 z m 0,6.723245 v 3.841854 h -0.96002 v -3.841854 z m 0,6.723245 v 3.841854 h -0.96002 v -3.841854 z m 0,6.723244 v 3.841855 h -0.96002 v -3.841855 z m 0,6.723245 v 3.841854 h -0.96002 V 81.6394 Z m 0,6.723245 v 3.841854 h -0.96002 v -3.841854 z m 0,6.723245 v 3.841854 h -0.96002 V 95.08589 Z m 0,6.72324 v 3.84186 h -0.96002 v -3.84186 z m 0,6.72325 v 3.84185 h -0.96002 v -3.84185 z m 0,6.72324 v 3.84186 h -0.96002 v -3.84186 z m 0,6.72325 v 3.84185 h -0.96002 v -3.84185 z m 0,6.72324 v 3.84186 h -0.96002 v -3.84186 z m 0,6.72325 v 3.84185 h -0.96002 v -3.84185 z m 0,6.72324 v 3.84186 h -0.96002 v -3.84186 z m 0,6.72325 v 3.84185 h -0.96002 v -3.84185 z m 0,6.72324 v 3.84186 h -0.96002 v -3.84186 z m 0,6.72325 v 3.84185 h -0.96002 v -3.84185 z m 0,6.72324 v 3.84186 h -0.96002 v -3.84186 z m 0,6.72325 v 3.84185 h -0.96002 v -3.84185 z m 0,6.72324 v 3.84186 h -0.96002 v -3.84186 z m 0,6.72325 v 2.24108 h -0.96002 v -2.24108 z"
-         clip-path="url(#clipWmfPath1)"
-         style="fill:#a5a5a5;fill-opacity:1;fill-rule:nonzero;stroke:#a5a5a5;stroke-width:0.16000335px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         inkscape:connector-curvature="0" />
-      <g
-         id="g212"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text210"
-           y="0"
-           x="0"
-           transform="translate(47.841002,38.578618)"
-           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan208"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan206"
-               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">1. Calculation of Accessible Volumes (AVs)</tspan></tspan></text>
-      </g>
-      <g
-         id="g220"
-         clip-path="url(#clipWmfPath1)">
-        <text
-           id="text218"
-           y="0"
-           x="0"
-           transform="translate(47.841002,52.985571)"
-           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-           xml:space="preserve"><tspan
-             id="tspan216"
-             y="0"
-             x="0"
-             sodipodi:role="line"><tspan
-               id="tspan214"
-               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-               dy="0"
-               dx="0">2. Calculation of FRET observables</tspan></tspan></text>
-      </g>
-      <path
-         id="path222"
-         d="M 292.00612,77.317314 V 66.111906 h -1.28003 v 11.205408 z m 3.36007,-9.764712 -4.00008,-8.003863 -4.00009,8.003863 z"
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.16000335px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path224"
-         d="M 99.522085,75.076233 V 64.030902 h -1.44003 v 11.045331 z m 3.360075,-9.604636 -4.000088,-8.003862 -4.000084,8.003862 z"
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.16000335px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         inkscape:connector-curvature="0" />
-    </g>
+     clip-path="url(#clipWmfPath1)"
+     id="g28">
+    <text
+       xml:space="preserve"
+       style="font-size:14.062500px;font-style:normal;font-variant:normal;font-weight:700;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,172.643617,222.187230)"
+       x="0.000000"
+       y="0.000000"
+       id="text26"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan24"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:14.062500px;font-style:normal;font-variant:normal;font-weight:700;font-stretch:Normal;font-family:Consolas;"
+           id="tspan22">current</tspan></tspan></text>
   </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g36">
+    <text
+       xml:space="preserve"
+       style="font-size:14.062500px;font-style:normal;font-variant:normal;font-weight:700;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,483.210125,221.226767)"
+       x="0.000000"
+       y="0.000000"
+       id="text34"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan32"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:14.062500px;font-style:normal;font-variant:normal;font-weight:700;font-stretch:Normal;font-family:Consolas;"
+           id="tspan30">deprecated</tspan></tspan></text>
+  </g>
+  <path
+     style="fill:#ed7d31;fill-rule:evenodd;fill-opacity:1;stroke:none;"
+     d="  M 4.4800939,0.96046353   L 4.4800939,60.349125   L 390.88819,60.349125   L 390.88819,0.96046353   L 4.4800939,0.96046353  z "
+     id="path38" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:0.6400134px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;"
+     clip-path="url(#clipWmfPath1)"
+     d="  M 4.4800939,0.96046353   L 390.88819,0.96046353   L 390.88819,60.349125   L 4.4800939,60.349125  z "
+     id="path40" />
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g48">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:700;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,85.921800,20.009657)"
+       x="0.000000"
+       y="0.000000"
+       id="text46"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan44"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:700;font-stretch:Normal;font-family:Consolas;"
+           id="tspan42">LabelLib</tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g56">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:700;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,145.923058,20.009657)"
+       x="0.000000"
+       y="0.000000"
+       id="text54"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan52"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:700;font-stretch:Normal;font-family:Consolas;"
+           id="tspan50">(Low level C++library)</tspan></tspan></text>
+  </g>
+  <path
+     style="fill:#000000;fill-rule:evenodd;fill-opacity:1;stroke:none;"
+     d="  M 85.9218,21.130198   L 137.60288,21.130198   L 189.28397,21.130198   L 240.96505,21.130198   L 292.64613,21.130198   L 292.64613,22.250738   L 240.96505,22.250738   L 189.28397,22.250738   L 137.60288,22.250738   L 85.9218,22.250738  z "
+     id="path58" />
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g66">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:700;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,480.650071,96.846739)"
+       x="0.000000"
+       y="0.000000"
+       id="text64"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan62"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:700;font-stretch:Normal;font-family:Consolas;"
+           id="tspan60">FPS (Software)</tspan></tspan></text>
+  </g>
+  <path
+     style="fill:#000000;fill-rule:evenodd;fill-opacity:1;stroke:none;"
+     d="  M 480.65007,98.127357   L 504.01056,98.127357   L 527.37105,98.127357   L 550.57154,98.127357   L 573.93203,98.127357   L 573.93203,99.247898   L 550.57154,99.247898   L 527.37105,99.247898   L 504.01056,99.247898   L 480.65007,99.247898  z "
+     id="path68" />
+  <path
+     style="fill:#c5e0b4;fill-rule:evenodd;fill-opacity:1;stroke:none;"
+     d="  M 3.3600704,75.23631   L 3.3600704,178.48614   L 194.40407,178.48614   L 194.40407,75.23631   L 3.3600704,75.23631  z "
+     id="path70" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:0.6400134px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;"
+     d="  M 3.3600704,75.23631   L 194.40407,75.23631   L 194.40407,178.48614   L 3.3600704,178.48614  z "
+     id="path72" />
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g80">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:700;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,59.041237,93.004885)"
+       x="0.000000"
+       y="0.000000"
+       id="text78"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan76"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:700;font-stretch:Normal;font-family:Consolas;"
+           id="tspan74">Olga (Software)</tspan></tspan></text>
+  </g>
+  <path
+     style="fill:#000000;fill-rule:evenodd;fill-opacity:1;stroke:none;"
+     d="  M 59.041237,94.285503   L 84.00176,94.285503   L 108.96228,94.285503   L 134.08281,94.285503   L 159.04333,94.285503   L 159.04333,95.406044   L 134.08281,95.406044   L 108.96228,95.406044   L 84.00176,95.406044   L 59.041237,95.406044  z "
+     id="path82" />
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g90">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,10.240215,112.214156)"
+       x="0.000000"
+       y="0.000000"
+       id="text88"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan86"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan84">1. Graphical user interface</tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g98">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,10.240215,126.621109)"
+       x="0.000000"
+       y="0.000000"
+       id="text96"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan94"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan92">2</tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g106">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,16.800352,126.621109)"
+       x="0.000000"
+       y="0.000000"
+       id="text104"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan102"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan100">. </tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g114">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,30.240634,126.621109)"
+       x="0.000000"
+       y="0.000000"
+       id="text112"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan110"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan108">Calculation of AVs</tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g122">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,10.240215,141.028062)"
+       x="0.000000"
+       y="0.000000"
+       id="text120"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan118"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan116">3</tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g130">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,16.800352,141.028062)"
+       x="0.000000"
+       y="0.000000"
+       id="text128"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan126"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan124">. </tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g138">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,30.240634,141.028062)"
+       x="0.000000"
+       y="0.000000"
+       id="text136"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan134"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan132">Screening</tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g146">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,10.240215,155.435015)"
+       x="0.000000"
+       y="0.000000"
+       id="text144"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan142"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan140">4</tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g154">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,16.800352,155.435015)"
+       x="0.000000"
+       y="0.000000"
+       id="text152"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan150"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan148">. </tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g162">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,30.240634,155.435015)"
+       x="0.000000"
+       y="0.000000"
+       id="text160"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan158"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan156">Docking</tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g170">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,10.240215,169.841968)"
+       x="0.000000"
+       y="0.000000"
+       id="text168"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan166"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan164">5</tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g178">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,16.800352,169.841968)"
+       x="0.000000"
+       y="0.000000"
+       id="text176"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan174"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan172">. </tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g186">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,30.240634,169.841968)"
+       x="0.000000"
+       y="0.000000"
+       id="text184"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan182"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan180">Experiment design</tspan></tspan></text>
+  </g>
+  <path
+     style="fill:#f8cbad;fill-rule:evenodd;fill-opacity:1;stroke:none;"
+     d="  M 199.04417,76.356851   L 199.04417,178.96637   L 390.24818,178.96637   L 390.24818,76.356851   L 199.04417,76.356851  z "
+     id="path188" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:0.6400134px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;"
+     d="  M 199.04417,76.356851   L 390.24818,76.356851   L 390.24818,178.96637   L 199.04417,178.96637  z "
+     id="path190" />
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g198">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:700;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,213.924482,93.485117)"
+       x="0.000000"
+       y="0.000000"
+       id="text196"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan194"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:700;font-stretch:Normal;font-family:Consolas;"
+           id="tspan192">avtraj</tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g206">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:700;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,260.485458,93.485117)"
+       x="0.000000"
+       y="0.000000"
+       id="text204"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan202"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:700;font-stretch:Normal;font-family:Consolas;"
+           id="tspan200">(Python library)</tspan></tspan></text>
+  </g>
+  <path
+     style="fill:#000000;fill-rule:evenodd;fill-opacity:1;stroke:none;"
+     d="  M 213.76448,94.765735   L 252.16528,94.765735   L 290.40608,94.765735   L 328.80689,94.765735   L 367.04769,94.765735   L 367.04769,95.886276   L 328.80689,95.886276   L 290.40608,95.886276   L 252.16528,95.886276   L 213.76448,95.886276  z "
+     id="path208" />
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g216">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,206.404325,117.176551)"
+       x="0.000000"
+       y="0.000000"
+       id="text214"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan212"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan210">1. Calculation of AVs</tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g224">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,206.404325,131.583504)"
+       x="0.000000"
+       y="0.000000"
+       id="text222"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan220"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan218">2. Screening</tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g232">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,206.404325,145.990457)"
+       x="0.000000"
+       y="0.000000"
+       id="text230"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan228"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan226">3. Programming scripts</tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g240">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,428.808985,121.018405)"
+       x="0.000000"
+       y="0.000000"
+       id="text238"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan236"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan234">1. Graphical user interface</tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g248">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,428.808985,135.425358)"
+       x="0.000000"
+       y="0.000000"
+       id="text246"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan244"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan242">2</tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g256">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,435.369122,135.425358)"
+       x="0.000000"
+       y="0.000000"
+       id="text254"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan252"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan250">. </tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g264">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,448.809404,135.425358)"
+       x="0.000000"
+       y="0.000000"
+       id="text262"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan260"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan258">Calculation of AVs</tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g272">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,428.808985,149.832311)"
+       x="0.000000"
+       y="0.000000"
+       id="text270"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan268"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan266">3</tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g280">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,435.369122,149.832311)"
+       x="0.000000"
+       y="0.000000"
+       id="text278"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan276"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan274">. </tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g288">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,448.809404,149.832311)"
+       x="0.000000"
+       y="0.000000"
+       id="text286"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan284"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan282">Screening</tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g296">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,428.808985,164.239264)"
+       x="0.000000"
+       y="0.000000"
+       id="text294"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan292"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan290">4</tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g304">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,435.369122,164.239264)"
+       x="0.000000"
+       y="0.000000"
+       id="text302"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan300"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan298">. </tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g312">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,448.809404,164.239264)"
+       x="0.000000"
+       y="0.000000"
+       id="text310"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan308"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan306">Docking</tspan></tspan></text>
+  </g>
+  <path
+     style="fill:none;stroke:#000000;stroke-width:0.6400134px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;"
+     d="  M 625.61311,181.68768   L 625.45311,182.64815   L 625.2931,183.60861   L 624.81309,184.56908   L 624.33308,185.52954   L 623.69307,186.49   L 623.05306,187.29039   L 622.25304,188.09077   L 621.29302,188.73108   L 620.17299,189.53147   L 619.05297,190.0117   L 617.93295,190.49193   L 616.65292,190.97217   L 615.21289,191.29232   L 613.77286,191.61247   L 612.33283,191.77255   L 610.8928,191.77255   L 537.29126,191.77255   L 535.69122,191.77255   L 534.25119,191.93263   L 532.97117,192.25278   L 531.53114,192.57294   L 530.25111,193.05317   L 529.13109,193.5334   L 527.85106,194.17371   L 526.89104,194.81402   L 525.93102,195.45433   L 525.131,196.25471   L 524.33099,197.0551   L 523.69097,198.01556   L 523.21096,198.97603   L 522.89096,199.93649   L 522.57095,200.89696   L 522.57095,202.0175   L 522.57095,200.89696   L 522.25094,199.93649   L 521.93094,198.97603   L 521.45093,198.01556   L 520.81091,197.0551   L 520.0109,196.25471   L 519.21088,195.45433   L 518.25086,194.81402   L 517.29084,194.17371   L 516.17082,193.5334   L 514.89079,193.05317   L 513.61076,192.57294   L 512.33074,192.25278   L 510.8907,191.93263   L 509.45067,191.77255   L 508.01064,191.77255   L 434.2491,191.77255   L 432.80907,191.77255   L 431.36904,191.61247   L 429.92901,191.29232   L 428.64898,190.97217   L 427.36895,190.49193   L 426.08893,190.0117   L 424.9689,189.53147   L 423.84888,188.73108   L 423.04886,188.09077   L 422.08884,187.29039   L 421.44883,186.49   L 420.80882,185.52954   L 420.32881,184.56908   L 419.8488,183.60861   L 419.68879,182.64815   L 419.68879,181.68768  "
+     id="path314" />
+  <path
+     style="fill:#a5a5a5;fill-rule:nonzero;fill-opacity:1;stroke:#a5a5a5;stroke-width:0.16000335px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;"
+     clip-path="url(#clipWmfPath1)"
+     d="  M 407.36854,0.96046353   L 407.36854,4.8023177   L 406.40852,4.8023177   L 406.40852,0.96046353   L 407.36854,0.96046353  z    M 407.36854,7.6837082   L 407.36854,11.525562   L 406.40852,11.525562   L 406.40852,7.6837082   L 407.36854,7.6837082  z    M 407.36854,14.406953   L 407.36854,18.248807   L 406.40852,18.248807   L 406.40852,14.406953   L 407.36854,14.406953  z    M 407.36854,21.130198   L 407.36854,24.972052   L 406.40852,24.972052   L 406.40852,21.130198   L 407.36854,21.130198  z    M 407.36854,27.853442   L 407.36854,31.695297   L 406.40852,31.695297   L 406.40852,27.853442   L 407.36854,27.853442  z    M 407.36854,34.576687   L 407.36854,38.418541   L 406.40852,38.418541   L 406.40852,34.576687   L 407.36854,34.576687  z    M 407.36854,41.299932   L 407.36854,45.141786   L 406.40852,45.141786   L 406.40852,41.299932   L 407.36854,41.299932  z    M 407.36854,48.023177   L 407.36854,51.865031   L 406.40852,51.865031   L 406.40852,48.023177   L 407.36854,48.023177  z    M 407.36854,54.746421   L 407.36854,58.588275   L 406.40852,58.588275   L 406.40852,54.746421   L 407.36854,54.746421  z    M 407.36854,61.469666   L 407.36854,65.31152   L 406.40852,65.31152   L 406.40852,61.469666   L 407.36854,61.469666  z    M 407.36854,68.192911   L 407.36854,72.034765   L 406.40852,72.034765   L 406.40852,68.192911   L 407.36854,68.192911  z    M 407.36854,74.916155   L 407.36854,78.75801   L 406.40852,78.75801   L 406.40852,74.916155   L 407.36854,74.916155  z    M 407.36854,81.6394   L 407.36854,85.481254   L 406.40852,85.481254   L 406.40852,81.6394   L 407.36854,81.6394  z    M 407.36854,88.362645   L 407.36854,92.204499   L 406.40852,92.204499   L 406.40852,88.362645   L 407.36854,88.362645  z    M 407.36854,95.08589   L 407.36854,98.927744   L 406.40852,98.927744   L 406.40852,95.08589   L 407.36854,95.08589  z    M 407.36854,101.80913   L 407.36854,105.65099   L 406.40852,105.65099   L 406.40852,101.80913   L 407.36854,101.80913  z    M 407.36854,108.53238   L 407.36854,112.37423   L 406.40852,112.37423   L 406.40852,108.53238   L 407.36854,108.53238  z    M 407.36854,115.25562   L 407.36854,119.09748   L 406.40852,119.09748   L 406.40852,115.25562   L 407.36854,115.25562  z    M 407.36854,121.97887   L 407.36854,125.82072   L 406.40852,125.82072   L 406.40852,121.97887   L 407.36854,121.97887  z    M 407.36854,128.70211   L 407.36854,132.54397   L 406.40852,132.54397   L 406.40852,128.70211   L 407.36854,128.70211  z    M 407.36854,135.42536   L 407.36854,139.26721   L 406.40852,139.26721   L 406.40852,135.42536   L 407.36854,135.42536  z    M 407.36854,142.1486   L 407.36854,145.99046   L 406.40852,145.99046   L 406.40852,142.1486   L 407.36854,142.1486  z    M 407.36854,148.87185   L 407.36854,152.7137   L 406.40852,152.7137   L 406.40852,148.87185   L 407.36854,148.87185  z    M 407.36854,155.59509   L 407.36854,159.43695   L 406.40852,159.43695   L 406.40852,155.59509   L 407.36854,155.59509  z    M 407.36854,162.31834   L 407.36854,166.16019   L 406.40852,166.16019   L 406.40852,162.31834   L 407.36854,162.31834  z    M 407.36854,169.04158   L 407.36854,172.88344   L 406.40852,172.88344   L 406.40852,169.04158   L 407.36854,169.04158  z    M 407.36854,175.76483   L 407.36854,179.60668   L 406.40852,179.60668   L 406.40852,175.76483   L 407.36854,175.76483  z    M 407.36854,182.48807   L 407.36854,186.32993   L 406.40852,186.32993   L 406.40852,182.48807   L 407.36854,182.48807  z    M 407.36854,189.21132   L 407.36854,191.4524   L 406.40852,191.4524   L 406.40852,189.21132   L 407.36854,189.21132  z   "
+     id="path316" />
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g324">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,47.841002,38.578618)"
+       x="0.000000"
+       y="0.000000"
+       id="text322"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan320"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan318">1. Calculation of Accessible Volumes (AVs)</tspan></tspan></text>
+  </g>
+  <g
+     clip-path="url(#clipWmfPath1)"
+     id="g332">
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;line-height:125.000000%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Consolas;text-align:start;text-anchor:start;"
+       transform="matrix(1.000000,-0.000000,0.000000,1.000000,47.841002,52.985571)"
+       x="0.000000"
+       y="0.000000"
+       id="text330"><tspan
+         sodipodi:role="line"
+         x="0.000000"
+         y="0.000000"
+         id="tspan328"><tspan
+           dx="0.000000"
+           dy="0.000000"
+           style="fill:#000000;font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:400;font-stretch:Normal;font-family:Consolas;"
+           id="tspan326">2. Calculation of FRET observables</tspan></tspan></text>
+  </g>
+  <path
+     style="fill:#000000;fill-rule:nonzero;fill-opacity:1;stroke:#000000;stroke-width:0.16000335px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;"
+     d="  M 292.00612,77.317314   L 292.00612,66.111906   L 290.72609,66.111906   L 290.72609,77.317314   L 292.00612,77.317314  z    M 295.36619,67.552602   L 291.36611,59.548739   L 287.36602,67.552602   L 295.36619,67.552602  z   "
+     id="path334" />
+  <path
+     style="fill:#000000;fill-rule:nonzero;fill-opacity:1;stroke:#000000;stroke-width:0.16000335px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;"
+     d="  M 99.522085,75.076233   L 99.522085,64.030902   L 98.082055,64.030902   L 98.082055,75.076233   L 99.522085,75.076233  z    M 102.88216,65.471597   L 98.882072,57.467735   L 94.881988,65.471597   L 102.88216,65.471597  z   "
+     id="path336" />
 </svg>
