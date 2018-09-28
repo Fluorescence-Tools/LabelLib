@@ -7,12 +7,11 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="166.43634mm"
-   height="59.083515mm"
-   viewBox="0 0 166.43634 59.083515"
+   width="166.37349mm"
+   height="59.084709mm"
+   viewBox="0 0 166.37349 59.084709"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
@@ -20,11 +19,11 @@
   <defs
      id="defs2">
     <clipPath
-       id="clipEmfPath1"
+       id="clipWmfPath1"
        clipPathUnits="userSpaceOnUse">
       <path
          id="path10"
-         d="M 0.6402552,1.600638 H 637.21399 V 236.41423 H 0.6402552 Z"
+         d="M 0,0 H 636.33333 V 234.83333 H 0 Z"
          inkscape:connector-curvature="0" />
     </clipPath>
     <pattern
@@ -33,26 +32,7 @@
        height="6"
        width="6"
        patternUnits="userSpaceOnUse"
-       id="EMFhbasepattern" />
-    <image
-       preserveAspectRatio="none"
-       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAIAAABLbSncAAAAF0lEQVQImWNgYGD4//8/FhK7KAQMPh0AXXNfoZnuFWQAAAAASUVORK5CYII="
-       height="8"
-       width="8"
-       y="0"
-       x="0"
-       id="EMFimage0" />
-    <pattern
-       patternUnits="userSpaceOnUse"
-       height="8"
-       width="8"
-       y="0"
-       x="0"
-       id="EMFimage0_ref">
-      <use
-         xlink:href="#EMFimage0"
-         id="EMFimage0_ign" />
-    </pattern>
+       id="WMFhbasepattern" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -61,9 +41,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="346.58545"
-     inkscape:cy="-3.6456587"
+     inkscape:zoom="0.35"
+     inkscape:cx="140.12087"
+     inkscape:cy="248.79901"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -71,11 +51,11 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1920"
-     inkscape:window-height="1027"
-     inkscape:window-x="1272"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-width="1495"
+     inkscape:window-height="738"
+     inkscape:window-x="1358"
+     inkscape:window-y="78"
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -92,721 +72,514 @@
      inkscape:label="Ebene 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-15.867356,-27.954854)">
+     transform="translate(-68.759687,-155.57669)">
     <g
-       id="g457"
-       transform="matrix(0.26458333,0,0,0.26458333,14.914476,27.383126)">
+       id="g340"
+       transform="matrix(0.26458333,0,0,0.26458333,67.955337,155.40724)">
       <path
-         id="path19"
-         d="m 421.28792,81.952666 v 9.123637 h 210.96409 v -9.123637 z"
-         style="fill:#d2d2d2;fill-opacity:1;fill-rule:evenodd;stroke:none"
+         id="path16"
+         d="M 420.64881,80.518859 V 175.9249 H 631.53323 V 80.518859 Z"
+         style="fill:#bfbfbf;fill-opacity:1;fill-rule:evenodd;stroke:none"
          inkscape:connector-curvature="0" />
       <path
-         id="path21"
-         d="m 421.28792,91.076303 v 7.362935 h 210.96409 v -7.362935 z"
-         style="fill:#d0d0d0;fill-opacity:1;fill-rule:evenodd;stroke:none"
+         id="path18"
+         d="M 420.64881,80.518859 H 631.53323 V 175.9249 H 420.64881 Z"
+         style="fill:none;stroke:#000000;stroke-width:0.6400134px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          inkscape:connector-curvature="0" />
       <path
-         id="path23"
-         d="M 421.28792,98.439238 V 108.84338 H 632.25201 V 98.439238 Z"
-         style="fill:#cecece;fill-opacity:1;fill-rule:evenodd;stroke:none"
+         id="path20"
+         d="m 390.24818,185.04931 -0.16001,0.96046 -0.16,0.96046 -0.48001,0.96047 -0.48001,0.96046 -0.64001,0.96046 -0.64002,0.80039 -0.80001,0.80039 -0.96002,0.80038 -1.12003,0.64031 -1.12002,0.48023 -1.12002,0.64031 -1.28003,0.32016 -1.44003,0.32015 -1.44003,0.32016 -1.44003,0.16007 h -1.44003 -163.68343 l -1.60003,0.16008 -1.44003,0.16008 -1.44004,0.16008 -1.28002,0.32015 -1.28003,0.48023 -1.28003,0.48023 -1.12002,0.64031 -1.12002,0.64031 -0.80002,0.64031 -0.96002,0.80039 -0.64001,0.80038 -0.64002,0.96047 -0.48001,0.96046 -0.48001,0.96046 -0.16,0.96047 v 1.12054 l -0.16,-1.12054 -0.16001,-0.96047 -0.48001,-0.96046 -0.48001,-0.96046 -0.64001,-0.96047 -0.64001,-0.80038 -0.80002,-0.80039 -0.96002,-0.64031 -1.12002,-0.64031 -1.12003,-0.64031 -1.12002,-0.48023 -1.28003,-0.48023 -1.44003,-0.32015 -1.44003,-0.16008 -1.44003,-0.16008 -1.44003,-0.16008 H 18.720392 17.120359 l -1.44003,-0.16007 -1.440031,-0.32016 -1.280026,-0.32015 -1.280027,-0.32016 -1.280027,-0.64031 -1.1200235,-0.48023 -1.1200235,-0.64031 -0.8000168,-0.80038 -0.9600201,-0.80039 -0.6400134,-0.80039 -0.6400134,-0.96046 -0.4800101,-0.96046 -0.48001,-0.96047 -0.1600034,-0.96046 v -0.96046"
+         style="fill:none;stroke:#000000;stroke-width:0.6400134px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          inkscape:connector-curvature="0" />
-      <path
-         id="path25"
-         d="M 421.28792,108.84338 V 119.4076 H 632.25201 V 108.84338 Z"
-         style="fill:#cccccc;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path27"
-         d="m 421.28792,119.4076 v 7.36293 h 210.96409 v -7.36293 z"
-         style="fill:#cacaca;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path29"
-         d="m 421.28792,126.77053 v 12.00479 h 210.96409 v -12.00479 z"
-         style="fill:#c8c8c8;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path31"
-         d="m 421.28792,138.77532 v 11.84472 h 210.96409 v -11.84472 z"
-         style="fill:#c6c6c6;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path33"
-         d="m 421.28792,150.62004 v 12.00478 h 210.96409 v -12.00478 z"
-         style="fill:#c4c4c4;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path35"
-         d="m 421.28792,162.62482 v 11.84472 h 210.96409 v -11.84472 z"
-         style="fill:#c2c2c2;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path37"
-         d="m 421.28792,174.46954 v 2.88115 h 210.96409 v -2.88115 z"
-         style="fill:#c0c0c0;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path39"
-         d="M 421.36796,82.032698 H 632.33205 V 177.43072 H 421.36796 Z"
-         style="fill:none;stroke:#000000;stroke-width:0.64025521px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:8;stroke-dasharray:none;stroke-opacity:1"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path41"
-         d="m 390.95583,186.55436 c 0,5.64225 -6.56261,10.20407 -14.68585,10.20407 H 212.4847 c -8.12324,0 -14.72587,4.5218 -14.72587,10.16405 0,-5.64225 -6.56262,-10.16405 -14.68586,-10.16405 H 19.287688 c -8.123238,0 -14.7258697,-4.56182 -14.7258697,-10.20407"
-         style="fill:none;stroke:#000000;stroke-width:0.64025521px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:8;stroke-dasharray:none;stroke-opacity:1"
-         inkscape:connector-curvature="0" />
-      <text
-         id="text47"
-         y="0"
-         x="0"
-         transform="translate(173.35277,223.76792)"
-         style="font-style:normal;font-variant:normal;font-weight:700;font-size:14.0625px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan45"
+      <g
+         id="g28"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text26"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan43"
-             style="font-style:normal;font-variant:normal;font-weight:700;font-size:14.0625px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">current</tspan></tspan></text>
-      <text
-         id="text53"
-         y="0"
-         x="0"
-         transform="translate(484.05028,222.74265)"
-         style="font-style:normal;font-variant:normal;font-weight:700;font-size:14.0625px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan51"
+           transform="translate(172.64362,222.18723)"
+           style="font-style:normal;font-variant:normal;font-weight:700;font-size:14.0625px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan24"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan22"
+               style="font-style:normal;font-variant:normal;font-weight:700;font-size:14.0625px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">current</tspan></tspan></text>
+      </g>
+      <g
+         id="g36"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text34"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan49"
-             style="font-style:normal;font-variant:normal;font-weight:700;font-size:14.0625px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">deprecated</tspan></tspan></text>
+           transform="translate(483.21012,221.22677)"
+           style="font-style:normal;font-variant:normal;font-weight:700;font-size:14.0625px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan32"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan30"
+               style="font-style:normal;font-variant:normal;font-weight:700;font-size:14.0625px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">deprecated</tspan></tspan></text>
+      </g>
       <path
-         id="path55"
-         d="M 4.9619778,2.400957 V 3.3613398 H 391.51606 V 2.400957 Z"
-         style="fill:#f18c55;fill-opacity:1;fill-rule:evenodd;stroke:none"
+         id="path38"
+         d="M 4.4800939,0.96046353 V 60.349125 H 390.88819 V 0.96046353 Z"
+         style="fill:#ed7d31;fill-opacity:1;fill-rule:evenodd;stroke:none"
          inkscape:connector-curvature="0" />
       <path
-         id="path57"
-         d="M 4.9619778,3.3613398 V 4.6418502 H 391.51606 V 3.3613398 Z"
-         style="fill:#f18b53;fill-opacity:1;fill-rule:evenodd;stroke:none"
+         id="path40"
+         d="M 4.4800939,0.96046353 H 390.88819 V 60.349125 H 4.4800939 Z"
+         clip-path="url(#clipWmfPath1)"
+         style="fill:none;stroke:#000000;stroke-width:0.6400134px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          inkscape:connector-curvature="0" />
-      <path
-         id="path59"
-         d="M 4.9619778,4.6418502 V 5.9223606 H 391.51606 V 4.6418502 Z"
-         style="fill:#f28b51;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path61"
-         d="M 4.9619778,5.9223606 V 7.3629348 H 391.51606 V 5.9223606 Z"
-         style="fill:#f28a4f;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path63"
-         d="M 4.9619778,7.3629348 V 8.803509 H 391.51606 V 7.3629348 Z"
-         style="fill:#f2894d;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path65"
-         d="m 4.9619778,8.803509 v 1.440574 H 391.51606 V 8.803509 Z"
-         style="fill:#f2894b;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path67"
-         d="m 4.9619778,10.244083 v 1.280511 H 391.51606 v -1.280511 z"
-         style="fill:#f28849;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path69"
-         d="M 4.9619778,11.524594 V 12.64504 H 391.51606 v -1.120446 z"
-         style="fill:#f28747;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path71"
-         d="m 4.9619778,12.64504 v 1.280511 H 391.51606 V 12.64504 Z"
-         style="fill:#f38645;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path73"
-         d="m 4.9619778,13.925551 v 1.600638 H 391.51606 v -1.600638 z"
-         style="fill:#f38643;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path75"
-         d="m 4.9619778,15.526189 v 1.440574 H 391.51606 v -1.440574 z"
-         style="fill:#f48541;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path77"
-         d="m 4.9619778,16.966763 v 1.28051 H 391.51606 v -1.28051 z"
-         style="fill:#f4843f;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path79"
-         d="m 4.9619778,18.247273 v 1.280511 H 391.51606 v -1.280511 z"
-         style="fill:#f4833d;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path81"
-         d="m 4.9619778,19.527784 v 1.28051 H 391.51606 v -1.28051 z"
-         style="fill:#f4823b;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path83"
-         d="m 4.9619778,20.808294 v 1.120447 H 391.51606 v -1.120447 z"
-         style="fill:#f48139;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path85"
-         d="m 4.9619778,21.928741 v 1.28051 H 391.51606 v -1.28051 z"
-         style="fill:#f48037;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path87"
-         d="m 4.9619778,23.209251 v 1.280511 H 391.51606 v -1.280511 z"
-         style="fill:#f58035;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path89"
-         d="m 4.9619778,24.489762 v 1.440574 H 391.51606 v -1.440574 z"
-         style="fill:#f57f33;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path91"
-         d="M 4.9619778,25.930336 V 27.37091 H 391.51606 v -1.440574 z"
-         style="fill:#f57e31;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path93"
-         d="m 4.9619778,27.37091 v 1.440574 H 391.51606 V 27.37091 Z"
-         style="fill:#f57e2f;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path95"
-         d="m 4.9619778,28.811484 v 1.280511 H 391.51606 v -1.280511 z"
-         style="fill:#f57d2d;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path97"
-         d="m 4.9619778,30.091995 v 1.120446 H 391.51606 v -1.120446 z"
-         style="fill:#f57c2b;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path99"
-         d="m 4.9619778,31.212441 v 1.920766 H 391.51606 v -1.920766 z"
-         style="fill:#f67b29;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path101"
-         d="m 4.9619778,33.133207 v 3.681467 H 391.51606 v -3.681467 z"
-         style="fill:#f57a27;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path103"
-         d="m 4.9619778,36.814674 v 3.681468 H 391.51606 v -3.681468 z"
-         style="fill:#f37825;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path105"
-         d="m 4.9619778,40.496142 v 3.681467 H 391.51606 v -3.681467 z"
-         style="fill:#f17623;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path107"
-         d="m 4.9619778,44.177609 v 3.521404 H 391.51606 v -3.521404 z"
-         style="fill:#ef7421;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path109"
-         d="m 4.9619778,47.699013 v 2.080829 H 391.51606 v -2.080829 z"
-         style="fill:#ed731f;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path111"
-         d="m 4.9619778,49.779842 v 1.920766 H 391.51606 v -1.920766 z"
-         style="fill:#ec711e;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path113"
-         d="m 4.9619778,51.700608 v 3.681467 H 391.51606 v -3.681467 z"
-         style="fill:#ea701c;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path115"
-         d="m 4.9619778,55.382075 v 3.681468 H 391.51606 v -3.681468 z"
-         style="fill:#e86e1a;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path117"
-         d="m 4.9619778,59.063543 v 2.721084 H 391.51606 v -2.721084 z"
-         style="fill:#e56b17;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path119"
-         d="M 5.0420097,2.4809889 H 391.59609 V 61.864659 H 5.0420097 Z"
-         clip-path="url(#clipEmfPath1)"
-         style="fill:none;stroke:#000000;stroke-width:0.64025521px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:8;stroke-dasharray:none;stroke-opacity:1"
-         inkscape:connector-curvature="0" />
-      <text
-         id="text125"
-         y="0"
-         x="0"
-         transform="translate(86.645787,21.540451)"
-         style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan123"
+      <g
+         id="g48"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text46"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan121"
-             style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">LabelLib</tspan></tspan></text>
-      <text
-         id="text131"
-         y="0"
-         x="0"
-         transform="translate(146.66971,21.540451)"
-         style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan129"
+           transform="translate(85.9218,20.009657)"
+           style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan44"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan42"
+               style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">LabelLib</tspan></tspan></text>
+      </g>
+      <g
+         id="g56"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text54"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan127"
-             style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">(Low level C++library)</tspan></tspan></text>
+           transform="translate(145.92306,20.009657)"
+           style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan52"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan50"
+               style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">(Low level C++library)</tspan></tspan></text>
+      </g>
       <path
-         id="path133"
-         d="m 86.594516,22.769076 h 51.700604 51.70061 51.70061 51.70061 v 1.120446 H 241.69634 189.99573 138.29512 86.594516 Z"
+         id="path58"
+         d="m 85.9218,21.130198 h 51.68108 51.68109 51.68108 51.68108 v 1.12054 H 240.96505 189.28397 137.60288 85.9218 Z"
          style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
          inkscape:connector-curvature="0" />
-      <text
-         id="text139"
-         y="0"
-         x="0"
-         transform="translate(481.52506,98.432624)"
-         style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan137"
+      <g
+         id="g66"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text64"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan135"
-             style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">FPS (Software)</tspan></tspan></text>
+           transform="translate(480.65007,96.846739)"
+           style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan62"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan60"
+               style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">FPS (Software)</tspan></tspan></text>
+      </g>
       <path
-         id="path141"
-         d="m 481.47191,99.639716 h 23.3293 23.3293 23.3293 23.3293 v 1.120444 h -23.3293 -23.3293 -23.3293 -23.3293 z"
+         id="path68"
+         d="m 480.65007,98.127357 h 23.36049 23.36049 23.20049 23.36049 v 1.120541 h -23.36049 -23.20049 -23.36049 -23.36049 z"
          style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
          inkscape:connector-curvature="0" />
       <path
-         id="path143"
-         d="m 3.8415312,76.670561 v 4.961977 H 194.95771 v -4.961977 z"
-         style="fill:#b5d5a7;fill-opacity:1;fill-rule:evenodd;stroke:none"
+         id="path70"
+         d="M 3.3600704,75.23631 V 178.48614 H 194.40407 V 75.23631 Z"
+         style="fill:#c5e0b4;fill-opacity:1;fill-rule:evenodd;stroke:none"
          inkscape:connector-curvature="0" />
       <path
-         id="path145"
-         d="M 3.8415312,81.632538 V 88.03509 H 194.95771 v -6.402552 z"
-         style="fill:#b4d4a5;fill-opacity:1;fill-rule:evenodd;stroke:none"
+         id="path72"
+         d="M 3.3600704,75.23631 H 194.40407 V 178.48614 H 3.3600704 Z"
+         style="fill:none;stroke:#000000;stroke-width:0.6400134px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          inkscape:connector-curvature="0" />
-      <path
-         id="path147"
-         d="m 3.8415312,88.03509 v 6.402553 H 194.95771 V 88.03509 Z"
-         style="fill:#b2d3a4;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path149"
-         d="m 3.8415312,94.437643 v 6.562617 H 194.95771 v -6.562617 z"
-         style="fill:#b1d2a2;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path151"
-         d="m 3.8415312,101.00026 v 6.40255 H 194.95771 v -6.40255 z"
-         style="fill:#b0d2a0;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path153"
-         d="m 3.8415312,107.40281 v 9.76389 H 194.95771 v -9.76389 z"
-         style="fill:#aed19e;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path155"
-         d="m 3.8415312,117.1667 v 6.40255 H 194.95771 v -6.40255 z"
-         style="fill:#acd09c;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path157"
-         d="m 3.8415312,123.56925 v 6.40256 H 194.95771 v -6.40256 z"
-         style="fill:#abcf9a;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path159"
-         d="m 3.8415312,129.97181 v 5.92236 H 194.95771 v -5.92236 z"
-         style="fill:#a9ce98;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path161"
-         d="m 3.8415312,135.89417 v 4.32172 H 194.95771 v -4.32172 z"
-         style="fill:#a8ce96;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path163"
-         d="m 3.8415312,140.21589 v 5.92236 H 194.95771 v -5.92236 z"
-         style="fill:#a7cd94;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path165"
-         d="m 3.8415312,146.13825 v 6.40255 H 194.95771 v -6.40255 z"
-         style="fill:#a5cd92;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path167"
-         d="m 3.8415312,152.5408 v 4.80192 H 194.95771 v -4.80192 z"
-         style="fill:#a3cc90;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path169"
-         d="m 3.8415312,157.34272 v 4.96197 H 194.95771 v -4.96197 z"
-         style="fill:#a2cc8e;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path171"
-         d="m 3.8415312,162.30469 v 5.92236 H 194.95771 v -5.92236 z"
-         style="fill:#a1cc8c;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path173"
-         d="m 3.8415312,168.22705 v 3.68147 H 194.95771 v -3.68147 z"
-         style="fill:#a0cb8a;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path175"
-         d="m 3.8415312,171.90852 v 3.20128 H 194.95771 v -3.20128 z"
-         style="fill:#9ecb89;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path177"
-         d="m 3.8415312,175.1098 v 4.80191 H 194.95771 v -4.80191 z"
-         style="fill:#9cca86;fill-opacity:1;fill-rule:evenodd;stroke:none"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path179"
-         d="M 3.9215631,76.750593 H 195.03774 V 179.99174 H 3.9215631 Z"
-         style="fill:none;stroke:#000000;stroke-width:0.64025521px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:8;stroke-dasharray:none;stroke-opacity:1"
-         inkscape:connector-curvature="0" />
-      <text
-         id="text185"
-         y="0"
-         x="0"
-         transform="translate(59.741938,94.670382)"
-         style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan183"
+      <g
+         id="g80"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text78"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan181"
-             style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">Olga (Software)</tspan></tspan></text>
+           transform="translate(59.041237,93.004885)"
+           style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan76"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan74"
+               style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">Olga (Software)</tspan></tspan></text>
+      </g>
       <path
-         id="path187"
-         d="m 59.663782,95.878217 h 25.009969 25.009969 25.00997 25.00997 v 1.120446 H 134.69369 109.68372 84.673751 59.663782 Z"
+         id="path82"
+         d="m 59.041237,94.285503 h 24.960523 24.96052 25.12053 24.96052 v 1.120541 H 134.08281 108.96228 84.00176 59.041237 Z"
          style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
          inkscape:connector-curvature="0" />
-      <text
-         id="text193"
-         y="0"
-         x="0"
-         transform="translate(10.935062,113.84916)"
-         style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan191"
+      <g
+         id="g90"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text88"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan189"
-             style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">1. Graphical user interface</tspan></tspan></text>
-      <text
-         id="text199"
-         y="0"
-         x="0"
-         transform="translate(10.935062,128.25491)"
-         style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan197"
+           transform="translate(10.240215,112.21416)"
+           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan86"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan84"
+               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">1. Graphical user interface</tspan></tspan></text>
+      </g>
+      <g
+         id="g98"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text96"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan195"
-             style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">1. Calculation of AVs</tspan></tspan></text>
-      <text
-         id="text205"
-         y="0"
-         x="0"
-         transform="translate(10.935062,142.66065)"
-         style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan203"
+           transform="translate(10.240215,126.62111)"
+           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan94"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan92"
+               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">1. Calculation of AVs</tspan></tspan></text>
+      </g>
+      <g
+         id="g106"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text104"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan201"
-             style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">2. Screening</tspan></tspan></text>
-      <text
-         id="text211"
-         y="0"
-         x="0"
-         transform="translate(10.935062,157.06639)"
-         style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan209"
+           transform="translate(10.240215,141.02806)"
+           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan102"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan100"
+               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">2. Screening</tspan></tspan></text>
+      </g>
+      <g
+         id="g114"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text112"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan207"
-             style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">3. Docking</tspan></tspan></text>
-      <text
-         id="text217"
-         y="0"
-         x="0"
-         transform="translate(10.935062,171.47214)"
-         style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan215"
+           transform="translate(10.240215,155.43501)"
+           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan110"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan108"
+               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">3. Docking</tspan></tspan></text>
+      </g>
+      <g
+         id="g122"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text120"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan213"
-             style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">4. Experiment design</tspan></tspan></text>
+           transform="translate(10.240215,169.84197)"
+           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan118"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan116"
+               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">4. Experiment design</tspan></tspan></text>
+      </g>
       <path
-         id="path219"
-         d="M 199.59956,77.791007 H 390.8758 V 180.3919 H 199.59956 Z"
-         style="fill:#1282ce;fill-opacity:1;fill-rule:evenodd;stroke:none"
+         id="path124"
+         d="M 199.04417,76.356851 V 178.96637 H 390.24818 V 76.356851 Z"
+         style="fill:#f8cbad;fill-opacity:1;fill-rule:evenodd;stroke:none"
          inkscape:connector-curvature="0" />
       <path
-         id="path221"
-         d="M 199.67959,77.871039 H 390.95583 V 180.47194 H 199.67959 Z"
-         style="fill:url(#EMFimage0_ref);fill-opacity:1;fill-rule:evenodd;stroke:none"
+         id="path126"
+         d="M 199.04417,76.356851 H 390.24818 V 178.96637 H 199.04417 Z"
+         style="fill:none;stroke:#000000;stroke-width:0.6400134px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          inkscape:connector-curvature="0" />
-      <path
-         id="path223"
-         d="M 199.59956,77.791007 H 390.8758 V 180.3919 H 199.59956 Z"
-         style="fill:#1282ce;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path225"
-         d="M 199.67959,77.871039 H 390.95583 V 180.47194 H 199.67959 Z"
-         style="fill:none;stroke:#000000;stroke-width:0.64025521px;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         inkscape:connector-curvature="0" />
-      <text
-         id="text231"
-         y="0"
-         x="0"
-         transform="translate(214.59749,95.0905)"
-         style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan229"
+      <g
+         id="g134"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text132"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan227"
-             style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">avtraj</tspan></tspan></text>
-      <text
-         id="text237"
-         y="0"
-         x="0"
-         transform="translate(261.17606,95.0905)"
-         style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan235"
+           transform="translate(213.92448,93.485117)"
+           style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan130"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan128"
+               style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">avtraj</tspan></tspan></text>
+      </g>
+      <g
+         id="g142"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text140"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan233"
-             style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">(Python library)</tspan></tspan></text>
+           transform="translate(260.48546,93.485117)"
+           style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan138"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan136"
+               style="font-style:normal;font-variant:normal;font-weight:700;font-size:12px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">(Python library)</tspan></tspan></text>
+      </g>
       <path
-         id="path239"
-         d="m 214.52551,96.318392 h 38.33528 38.33528 38.33528 38.33528 v 1.120447 h -38.33528 -38.33528 -38.33528 -38.33528 z"
+         id="path144"
+         d="m 213.76448,94.765735 h 38.4008 38.2408 38.40081 38.2408 v 1.120541 h -38.2408 -38.40081 -38.2408 -38.4008 z"
          style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
          inkscape:connector-curvature="0" />
-      <text
-         id="text245"
-         y="0"
-         x="0"
-         transform="translate(207.12615,118.81135)"
-         style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan243"
+      <g
+         id="g152"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text150"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan241"
-             style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">1. Calculation of AVs</tspan></tspan></text>
-      <text
-         id="text251"
-         y="0"
-         x="0"
-         transform="translate(207.12615,133.21708)"
-         style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan249"
+           transform="translate(206.40432,117.17655)"
+           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan148"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan146"
+               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">1. Calculation of AVs</tspan></tspan></text>
+      </g>
+      <g
+         id="g160"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text158"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan247"
-             style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">2. Screening</tspan></tspan></text>
-      <text
-         id="text257"
-         y="0"
-         x="0"
-         transform="translate(207.12615,147.62283)"
-         style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan255"
+           transform="translate(206.40432,131.5835)"
+           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan156"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan154"
+               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">2. Screening</tspan></tspan></text>
+      </g>
+      <g
+         id="g168"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text166"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan253"
-             style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">3. Programming scripts</tspan></tspan></text>
-      <text
-         id="text263"
-         y="0"
-         x="0"
-         transform="translate(429.57154,122.67661)"
-         style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan261"
+           transform="translate(206.40432,145.99046)"
+           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan164"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan162"
+               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">3. Programming scripts</tspan></tspan></text>
+      </g>
+      <g
+         id="g176"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text174"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan259"
-             style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">1. Graphical user interface</tspan></tspan></text>
-      <text
-         id="text269"
-         y="0"
-         x="0"
-         transform="translate(429.57154,137.08235)"
-         style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan267"
+           transform="translate(428.80898,121.01841)"
+           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan172"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan170"
+               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">1. Graphical user interface</tspan></tspan></text>
+      </g>
+      <g
+         id="g184"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text182"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan265"
-             style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">1. Calculation of AVs</tspan></tspan></text>
-      <text
-         id="text275"
-         y="0"
-         x="0"
-         transform="translate(429.57154,151.4881)"
-         style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan273"
+           transform="translate(428.80898,135.42536)"
+           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan180"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan178"
+               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">1. Calculation of AVs</tspan></tspan></text>
+      </g>
+      <g
+         id="g192"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text190"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan271"
-             style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">2. Screening</tspan></tspan></text>
-      <text
-         id="text281"
-         y="0"
-         x="0"
-         transform="translate(429.57154,165.89384)"
-         style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan279"
+           transform="translate(428.80898,149.83231)"
+           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan188"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan186"
+               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">2. Screening</tspan></tspan></text>
+      </g>
+      <g
+         id="g200"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text198"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan277"
-             style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">3. Docking</tspan></tspan></text>
+           transform="translate(428.80898,164.23926)"
+           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan196"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan194"
+               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">3. Docking</tspan></tspan></text>
+      </g>
       <path
-         id="path283"
-         d="m 626.40968,183.19302 c 0,5.64225 -6.56261,10.16405 -14.64583,10.16405 h -73.66937 c -8.08322,0 -14.68585,4.56182 -14.68585,10.16405 0,-5.60223 -6.56262,-10.16405 -14.64584,-10.16405 h -73.66936 c -8.08323,0 -14.68586,-4.5218 -14.68586,-10.16405"
-         style="fill:none;stroke:#000000;stroke-width:0.64025521px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:8;stroke-dasharray:none;stroke-opacity:1"
+         id="path202"
+         d="m 625.61311,181.68768 -0.16,0.96047 -0.16001,0.96046 -0.48001,0.96047 -0.48001,0.96046 -0.64001,0.96046 -0.64001,0.80039 -0.80002,0.80038 -0.96002,0.64031 -1.12003,0.80039 -1.12002,0.48023 -1.12002,0.48023 -1.28003,0.48024 -1.44003,0.32015 -1.44003,0.32015 -1.44003,0.16008 h -1.44003 -73.60154 -1.60004 l -1.44003,0.16008 -1.28002,0.32015 -1.44003,0.32016 -1.28003,0.48023 -1.12002,0.48023 -1.28003,0.64031 -0.96002,0.64031 -0.96002,0.64031 -0.80002,0.80038 -0.80001,0.80039 -0.64002,0.96046 -0.48001,0.96047 -0.32,0.96046 -0.32001,0.96047 v 1.12054 -1.12054 l -0.32001,-0.96047 -0.32,-0.96046 -0.48001,-0.96047 -0.64002,-0.96046 -0.80001,-0.80039 -0.80002,-0.80038 -0.96002,-0.64031 -0.96002,-0.64031 -1.12002,-0.64031 -1.28003,-0.48023 -1.28003,-0.48023 -1.28002,-0.32016 -1.44004,-0.32015 -1.44003,-0.16008 h -1.44003 -73.76154 -1.44003 l -1.44003,-0.16008 -1.44003,-0.32015 -1.28003,-0.32015 -1.28003,-0.48024 -1.28002,-0.48023 -1.12003,-0.48023 -1.12002,-0.80039 -0.80002,-0.64031 -0.96002,-0.80038 -0.64001,-0.80039 -0.64001,-0.96046 -0.48001,-0.96046 -0.48001,-0.96047 -0.16001,-0.96046 v -0.96047"
+         style="fill:none;stroke:#000000;stroke-width:0.6400134px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          inkscape:connector-curvature="0" />
       <path
-         id="path285"
-         d="m 408.08266,2.4809889 v 3.8415312 h -0.96038 V 2.4809889 Z m 0,6.7226796 V 13.0452 h -0.96038 V 9.2036685 Z m 0,6.7226795 v 3.841531 h -0.96038 v -3.841531 z m 0,6.72268 v 3.841531 h -0.96038 v -3.841531 z m 0,6.722679 v 3.841532 h -0.96038 v -3.841532 z m 0,6.72268 v 3.841531 h -0.96038 v -3.841531 z m 0,6.72268 v 3.841531 h -0.96038 v -3.841531 z m 0,6.722679 v 3.841532 h -0.96038 v -3.841532 z m 0,6.72268 v 3.841531 h -0.96038 v -3.841531 z m 0,6.72268 v 3.841531 h -0.96038 v -3.841531 z m 0,6.722679 v 3.841531 h -0.96038 v -3.841531 z m 0,6.72268 v 3.841531 h -0.96038 v -3.841531 z m 0,6.72268 v 3.841531 h -0.96038 v -3.841531 z m 0,6.722679 v 3.841531 h -0.96038 v -3.841531 z m 0,6.72268 v 3.841536 h -0.96038 v -3.841536 z m 0,6.722676 v 3.84153 h -0.96038 v -3.84153 z m 0,6.72268 v 3.84153 h -0.96038 v -3.84153 z m 0,6.72268 v 3.84153 h -0.96038 v -3.84153 z m 0,6.72268 v 3.84153 h -0.96038 v -3.84153 z m 0,6.72268 v 3.84153 h -0.96038 v -3.84153 z m 0,6.72268 v 3.84153 h -0.96038 v -3.84153 z m 0,6.72268 v 3.84153 h -0.96038 v -3.84153 z m 0,6.72268 v 3.84153 h -0.96038 v -3.84153 z m 0,6.72268 v 3.84153 h -0.96038 v -3.84153 z m 0,6.72268 v 3.84153 h -0.96038 v -3.84153 z m 0,6.72268 v 3.84153 h -0.96038 v -3.84153 z m 0,6.72268 v 3.84153 h -0.96038 v -3.84153 z m 0,6.72268 v 3.84153 h -0.96038 v -3.84153 z m 0,6.72268 v 2.28091 h -0.96038 v -2.28091 z"
-         clip-path="url(#clipEmfPath1)"
-         style="fill:#a5a5a5;fill-opacity:1;fill-rule:nonzero;stroke:#a5a5a5;stroke-width:0.04001595px;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path204"
+         d="M 407.36854,0.96046353 V 4.8023177 h -0.96002 V 0.96046353 Z m 0,6.72324467 v 3.8418538 h -0.96002 V 7.6837082 Z m 0,6.7232448 v 3.841854 h -0.96002 v -3.841854 z m 0,6.723245 v 3.841854 h -0.96002 v -3.841854 z m 0,6.723244 v 3.841855 h -0.96002 v -3.841855 z m 0,6.723245 v 3.841854 h -0.96002 v -3.841854 z m 0,6.723245 v 3.841854 h -0.96002 v -3.841854 z m 0,6.723245 v 3.841854 h -0.96002 v -3.841854 z m 0,6.723244 v 3.841854 h -0.96002 v -3.841854 z m 0,6.723245 v 3.841854 h -0.96002 v -3.841854 z m 0,6.723245 v 3.841854 h -0.96002 v -3.841854 z m 0,6.723244 v 3.841855 h -0.96002 v -3.841855 z m 0,6.723245 v 3.841854 h -0.96002 V 81.6394 Z m 0,6.723245 v 3.841854 h -0.96002 v -3.841854 z m 0,6.723245 v 3.841854 h -0.96002 V 95.08589 Z m 0,6.72324 v 3.84186 h -0.96002 v -3.84186 z m 0,6.72325 v 3.84185 h -0.96002 v -3.84185 z m 0,6.72324 v 3.84186 h -0.96002 v -3.84186 z m 0,6.72325 v 3.84185 h -0.96002 v -3.84185 z m 0,6.72324 v 3.84186 h -0.96002 v -3.84186 z m 0,6.72325 v 3.84185 h -0.96002 v -3.84185 z m 0,6.72324 v 3.84186 h -0.96002 v -3.84186 z m 0,6.72325 v 3.84185 h -0.96002 v -3.84185 z m 0,6.72324 v 3.84186 h -0.96002 v -3.84186 z m 0,6.72325 v 3.84185 h -0.96002 v -3.84185 z m 0,6.72324 v 3.84186 h -0.96002 v -3.84186 z m 0,6.72325 v 3.84185 h -0.96002 v -3.84185 z m 0,6.72324 v 3.84186 h -0.96002 v -3.84186 z m 0,6.72325 v 2.24108 h -0.96002 v -2.24108 z"
+         clip-path="url(#clipWmfPath1)"
+         style="fill:#a5a5a5;fill-opacity:1;fill-rule:nonzero;stroke:#a5a5a5;stroke-width:0.16000335px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          inkscape:connector-curvature="0" />
-      <text
-         id="text291"
-         y="0"
-         x="0"
-         transform="translate(48.490305,40.198596)"
-         style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan289"
+      <g
+         id="g212"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text210"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan287"
-             style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">1. Calculation of Accessible Volumes (AVs)</tspan></tspan></text>
-      <text
-         id="text297"
-         y="0"
-         x="0"
-         transform="translate(48.490305,54.604333)"
-         style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           id="tspan295"
+           transform="translate(47.841002,38.578618)"
+           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan208"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan206"
+               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">1. Calculation of Accessible Volumes (AVs)</tspan></tspan></text>
+      </g>
+      <g
+         id="g220"
+         clip-path="url(#clipWmfPath1)">
+        <text
+           id="text218"
            y="0"
            x="0"
-           sodipodi:role="line"><tspan
-             id="tspan293"
-             style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
-             dy="0"
-             dx="0">2. Calculation of FRET observables</tspan></tspan></text>
+           transform="translate(47.841002,52.985571)"
+           style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;line-height:125%;font-family:Consolas;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+           xml:space="preserve"><tspan
+             id="tspan216"
+             y="0"
+             x="0"
+             sodipodi:role="line"><tspan
+               id="tspan214"
+               style="font-style:normal;font-variant:normal;font-weight:400;font-size:12px;font-family:Consolas;fill:#000000"
+               dy="0"
+               dx="0">2. Calculation of FRET observables</tspan></tspan></text>
+      </g>
       <path
-         id="path299"
-         d="M 292.71668,78.831422 V 67.747004 h -1.32053 v 11.084418 z m 3.32132,-9.763892 -4.0016,-8.00319 -4.00159,8.00319 z"
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.04001595px;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path222"
+         d="M 292.00612,77.317314 V 66.111906 h -1.28003 v 11.205408 z m 3.36007,-9.764712 -4.00008,-8.003863 -4.00009,8.003863 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.16000335px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          inkscape:connector-curvature="0" />
       <path
-         id="path301"
-         d="M 100.15992,76.730585 V 65.666174 h -1.340531 v 11.064411 z m 3.32133,-9.743884 -4.001598,-8.00319 -4.001595,8.00319 z"
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.02000798px;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path224"
+         d="M 99.522085,75.076233 V 64.030902 h -1.44003 v 11.045331 z m 3.360075,-9.604636 -4.000088,-8.003862 -4.000084,8.003862 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.16000335px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          inkscape:connector-curvature="0" />
     </g>
   </g>

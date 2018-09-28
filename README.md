@@ -131,4 +131,4 @@ Additional information is available in FPS toolkit paper: [![DOI for citing FPS]
 
 [1]: https://pymol.org/ "Pymol"
 [2]: FlexLabel/doc/pymol_example.png "dsDNA and an AV surface"
-[3]: FlexLabel/doc/software_overview.png "LabelLib and other software/libraries"
+[3]: FlexLabel/doc/software_overview.svg "LabelLib and other software/libraries"
