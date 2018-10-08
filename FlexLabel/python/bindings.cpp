@@ -44,10 +44,18 @@ PYBIND11_MODULE(LabelLib, m)
 	m.def("addWeights", &addWeights,
 	      "Returns a Grid3D with modified weights", py::arg("grid"),
 	      py::arg("xyzRQ"));
+	m.def("meanDistance", &meanDistance,
+	      "Calculate mean inter-dye distance between two accessible volumes",
+	      py::arg("g1"), py::arg("g2"), py::arg("nsamples"));
+	m.def("meanEfficiency", &meanEfficiency,
+	      "Calculate mean FRET efficiency", py::arg("g1"), py::arg("g2"),
+	      py::arg("R0"), py::arg("nsamples"));
 
 	py::class_<Grid3D>(m, "Grid3D")
-		.def_readonly("discStep", &Grid3D::discStep)
-		.def_readonly("originXYZ", &Grid3D::originXYZ)
-		.def_readonly("shape", &Grid3D::shape)
-		.def_readonly("grid", &Grid3D::grid);
+	        .def(py::init<const std::array<uint32_t, 3> &,
+	                      const std::array<float, 3> &, float>())
+	        .def_readwrite("discStep", &Grid3D::discStep)
+	        .def_readwrite("originXYZ", &Grid3D::originXYZ)
+	        .def_readwrite("shape", &Grid3D::shape)
+	        .def_readwrite("grid", &Grid3D::grid);
 }

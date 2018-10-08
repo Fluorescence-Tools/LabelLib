@@ -24,6 +24,14 @@ if(NOT pybind11_FOUND)
         add_subdirectory(${CMAKE_SOURCE_DIR}/thirdparty/pybind11 pybind11_bin)
 endif(NOT pybind11_FOUND)
 
+#PCG Random Number Generation
+include_directories(${CMAKE_SOURCE_DIR}/thirdparty/pcg-cpp/include)
+
+#Halton quasi-random numbers
+include_directories(${CMAKE_SOURCE_DIR}/thirdparty/Halton)
+
+#Spline approximation
+include_directories(${CMAKE_SOURCE_DIR}/thirdparty/SplineApprox)
 
 # This sets the include directory for the reference project. This is the -I flag in gcc.
 # All the includes should be in this variable To add new directories to the include path,

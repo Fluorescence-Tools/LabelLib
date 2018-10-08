@@ -2,3 +2,5 @@ build
 *.pro.user
 *.pro.user.*
 CMakeLists.txt.user
+CMakeLists.txt.user.*
+cmake-build-*

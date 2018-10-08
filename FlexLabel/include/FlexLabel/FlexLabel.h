@@ -7,6 +7,8 @@
 #define LABELLIB_FLEXLABEL_H
 
 #include <Eigen/Dense>
+#include <Eigen/StdVector>
+EIGEN_DEFINE_STL_VECTOR_SPECIALIZATION(Eigen::Vector4f)
 
 #include <vector>
 #include <cstdint>
@@ -33,6 +35,13 @@ struct Grid3D {
 	Grid3D(const Grid3D &) = default;
 	Grid3D &operator=(const Grid3D &) = default;
 	Grid3D(Grid3D &&other) = default;
+
+	Grid3D(const std::array<uint32_t, 3> &shape,
+	       const std::array<float, 3> &originXYZ, float discStep)
+	    : shape(shape), originXYZ(originXYZ), discStep(discStep)
+	{
+		grid.resize(shape[0] * shape[1] * shape[2], 0.0f);
+	}
 
 	Grid3D(std::array<float, 3> originXYZ, const float edgeL,
 	       const float discStep, const float value)
@@ -76,6 +85,50 @@ struct Grid3D {
 		}
 		return arr;
 	}
+	Eigen::Vector4f xyz(const Eigen::Vector4i &ijk) const
+	{
+		return ijk.cast<float>() * discStep
+		       + Eigen::Vector4f(originXYZ[0], originXYZ[1],
+		                         originXYZ[2], 0.0f);
+	}
+	Eigen::Vector4f xyz(int i) const
+	{
+		std::array<int, 3> ijk = index3D(i);
+		Eigen::Vector4f res(ijk[0], ijk[1], ijk[2], 0.0f);
+		res *= discStep;
+		res += Eigen::Vector4f(originXYZ[0], originXYZ[1], originXYZ[2],
+		                       0.0f);
+		return res;
+	}
+	Eigen::Matrix4Xf points() const
+	{
+		const int gridSize = grid.size();
+		Eigen::Matrix4Xf p(4, grid.size());
+		int iPoint = 0;
+		for (int i = 0; i < gridSize; ++i) {
+			if (grid[i] > 0.0f) {
+				p.col(iPoint) = xyz(i);
+				p(3, iPoint) = grid[i];
+				++iPoint;
+			}
+		}
+		p.conservativeResize(4, iPoint);
+		return p;
+	}
+	std::vector<Eigen::Vector4f> pointsVec() const
+	{
+		const size_t gridSize = grid.size();
+		std::vector<Eigen::Vector4f> p;
+		p.reserve(gridSize);
+		for (size_t i = 0; i < gridSize; ++i) {
+			if (grid[i] > 0.0f) {
+				p.push_back(xyz(i));
+				p.back()[3] = grid[i];
+			}
+		}
+		p.shrink_to_fit();
+		return p;
+	}
 };
 
 /// \todo Describe all the parameters. Add a more detailed general explanation.
@@ -112,11 +165,25 @@ Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 Grid3D addWeights(const Grid3D &grid,
                   const Eigen::Matrix<float, 5, Eigen::Dynamic> &xyzRQ);
 
+/// @brief Calculate mean inter-dye distance between two accessible volumes
+/// @param g1 (In) First grid object (donor)
+/// @param g2 (In) Second grid object (acceptor)
+/// @param nsamples (In) Number of samples to draw. Mean distance is determined
+/// stochastically by choosing random pairs of points. Higher nsamples results
+/// in more precise <Rda>.
+/// @return Returns mean inter-dye distance (<Rda>).
+double meanDistance(const Grid3D &g1, const Grid3D &g2,
+                    const unsigned nsamples = 100000);
 
-/// \todo Implement distance calculation
-/// float meanDistance()
-/// float meanEfficiency()
-/// float distanceFromEfficiency()
+/// @brief Calculate mean FRET efficiency
+/// @param g1 (In) First grid object (e.g. donor)
+/// @param g2 (In) Second grid object (e.g. acceptor)
+/// @param nsamples (In) Number of samples to draw. Mean distance is determined
+/// stochastically by choosing random pairs of points. Higher nsamples results
+/// in more precise <E>.
+/// @return Returns mean FRET efficiency (<E>).
+double meanEfficiency(const Grid3D &g1, const Grid3D &g2, const float R0,
+                      const unsigned nsamples = 100000);
 
 /// \todo Enable doxygen documentation
 #endif // LABELLIB_FLEXLABEL_H

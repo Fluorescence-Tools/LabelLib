@@ -5,6 +5,11 @@
 
 #include "FlexLabel/FlexLabel.h"
 
+#include "pcg_random.hpp"
+#include "halton_sampler.h"
+#include "spline.hpp"
+
+#include <random>
 #include <algorithm>
 #include <queue>
 #include <set>
@@ -486,4 +491,162 @@ Grid3D addWeights(const Grid3D &grid, const Matrix5Xf &xyzRQ)
 	Grid3DExt ext(grid);
 	ext.addDensity(xyzRQ);
 	return ext;
+}
+
+Spline<2> cumulativeProbability2idx(const std::vector<Eigen::Vector4f> &points,
+                                    const unsigned Npieces, const float maxP)
+{
+	// Approximate the cummulative probability function by a second degree
+	// spline
+	Eigen::Matrix2Xf cumSum(2, points.size());
+	cumSum(0, 0) = points[0][3];
+	cumSum(1, 0) = 0;
+	for (unsigned int i = 1; i < points.size(); ++i) {
+		cumSum(0, i) = cumSum(0, i - 1) + points[i][3];
+		cumSum(1, i) = i;
+	}
+	cumSum.row(0) *= maxP / cumSum(0, points.size() - 1);
+	return Spline<2>::fromSorted(cumSum, Npieces);
+}
+
+double meanDistanceInv(const Grid3D &g1, const Grid3D &g2,
+                       const unsigned nsamples, const int Npieces = 256)
+{
+	// Draw point indexes using Inverse transform sampling
+	pcg32_fast rng(pcg_extras::seed_seq_from<std::random_device>{});
+
+	auto p1 = g1.pointsVec();
+	auto p2 = g2.pointsVec();
+
+	auto sortBy3 = [](const Eigen::Vector4f &v1,
+	                  const Eigen::Vector4f &v2) -> bool {
+		return v1[3] < v2[3];
+	};
+	std::sort(p1.begin(), p1.end(), sortBy3);
+	std::sort(p2.begin(), p2.end(), sortBy3);
+
+	auto prob2idx1 = cumulativeProbability2idx(p1, Npieces, rng.max());
+	auto prob2idx2 = cumulativeProbability2idx(p2, Npieces, rng.max());
+
+	double r = 0.;
+	unsigned i, j;
+	Eigen::Vector4f tmp;
+	for (unsigned s = 0; s < nsamples; s++) {
+		i = prob2idx1.of(rng());
+		j = prob2idx2.of(rng());
+		tmp = p1[i] - p2[j];
+		tmp[3] = 0.0f;
+		r += tmp.norm();
+	}
+	return r / nsamples;
+}
+
+double meanDistance(const Grid3D &g1, const Grid3D &g2, const unsigned nsamples)
+{
+	return meanDistanceInv(g1, g2, nsamples);
+}
+
+double FRETefficiency(double R, double R0)
+{
+	// return 1.0 / (1.0 + std::pow(R / R0, 6));
+	double ratSq = R / R0;
+	ratSq *= ratSq;
+	return 1.0 / (1.0 + ratSq * ratSq * ratSq);
+}
+
+double meanEfficiencyUniform(const Grid3D &g1, const Grid3D &g2, const float R0,
+                             const unsigned nsamples)
+{
+	// Draw point indexes from uniform distribution
+	pcg32 rng(pcg_extras::seed_seq_from<std::random_device>{});
+
+	Eigen::Matrix4Xf p1 = g1.points();
+	Eigen::Matrix4Xf p2 = g2.points();
+
+	const unsigned size1 = p1.cols();
+	const unsigned size2 = p2.cols();
+
+	double totalW = 0.0;
+	double e = 0., w;
+	unsigned i, j;
+	Eigen::Vector4f tmp;
+	for (unsigned s = 0; s < nsamples; s++) {
+		i = rng(size1);
+		j = rng(size2);
+		w = p1(3, i) * p2(3, j);
+		totalW += w;
+		tmp = p1.col(i) - p2.col(j);
+		tmp[3] = 0.0f;
+		e += w * FRETefficiency(tmp.norm(), R0);
+	}
+	return e / totalW;
+}
+
+double meanEfficiency(const Grid3D &g1, const Grid3D &g2, const float R0,
+                      const unsigned nsamples)
+{
+	return meanEfficiencyUniform(g1, g2, R0, nsamples);
+}
+
+double meanDistanceHalton(const Grid3D &g1, const Grid3D &g2,
+                          const unsigned nsamples)
+{
+	// Draw point indexes from Halton sequence
+	Halton_sampler halton_sampler;
+	// halton_sampler.init_faure();
+
+	pcg32 rng(pcg_extras::seed_seq_from<std::random_device>{});
+	halton_sampler.init_random(rng);
+
+	Eigen::Vector4i ijk1(0, 0, 0, 0), ijk2(0, 0, 0, 0);
+	double totalW = 0.0;
+	double r = 0., w, w1, w2;
+	Eigen::Vector4f tmp;
+	for (unsigned i = 0; i < nsamples; ++i) {
+		for (int d = 0; d < 3; ++d) {
+			ijk1[d] = halton_sampler.sample(d, i) * g1.shape[d];
+			ijk2[d] = halton_sampler.sample(d + 3, i) * g2.shape[d];
+			assert(ijk1[d] < g1.shape[d] && ijk1[d] >= 0);
+			assert(ijk2[d] < g2.shape[d] && ijk2[d] >= 0);
+		}
+		w1 = g1.value(ijk1[0], ijk1[1], ijk1[2]);
+		w2 = g2.value(ijk2[0], ijk2[1], ijk2[2]);
+		if (w1 <= 0 || w2 <= 0) {
+			continue;
+		}
+		w = w1 * w2;
+		totalW += w;
+		tmp = g1.xyz(ijk1) - g2.xyz(ijk2);
+		tmp[3] = 0.0f;
+		r += w * tmp.norm();
+	}
+	return r / totalW;
+}
+
+double meanDistanceUniform(const Grid3D &g1, const Grid3D &g2,
+                           const unsigned nsamples)
+{
+	// Draw point indexes from uniform distribution
+	pcg32 rng(pcg_extras::seed_seq_from<std::random_device>{});
+
+	Eigen::Matrix4Xf p1 = g1.points();
+	Eigen::Matrix4Xf p2 = g2.points();
+
+	const unsigned size1 = p1.cols();
+	const unsigned size2 = p2.cols();
+
+	double totalW = 0.0;
+	double r = 0., w;
+	unsigned i, j;
+	Eigen::Vector4f tmp;
+	for (unsigned s = 0; s < nsamples; s++) {
+		i = rng(size1);
+		j = rng(size2);
+		w = p1(3, i) * p2(3, j);
+		totalW += w;
+		tmp = p1.col(i) - p2.col(j);
+		tmp[3] = 0.0f;
+		r += w * tmp.norm();
+	}
+	return r / totalW;
 }

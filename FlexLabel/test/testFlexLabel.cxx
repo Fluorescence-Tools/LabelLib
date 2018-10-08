@@ -11,6 +11,10 @@
 #include <fstream>
 #include <chrono>
 
+
+#include "pcg_random.hpp"
+#include <random>
+
 void savePqr(const std::string &fName, const Grid3D &grid)
 {
 	std::fstream out(fName, std::fstream::out);
@@ -89,6 +93,8 @@ int main()
 	using std::cout;
 	using std::endl;
 
+	cout << "FlexLabel version " << GIT_VERSION_STRING << endl;
+
 	Eigen::Vector3f source;
 	source << 0.0f, -4.0f, 0.0f;
 	Eigen::Matrix4Xf atoms;
@@ -128,7 +134,7 @@ int main()
 		cout << "minLinkerLength() produced an unexpected result\n";
 		cout << "checksum = " << std::setprecision(5) << std::fixed
 		     << checksum(grid) << endl;
-		// return 1;
+		return 1;
 	}
 
 	auto start = std::chrono::steady_clock::now();
@@ -136,15 +142,27 @@ int main()
 	auto diff = std::chrono::steady_clock::now() - start;
 	double dtMs = std::chrono::duration<double, std::milli>(diff).count();
 	// Takes 19 ms on a laptop with Core i5-4200U CPU
-	cout << "FlexLabel version " << GIT_VERSION_STRING << std::endl;
-	cout << "AV1 calculation took: " << dtMs << " ms" << std::endl;
-
+	cout << "AV1 calculation took: " << dtMs << " ms" << endl;
 	// savePqr("testDensityAV1.pqr", grid);
+
 	if (fabs(checksum(grid) - 50183.00000f) > 0.00001f) {
 		cout << "dyeDensity() AV1 produced an unexpected result\n";
 		cout << "checksum = " << std::setprecision(5) << std::fixed
 		     << checksum(grid) << endl;
-		// return 2;
+		return 2;
+	}
+
+	start = std::chrono::steady_clock::now();
+	float Rda = meanDistance(grid, grid, 30000);
+	diff = std::chrono::steady_clock::now() - start;
+	dtMs = std::chrono::duration<double, std::milli>(diff).count();
+	// Takes 4.3 ms on a Core i7-4930K CPU
+	cout << "meanDistance took: " << dtMs << " ms " << endl;
+	if (fabs(Rda - 20.35f) > 0.2f) {
+		cout << "meanDistance() produced an unexpected result\n";
+		cout << "<Rda> = " << std::setprecision(2) << std::fixed << Rda
+		     << endl;
+		return 3;
 	}
 
 	start = std::chrono::steady_clock::now();
@@ -152,18 +170,19 @@ int main()
 	diff = std::chrono::steady_clock::now() - start;
 	dtMs = std::chrono::duration<double, std::milli>(diff).count();
 	// Takes 16 ms on a Core i7-4930K CPU
-	cout << "AV3 calculation took: " << dtMs << " ms" << std::endl;
+	cout << "AV3 calculation took: " << dtMs << " ms" << endl;
 	// savePqr("testDensityAV3.pqr", grid);
 	if (fabs(checksum(grid) - 49989.75391f) > 0.00001f) {
 		cout << "dyeDensity() AV3 produced an unexpected result\n";
 		cout << "checksum = " << std::setprecision(5) << std::fixed
 		     << checksum(grid) << endl;
-		return 3;
+		return 4;
 	}
 
+	// Contact surface weighting
 	Eigen::Matrix<float, 5, Eigen::Dynamic> xyzRQ;
 	xyzRQ.resize(5, nAtoms);
-	xyzRQ.col(0) << 0.0f, -4.0f, 0.0f, 3.0f, 100.0f;
+	xyzRQ.col(0) << 0.0f, -4.0f, 0.0f, 3.0f, 3.0f;
 	xyzRQ.col(1) << 13.0f, -4.0f, 13.0f, 4.0f, 0.12f;
 	for (int iat = 2; iat < nAtoms; ++iat) {
 		xyzRQ.col(iat) = xyzRQ.col(1);
@@ -172,8 +191,41 @@ int main()
 	grid = addWeights(grid, xyzRQ);
 	diff = std::chrono::steady_clock::now() - start;
 	dtMs = std::chrono::duration<double, std::milli>(diff).count();
-	// Takes 4.2 ms on a Core i7-4930K CPU
-	cout << "addWeights took: " << dtMs << " ms" << std::endl;
+	// Takes 4.5 ms on a Core i7-4930K CPU
+	cout << "addWeights took: " << dtMs << " ms " << endl;
 	// savePqr("testContactDensityAV3.pqr", grid);
+	if (fabs(checksum(grid) - 117905.71875f) > 0.00001f) {
+		cout << "addWeights() produced an unexpected result\n";
+		cout << "checksum = " << std::setprecision(5) << std::fixed
+		     << checksum(grid) << endl;
+		return 5;
+	}
+
+	start = std::chrono::steady_clock::now();
+	Rda = meanDistance(grid, grid, 30000);
+	diff = std::chrono::steady_clock::now() - start;
+	dtMs = std::chrono::duration<double, std::milli>(diff).count();
+	// Takes 5 ms on a Core i7-4930K CPU
+	cout << "meanDistance took: " << dtMs << " ms " << endl;
+	if (fabs(Rda - 14.2f) > 0.2f) {
+		cout << "meanDistance() produced an unexpected result\n";
+		cout << "<Rda> = " << std::setprecision(2) << std::fixed << Rda
+		     << endl;
+		return 6;
+	}
+
+	start = std::chrono::steady_clock::now();
+	auto E = meanEfficiency(grid, grid, 52.0);
+	diff = std::chrono::steady_clock::now() - start;
+	dtMs = std::chrono::duration<double, std::milli>(diff).count();
+	// Takes 5.4 ms on a Core i7-4930K CPU
+	cout << "meanEfficiency took: " << dtMs << " ms " << endl;
+	if (fabs(E - 0.990f) > 0.01f) {
+		cout << "meanEfficiency() produced an unexpected result\n";
+		cout << "<E> = " << std::setprecision(2) << std::fixed << E
+		     << endl;
+		return 7;
+	}
+
 	return 0;
 }

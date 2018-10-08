@@ -57,6 +57,9 @@ savePqrFromAtoms('atoms.pqr', atoms)
 savePqr('AV1.pqr', av1)
 savePqr('minLinkerLength.pqr', minLengthGrid)
 
+Emean = ll.meanEfficiency(av1,av1,52.0,100000)
+print('Emean = {}'.format(Emean))
+
 #Contact volume (re)weigting
 labels=np.full([1,surfaceAtoms.shape[1]],10.123) # density close to surfaceAtoms will be 10.123 units higher
 surfaceAtoms=np.vstack([atoms,labels])
