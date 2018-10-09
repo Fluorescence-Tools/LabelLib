@@ -67,3 +67,6 @@ surfaceAtoms[3]+=2.34 #contact radius is larger than vdW radius
 acv = ll.addWeights(av1,surfaceAtoms)
 savePqr('ACV.pqr', acv)
 print('done.')
+
+# Grid3D initialization
+g = ll.Grid3D(av1.shape, av1.originXYZ, av1.discStep)
