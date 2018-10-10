@@ -20,7 +20,7 @@ struct Grid3D {
 	/// @brief   space discretization step
 	float discStep;
 
-	/// @brief   cartisian coordinates of the grid origin (grid[0,0,0]) with
+	/// @brief   cartesian coordinates of the grid origin (grid[0,0,0]) with
 	/// respect to the origin of the atoms which were used to calculate the
 	/// AV
 	std::array<float, 3> originXYZ;
@@ -149,8 +149,6 @@ Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 		  const Eigen::Vector3f &sourceXyz, const float linkerLength,
 		  const float linkerDiameter, const float dyeRadius,
                   const float discStep);
-// const float contactR=0.0f, const float trappedFrac=-1.0f);
-/// \todo implement Accessible and Contact Volume calculations
 
 Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 		  const Eigen::Vector3f &sourceXyz, const float linkerLength,

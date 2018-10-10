@@ -532,8 +532,8 @@ double meanDistanceInv(const Grid3D &g1, const Grid3D &g2,
 	unsigned i, j;
 	Eigen::Vector4f tmp;
 	for (unsigned s = 0; s < nsamples; s++) {
-		i = prob2idx1.of(rng());
-		j = prob2idx2.of(rng());
+		i = prob2idx1.value_unsafe(rng());
+		j = prob2idx2.value_unsafe(rng());
 		tmp = p1[i] - p2[j];
 		tmp[3] = 0.0f;
 		r += tmp.norm();
