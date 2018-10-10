@@ -12,7 +12,7 @@
 #include <random>
 #include <algorithm>
 #include <queue>
-#include <set>
+
 
 Eigen::Vector4f Vec4f(const std::array<float, 3> &arr)
 {
@@ -496,21 +496,21 @@ Grid3D addWeights(const Grid3D &grid, const Matrix5Xf &xyzRQ)
 Spline<2> cumulativeProbability2idx(const std::vector<Eigen::Vector4f> &points,
                                     const unsigned Npieces, const float maxP)
 {
-	// Approximate the cummulative probability function by a second degree
+	// Approximate the cumulative probability function by a second degree
 	// spline
-	Eigen::Matrix2Xf cumSum(2, points.size());
-	cumSum(0, 0) = points[0][3];
-	cumSum(1, 0) = 0;
-	for (unsigned int i = 1; i < points.size(); ++i) {
-		cumSum(0, i) = cumSum(0, i - 1) + points[i][3];
-		cumSum(1, i) = i;
+	Eigen::Matrix2Xf cumSum(2, points.size()+1);
+	cumSum(0, 0) = 0.0f;
+	cumSum(1, 0) = 0.0f;
+	for (unsigned int i = 0; i < points.size(); ++i) {
+		cumSum(0, i+1) = cumSum(0, i) + points[i][3];
+		cumSum(1, i+1) = i;
 	}
-	cumSum.row(0) *= maxP / cumSum(0, points.size() - 1);
+	cumSum.row(0) *= maxP / cumSum(0, cumSum.cols()-1);
 	return Spline<2>::fromSorted(cumSum, Npieces);
 }
 
 double meanDistanceInv(const Grid3D &g1, const Grid3D &g2,
-                       const unsigned nsamples, const int Npieces = 256)
+                       const unsigned nsamples, const int Npieces = 128)
 {
 	// Draw point indexes using Inverse transform sampling
 	pcg32_fast rng(pcg_extras::seed_seq_from<std::random_device>{});
@@ -529,11 +529,16 @@ double meanDistanceInv(const Grid3D &g1, const Grid3D &g2,
 	auto prob2idx2 = cumulativeProbability2idx(p2, Npieces, rng.max());
 
 	double r = 0.;
-	unsigned i, j;
 	Eigen::Vector4f tmp;
+	const float p1max=p1.size()-1;
+	const float p2max=p2.size()-1;
 	for (unsigned s = 0; s < nsamples; s++) {
-		i = prob2idx1.value_unsafe(rng());
-		j = prob2idx2.value_unsafe(rng());
+		float i=prob2idx1.value_unsafe(rng());
+		i=std::min(i,p1max);
+		i=std::max(i,0.0f);
+		float j = prob2idx2.value_unsafe(rng());
+		j=std::min(j,p2max);
+		j=std::max(j,0.0f);
 		tmp = p1[i] - p2[j];
 		tmp[3] = 0.0f;
 		r += tmp.norm();
