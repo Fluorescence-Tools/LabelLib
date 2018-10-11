@@ -7,12 +7,11 @@
 
 #include "pcg_random.hpp"
 #include "halton_sampler.h"
-#include "spline.hpp"
+#include "flat_map.hpp"
 
 #include <random>
 #include <algorithm>
 #include <queue>
-
 
 Eigen::Vector4f Vec4f(const std::array<float, 3> &arr)
 {
@@ -53,25 +52,25 @@ public:
 	};
 
 	Grid3DExt(const Eigen::Vector4f &originXYZ, const float edgeL,
-	          const float discStep, const float value)
+		  const float discStep, const float value)
 	    : Grid3D(StdArr3f(originXYZ), edgeL, discStep, value)
 	{
 		originAdj = originXYZ.array() - 0.5f * discStep;
 		originAdj[3] = 0.0f;
 		shape4i << shape[0], shape[1], shape[2],
-		        std::numeric_limits<int>::max();
+			std::numeric_limits<int>::max();
 	}
 	Grid3DExt(const Grid3D &grid) : Grid3D(grid)
 	{
 		originAdj = Vec4f(originXYZ).array() - 0.5f * discStep;
 		originAdj[3] = 0.0f;
 		shape4i << shape[0], shape[1], shape[2],
-		        std::numeric_limits<int>::max();
+			std::numeric_limits<int>::max();
 	}
 
 	static Grid3DExt fromSource(const Eigen::Vector3f &sourceXyz,
-	                            const float discStep, const float maxLength,
-	                            const float maxClashR)
+				    const float discStep, const float maxLength,
+				    const float maxClashR)
 	{
 		using std::max;
 		const float effL = maxLength + max(maxClashR, discStep * 3.0f);
@@ -86,18 +85,18 @@ public:
 	}
 
 	inline void fillSpheres(const Eigen::Matrix4Xf &xyzR,
-	                        const float extraClash, const float gridRef);
+				const float extraClash, const float gridRef);
 
 	void fillOutsideSphere(const Eigen::Vector4f &xyzR,
-	                       const float gridRef);
+			       const float gridRef);
 
 	void setPathLengths(const Eigen::Vector3f &source);
 
 	void setAboveThreshold(const float threshold, const float rho);
 
 	void excludeConcentricSpheres(const Eigen::Matrix4Xf &xyzR,
-	                              const Eigen::VectorXf extraClashes,
-	                              const float maxRho);
+				      const Eigen::VectorXf extraClashes,
+				      const float maxRho);
 	void addDensity(const Matrix5Xf &xyzRQ);
 
 private:
@@ -209,8 +208,8 @@ std::vector<Grid3DExt::edge_t> Grid3DExt::neighbourEdges(const float maxR) const
 	}
 	idxs.shrink_to_fit();
 	std::sort(
-	        idxs.begin(), idxs.end(),
-	        [](const auto &lhs, const auto &rhs) { return lhs.r < rhs.r; });
+		idxs.begin(), idxs.end(),
+		[](const auto &lhs, const auto &rhs) { return lhs.r < rhs.r; });
 	return idxs;
 }
 
@@ -225,15 +224,15 @@ void Grid3DExt::setMaxNeighbourDistance(const float maxR)
 }
 
 void Grid3DExt::excludeConcentricSpheres(const Eigen::Matrix4Xf &xyzR,
-                                         const Eigen::VectorXf extraClashes,
-                                         const float maxRho)
+					 const Eigen::VectorXf extraClashes,
+					 const float maxRho)
 {
 	using Eigen::Array4i;
 	using Eigen::Vector4f;
 	using Eigen::VectorXf;
 	using std::min;
 	const float maxRclash =
-	        xyzR.row(3).maxCoeff() + extraClashes.maxCoeff();
+		xyzR.row(3).maxCoeff() + extraClashes.maxCoeff();
 	setMaxNeighbourDistance(maxRclash);
 
 	const int numClashes = extraClashes.size();
@@ -243,7 +242,7 @@ void Grid3DExt::excludeConcentricSpheres(const Eigen::Matrix4Xf &xyzR,
 	const VectorXf rhos = VectorXf::LinSpaced(numClashes + 1, 0.0f, maxRho);
 
 	const Vector4f center =
-	        Vec4f(shape) * discStep * 0.5f + Vec4f(originXYZ);
+		Vec4f(shape) * discStep * 0.5f + Vec4f(originXYZ);
 	const float maxL = shape4i.minCoeff() * discStep * 0.5f;
 	const float l2out = std::pow(maxL + maxRclash, 2.0f);
 
@@ -284,7 +283,7 @@ void Grid3DExt::addDensity(const Matrix5Xf &xyzRQ)
 	setMaxNeighbourDistance(maxRclash + discStep);
 
 	const Vector4f center =
-	        Vec4f(shape) * discStep * 0.5f + Vec4f(originXYZ);
+		Vec4f(shape) * discStep * 0.5f + Vec4f(originXYZ);
 	const float maxL = shape4i.minCoeff() * discStep * 0.5f;
 	const float loutSq = std::pow(maxL + maxRclash, 2.0f);
 
@@ -333,7 +332,7 @@ inline void Grid3DExt::fillSphere(const Eigen::Vector4f &xyzR, const float val)
 }
 
 void Grid3DExt::fillSpheres(const Eigen::Matrix4Xf &xyzR,
-                            const float extraClash, const float value)
+			    const float extraClash, const float value)
 {
 	const float maxRclash = xyzR.row(3).maxCoeff() + extraClash;
 	setMaxNeighbourDistance(maxRclash);
@@ -357,11 +356,11 @@ void Grid3DExt::fillSpheres(const Eigen::Matrix4Xf &xyzR,
 }
 
 void Grid3DExt::fillOutsideSphere(const Eigen::Vector4f &xyzR,
-                                  const float value)
+				  const float value)
 {
 	const Eigen::Array4i ijk0 = getIjk(xyzR);
 	const int maxRSq = static_cast<int>(
-	        xyzR[3] * xyzR[3] / (discStep * discStep) + 0.5f);
+		xyzR[3] * xyzR[3] / (discStep * discStep) + 0.5f);
 
 	int i = 0, dSq;
 	Eigen::Array4i ijk(0, 0, 0, 0);
@@ -399,7 +398,7 @@ void Grid3DExt::setPathLengths(const Eigen::Vector3f &source)
 	// it is possible to improve performance by 10-20%
 	// using more efficient heap/queue implementation like radix heap
 	std::priority_queue<edge1D_t, vector<edge1D_t>, std::greater<edge1D_t>>
-	        que;
+		que;
 	que.push({0.0f, i0});
 	while (!que.empty()) {
 		const edge1D_t qt = que.top();
@@ -430,36 +429,36 @@ void Grid3DExt::setAboveThreshold(const float threshold, const float rho)
 }
 
 Grid3DExt minLinkerLength(const Eigen::Matrix4Xf &atomsXyzr,
-                          const Eigen::Vector3f &sourceXyz,
-                          const float linkerLength, const float linkerDiameter,
-                          const float discStep)
+			  const Eigen::Vector3f &sourceXyz,
+			  const float linkerLength, const float linkerDiameter,
+			  const float discStep)
 {
 	Grid3DExt grid =
-	        Grid3DExt::fromSource(sourceXyz, discStep, linkerLength, 0.0f);
+		Grid3DExt::fromSource(sourceXyz, discStep, linkerLength, 0.0f);
 	grid.fillSpheres(atomsXyzr, linkerDiameter * 0.5f, -1.0f);
 	grid.setPathLengths(sourceXyz);
 	return grid;
 }
 
 Grid3D minLinkerLength(const Eigen::Matrix4Xf &atomsXyzr,
-                       const Eigen::Vector3f &sourceXyz,
-                       const float linkerLength, const float linkerDiameter,
-                       const float dyeRadius, const float discStep)
+		       const Eigen::Vector3f &sourceXyz,
+		       const float linkerLength, const float linkerDiameter,
+		       const float dyeRadius, const float discStep)
 {
 	Grid3DExt grid = minLinkerLength(atomsXyzr, sourceXyz, linkerLength,
-	                                 linkerDiameter, discStep);
+					 linkerDiameter, discStep);
 	grid.fillSpheres(atomsXyzr, dyeRadius, -3.0f);
 	return grid;
 }
 
 
 Grid3DExt dyeDensityExt(const Eigen::Matrix4Xf &atomsXyzr,
-                        const Eigen::Vector3f &sourceXyz,
-                        const float linkerLength, const float linkerDiameter,
-                        const Eigen::VectorXf &dyeRadii, const float discStep)
+			const Eigen::Vector3f &sourceXyz,
+			const float linkerLength, const float linkerDiameter,
+			const Eigen::VectorXf &dyeRadii, const float discStep)
 {
 	Grid3DExt grid = minLinkerLength(atomsXyzr, sourceXyz, linkerLength,
-	                                 linkerDiameter, discStep);
+					 linkerDiameter, discStep);
 	grid.setAboveThreshold(linkerLength, -4.0f);
 	grid.setAboveThreshold(0.0f, 1.0f);
 	grid.excludeConcentricSpheres(atomsXyzr, dyeRadii, 1.0f);
@@ -467,23 +466,23 @@ Grid3DExt dyeDensityExt(const Eigen::Matrix4Xf &atomsXyzr,
 }
 
 Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
-                  const Eigen::Vector3f &sourceXyz, const float linkerLength,
-                  const float linkerDiameter, const float dyeRadius,
-                  const float discStep)
+		  const Eigen::Vector3f &sourceXyz, const float linkerLength,
+		  const float linkerDiameter, const float dyeRadius,
+		  const float discStep)
 {
 	Eigen::VectorXf dyeRadii(1);
 	dyeRadii << dyeRadius;
 	return dyeDensityExt(atomsXyzr, sourceXyz, linkerLength, linkerDiameter,
-	                     dyeRadii, discStep);
+			     dyeRadii, discStep);
 }
 
 Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
-                  const Eigen::Vector3f &sourceXyz, const float linkerLength,
-                  const float linkerDiameter, const Eigen::Vector3f &dyeRadii,
-                  const float discStep)
+		  const Eigen::Vector3f &sourceXyz, const float linkerLength,
+		  const float linkerDiameter, const Eigen::Vector3f &dyeRadii,
+		  const float discStep)
 {
 	return dyeDensityExt(atomsXyzr, sourceXyz, linkerLength, linkerDiameter,
-	                     Eigen::VectorXf(dyeRadii), discStep);
+			     Eigen::VectorXf(dyeRadii), discStep);
 }
 
 Grid3D addWeights(const Grid3D &grid, const Matrix5Xf &xyzRQ)
@@ -493,62 +492,95 @@ Grid3D addWeights(const Grid3D &grid, const Matrix5Xf &xyzRQ)
 	return ext;
 }
 
-Spline<2> cumulativeProbability2idx(const std::vector<Eigen::Vector4f> &points,
-                                    const unsigned Npieces, const float maxP)
+template <typename T> class InverseSampler
 {
-	// Approximate the cumulative probability function by a second degree
-	// spline
-	Eigen::Matrix2Xf cumSum(2, points.size()+1);
-	cumSum(0, 0) = 0.0f;
-	cumSum(1, 0) = 0.0f;
-	for (unsigned int i = 0; i < points.size(); ++i) {
-		cumSum(0, i+1) = cumSum(0, i) + points[i][3];
-		cumSum(1, i+1) = i;
+	// Draw elements using Inverse transform sampling
+
+
+private:
+	// probability is the key and index in the points array
+	// is the value. Probabilities may have arbitrary normalization, i.e
+	// last element in the map has maximum possible potability as the key.
+	fc::vector_map<uint32_t, unsigned> map;
+	T vec;
+	mutable pcg32_fast rng{pcg_extras::seed_seq_from<std::random_device>{}};
+
+public:
+	typename T::value_type get_random() const
+	{
+		// return element index, assuming that elements between the keys
+		// in the map are uniformly sampled
+
+		unsigned rnd = rng();
+		// find the relevant index range (idxmin..idxmax]
+		auto it = map.upper_bound(rnd);
+		if (it == map.end()) {
+			return vec[map.rbegin()->second];
+		}
+		uint32_t rmax = it->first;
+		unsigned idxmax = it->second;
+		--it;
+		uint32_t rmin = it->first;
+		unsigned idxmin = it->second;
+
+		float relRnd = float(rnd - rmin) / (rmax - rmin);
+		unsigned i = idxmin + unsigned(relRnd * (idxmax - idxmin));
+		return vec[i];
 	}
-	cumSum.row(0) *= maxP / cumSum(0, cumSum.cols()-1);
-	return Spline<2>::fromSorted(cumSum, Npieces);
-}
+	template <typename KeyAccessor>
+	InverseSampler(T &&_vec, KeyAccessor accessor) : vec(_vec)
+	{
+		// Since entries in the flat_map are only added for unique
+		// weights(densities), the map stays small and fast.
+		using Eigen::Vector4f;
+
+		auto adder = [accessor](double sum, const auto &p) {
+			return sum + accessor(p);
+		};
+		const float sumWeights =
+			std::accumulate(vec.begin(), vec.end(), 0.0, adder);
+		const float pRatio = rng.max() / sumWeights;
+
+		auto sorter = [accessor](const auto &v1,
+					 const auto &v2) -> bool {
+			return accessor(v1) > accessor(v2);
+		};
+		std::sort(vec.begin(), vec.end(), sorter);
+
+
+		map.emplace(0, 0);
+		double cumSum = accessor(vec[0]) * pRatio;
+		float prevSlope = cumSum;
+		for (unsigned i = 1; i < vec.size(); ++i) {
+			float slope = accessor(vec[i]) * pRatio;
+			if (slope < prevSlope * 0.999) {
+				map.emplace(cumSum, i - 1);
+				prevSlope = slope;
+			}
+			cumSum += slope;
+		}
+		map.emplace(rng.max(), vec.size() - 1);
+	}
+};
 
 double meanDistanceInv(const Grid3D &g1, const Grid3D &g2,
-                       const unsigned nsamples, const int Npieces = 128)
+		       const unsigned nsamples)
 {
 	// Draw point indexes using Inverse transform sampling
-	pcg32_fast rng(pcg_extras::seed_seq_from<std::random_device>{});
 
-	auto p1 = g1.pointsVec();
-	auto p2 = g2.pointsVec();
-
-	auto sortBy3 = [](const Eigen::Vector4f &v1,
-	                  const Eigen::Vector4f &v2) -> bool {
-		return v1[3] < v2[3];
-	};
-	std::sort(p1.begin(), p1.end(), sortBy3);
-	std::sort(p2.begin(), p2.end(), sortBy3);
-
-	auto prob2idx1 = cumulativeProbability2idx(p1, Npieces, rng.max());
-	auto prob2idx2 = cumulativeProbability2idx(p2, Npieces, rng.max());
+	auto el3getter = [](const Eigen::Vector4f &p) { return p[3]; };
+	using points_type = std::vector<Eigen::Vector4f>;
+	InverseSampler<points_type> sampler1(g1.pointsVec(), el3getter);
+	InverseSampler<points_type> sampler2(g2.pointsVec(), el3getter);
 
 	double r = 0.;
 	Eigen::Vector4f tmp;
-	const float p1max=p1.size()-1;
-	const float p2max=p2.size()-1;
 	for (unsigned s = 0; s < nsamples; s++) {
-		float i=prob2idx1.value_unsafe(rng());
-		i=std::min(i,p1max);
-		i=std::max(i,0.0f);
-		float j = prob2idx2.value_unsafe(rng());
-		j=std::min(j,p2max);
-		j=std::max(j,0.0f);
-		tmp = p1[i] - p2[j];
+		tmp = sampler1.get_random() - sampler2.get_random();
 		tmp[3] = 0.0f;
 		r += tmp.norm();
 	}
 	return r / nsamples;
-}
-
-double meanDistance(const Grid3D &g1, const Grid3D &g2, const unsigned nsamples)
-{
-	return meanDistanceInv(g1, g2, nsamples);
 }
 
 double FRETefficiency(double R, double R0)
@@ -560,7 +592,7 @@ double FRETefficiency(double R, double R0)
 }
 
 double meanEfficiencyUniform(const Grid3D &g1, const Grid3D &g2, const float R0,
-                             const unsigned nsamples)
+			     const unsigned nsamples)
 {
 	// Draw point indexes from uniform distribution
 	pcg32 rng(pcg_extras::seed_seq_from<std::random_device>{});
@@ -587,14 +619,9 @@ double meanEfficiencyUniform(const Grid3D &g1, const Grid3D &g2, const float R0,
 	return e / totalW;
 }
 
-double meanEfficiency(const Grid3D &g1, const Grid3D &g2, const float R0,
-                      const unsigned nsamples)
-{
-	return meanEfficiencyUniform(g1, g2, R0, nsamples);
-}
 
 double meanDistanceHalton(const Grid3D &g1, const Grid3D &g2,
-                          const unsigned nsamples)
+			  const unsigned nsamples)
 {
 	// Draw point indexes from Halton sequence
 	Halton_sampler halton_sampler;
@@ -629,7 +656,7 @@ double meanDistanceHalton(const Grid3D &g1, const Grid3D &g2,
 }
 
 double meanDistanceUniform(const Grid3D &g1, const Grid3D &g2,
-                           const unsigned nsamples)
+			   const unsigned nsamples)
 {
 	// Draw point indexes from uniform distribution
 	pcg32 rng(pcg_extras::seed_seq_from<std::random_device>{});
@@ -654,4 +681,15 @@ double meanDistanceUniform(const Grid3D &g1, const Grid3D &g2,
 		r += w * tmp.norm();
 	}
 	return r / totalW;
+}
+
+double meanDistance(const Grid3D &g1, const Grid3D &g2, const unsigned nsamples)
+{
+	return meanDistanceInv(g1, g2, nsamples);
+}
+
+double meanEfficiency(const Grid3D &g1, const Grid3D &g2, const float R0,
+		      const unsigned nsamples)
+{
+	return meanEfficiencyUniform(g1, g2, R0, nsamples);
 }

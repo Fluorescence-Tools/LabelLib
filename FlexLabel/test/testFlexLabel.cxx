@@ -156,7 +156,7 @@ int main()
 	float Rda = meanDistance(grid, grid, 30000);
 	diff = std::chrono::steady_clock::now() - start;
 	dtMs = std::chrono::duration<double, std::milli>(diff).count();
-	// Takes 4.3 ms on a Core i7-4930K CPU
+	// Takes 3.5 ms on a Core i7-4930K CPU
 	cout << "meanDistance took: " << dtMs << " ms " << endl;
 	if (fabs(Rda - 20.35f) > 0.2f) {
 		cout << "meanDistance() produced an unexpected result\n";
@@ -205,7 +205,7 @@ int main()
 	Rda = meanDistance(grid, grid, 30000);
 	diff = std::chrono::steady_clock::now() - start;
 	dtMs = std::chrono::duration<double, std::milli>(diff).count();
-	// Takes 5 ms on a Core i7-4930K CPU
+	// Takes 3.8 ms on a Core i7-4930K CPU
 	cout << "meanDistance took: " << dtMs << " ms " << endl;
 	if (fabs(Rda - 14.2f) > 0.2f) {
 		cout << "meanDistance() produced an unexpected result\n";
