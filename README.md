@@ -64,14 +64,16 @@ To access the functionality of LabelLib in PyMOL two basic prerequisites need to
   2) The file [LabelLib_pymol.py](FlexLabel/python/LabelLib_pymol.py) needs to be downloaded and executed from PyMOL's command line interace. 
 
 The file "LabelLib_pymol.py" is executed from PyMOL's command line interface by entering "run LabelLib_pymol.py". Once "LabelLib_pymol.py" is executed Accessible Volumes(AV) can be simulated from PyMOL's command line. The procedure of running "LabelLib_pymol.py" and simulating an AV is shown below for an example:
-```
+```python
 cmd.do('run ./LabelLib/FlexLabel/python/LabelLib_pymol.py')
 cmd.fetch('1BNA', async=0)
-genAV(obstacles='1BNA and not solvent and not (c. B and i. 19 and name C7+C4+O4+C6)', attachment='1BNA and c. B and i. 19 and name C5', linker_length=20.0, linker_diameter=2.0, dye_radius=3.5)
+genAV('1BNA', '/1BNA/B/B/19/C5', allowed_sphere_radius=1.5)
 ```
 As a result you should see something like this:
 
 ![dsDNA and an AV surface][2]
+
+More extended examples of `genAV()` usage can be found in [LabelLib_pymol.py](FlexLabel/python/LabelLib_pymol.py).
 
 ## C++
 

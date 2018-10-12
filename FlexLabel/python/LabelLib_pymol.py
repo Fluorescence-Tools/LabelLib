@@ -5,8 +5,10 @@ import LabelLib as ll
 
 # Usage example:
 # fetch 1BNA, async=0
-# genAV('polymer and not (c. B and i. 19 and name C7+C4+O4+C6)', '1BNA and c. B and i. 19 and name C5')
-def genAV(obstacles, attachment, linker_length=20.0, linker_diameter=2.0, dye_radius=3.5, disc_step=0.9, name=None, state=1, stripsc=True, smoothSurf=True):
+# remove solvent 
+# genAV('1BNA', '/1BNA/B/B/19/C5', allowed_sphere_radius=1.5)
+## genAV('1BNA', '/1BNA/B/B/19/C5', linker_length=22.0, linker_diameter=3.0, dye_radius=4.0, disc_step=0.7, allowed_sphere_radius=2.0)
+def genAV(obstacles, attachment, linker_length=20.0, linker_diameter=2.0, dye_radius=3.5, disc_step=0.9, name=None, state=1, stripsc=True, allowed_sphere_radius=0.0, smoothSurf=True):
   
   source = np.array(cmd.get_model(attachment, state).get_coord_list())
   if (source.shape[0]!=1):
@@ -23,12 +25,17 @@ def genAV(obstacles, attachment, linker_length=20.0, linker_diameter=2.0, dye_ra
     if len(srcAt.chain)>0:
       obstacles += ' and chain ' + srcAt.chain
     obstacles+=' and resi '+srcAt.resi+' and sidechain'+')'
+  if allowed_sphere_radius > 0.0:
+    obstacles+=' and not (({}) around {})'.format(attachment, allowed_sphere_radius)
   
-  atoms=cmd.get_model(obstacles, state).atom
-  nAtoms=len(atoms)
-  xyzRT=np.zeros((nAtoms,4))
-  for i,at in enumerate(atoms):
-    xyzRT[i]=[at.coord[0],at.coord[1],at.coord[2],at.vdw]
+  xyzRT=np.zeros((1,4))
+  nAtoms=cmd.count_atoms(obstacles)
+  if nAtoms>0:
+    atoms=cmd.get_model(obstacles, state).atom
+    nAtoms=len(atoms)
+    xyzRT=np.zeros((nAtoms,4))
+    for i,at in enumerate(atoms):
+      xyzRT[i]=[at.coord[0],at.coord[1],at.coord[2],at.vdw]
   
   av1=ll.dyeDensityAV1(xyzRT.T,source,linker_length, linker_diameter, dye_radius, disc_step)
   m=avToModel(av1)
