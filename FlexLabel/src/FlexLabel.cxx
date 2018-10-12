@@ -541,11 +541,13 @@ public:
 			std::accumulate(vec.begin(), vec.end(), 0.0, adder);
 		const float pRatio = rng.max() / sumWeights;
 
-		auto sorter = [accessor](const auto &v1,
+		auto comparator = [accessor](const auto &v1,
 					 const auto &v2) -> bool {
 			return accessor(v1) > accessor(v2);
 		};
-		std::sort(vec.begin(), vec.end(), sorter);
+		if (not std::is_sorted(vec.begin(), vec.end(),comparator)) {
+			std::sort(vec.begin(), vec.end(), comparator);
+		}
 
 
 		map.emplace(0, 0);
