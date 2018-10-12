@@ -568,7 +568,7 @@ public:
 double meanDistanceInv(const Grid3D &g1, const Grid3D &g2,
 		       const unsigned nsamples)
 {
-	// Draw point indexes using Inverse transform sampling
+	// Draw points using Inverse transform sampling
 
 	auto el3getter = [](const Eigen::Vector4f &p) { return p[3]; };
 	using points_type = std::vector<Eigen::Vector4f>;
@@ -685,6 +685,25 @@ double meanDistanceUniform(const Grid3D &g1, const Grid3D &g2,
 	return r / totalW;
 }
 
+double meanEfficiencyInv(const Grid3D &g1, const Grid3D &g2, const float R0,
+	const unsigned nsamples)
+{
+	// Draw points using Inverse transform sampling
+	auto el3getter = [](const Eigen::Vector4f &p) { return p[3]; };
+	using points_type = std::vector<Eigen::Vector4f>;
+	InverseSampler<points_type> sampler1(g1.pointsVec(), el3getter);
+	InverseSampler<points_type> sampler2(g2.pointsVec(), el3getter);
+
+	double e = 0.;
+	Eigen::Vector4f tmp;
+	for (unsigned s = 0; s < nsamples; s++) {
+		tmp = sampler1.get_random() - sampler2.get_random();
+		tmp[3] = 0.0f;
+		e += FRETefficiency(tmp.norm(), R0);
+	}
+	return e/nsamples;
+}
+
 double meanDistance(const Grid3D &g1, const Grid3D &g2, const unsigned nsamples)
 {
 	return meanDistanceInv(g1, g2, nsamples);
@@ -693,5 +712,5 @@ double meanDistance(const Grid3D &g1, const Grid3D &g2, const unsigned nsamples)
 double meanEfficiency(const Grid3D &g1, const Grid3D &g2, const float R0,
 		      const unsigned nsamples)
 {
-	return meanEfficiencyUniform(g1, g2, R0, nsamples);
+	return meanEfficiencyInv(g1, g2, R0, nsamples);
 }

@@ -156,7 +156,7 @@ int main()
 	float Rda = meanDistance(grid, grid, 30000);
 	diff = std::chrono::steady_clock::now() - start;
 	dtMs = std::chrono::duration<double, std::milli>(diff).count();
-	// Takes 3.5 ms on a Core i7-4930K CPU
+	// Takes 2.7 ms on a Core i7-4930K CPU
 	cout << "meanDistance took: " << dtMs << " ms " << endl;
 	if (fabs(Rda - 20.35f) > 0.2f) {
 		cout << "meanDistance() produced an unexpected result\n";
@@ -214,15 +214,17 @@ int main()
 		return 6;
 	}
 
+	auto shiftedGrid=grid;
+	shiftedGrid.originXYZ[0]+=52.0;
 	start = std::chrono::steady_clock::now();
-	auto E = meanEfficiency(grid, grid, 52.0);
+	auto E = meanEfficiency(grid, shiftedGrid, 52.0, 30000);
 	diff = std::chrono::steady_clock::now() - start;
 	dtMs = std::chrono::duration<double, std::milli>(diff).count();
-	// Takes 5.4 ms on a Core i7-4930K CPU
+	// Takes 4.0 ms on a Core i7-4930K CPU
 	cout << "meanEfficiency took: " << dtMs << " ms " << endl;
-	if (fabs(E - 0.990f) > 0.01f) {
+	if (fabs(E - 0.479f) > 0.003f) {
 		cout << "meanEfficiency() produced an unexpected result\n";
-		cout << "<E> = " << std::setprecision(2) << std::fixed << E
+		cout << "<E> = " << std::setprecision(3) << std::fixed << E
 		     << endl;
 		return 7;
 	}
