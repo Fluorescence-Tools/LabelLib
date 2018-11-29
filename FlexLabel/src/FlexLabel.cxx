@@ -549,7 +549,6 @@ public:
 			std::sort(vec.begin(), vec.end(), comparator);
 		}
 
-
 		map.emplace(0, 0);
 		double cumSum = accessor(vec[0]) * pRatio;
 		float prevSlope = cumSum;
