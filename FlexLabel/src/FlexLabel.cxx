@@ -12,6 +12,9 @@
 #include <random>
 #include <algorithm>
 #include <queue>
+// needed inculdes for MVSC
+#include <numeric>
+#include <ciso646>
 
 Eigen::Vector4f Vec4f(const std::array<float, 3> &arr)
 {
