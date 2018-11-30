@@ -4,7 +4,6 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/thirdparty/eigen" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/thirdparty/pcg-cpp" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/thirdparty/pubby-flat" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/thirdparty/pybind11" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/thirdparty/pybind11/tools/clang" vcs="Git" />
   </component>

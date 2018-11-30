@@ -7,8 +7,8 @@
 
 #include "pcg_random.hpp"
 #include "halton_sampler.h"
-#include "flat_map.hpp"
 
+#include <map>
 #include <random>
 #include <algorithm>
 #include <queue>
@@ -207,9 +207,10 @@ std::vector<Grid3DExt::edge_t> Grid3DExt::neighbourEdges(const float maxR) const
 		}
 	}
 	idxs.shrink_to_fit();
-	std::sort(
-		idxs.begin(), idxs.end(),
-		[](const auto &lhs, const auto &rhs) { return lhs.r < rhs.r; });
+	std::sort(idxs.begin(), idxs.end(),
+		  [](const edge_t &lhs, const edge_t &rhs) {
+			  return lhs.r < rhs.r;
+		  });
 	return idxs;
 }
 
@@ -495,14 +496,13 @@ Grid3D addWeights(const Grid3D &grid, const Matrix5Xf &xyzRQ)
 template <typename T> class InverseSampler
 {
 	// Draw elements using Inverse transform sampling
-
-
 private:
 	// probability is the key and index in the points array
 	// is the value. Probabilities may have arbitrary normalization, i.e
 	// last element in the map has maximum possible potability as the key.
-	fc::vector_map<uint32_t, unsigned> map;
+	std::map<uint32_t, unsigned> map;
 	T vec;
+	using val_t = typename T::value_type;
 	mutable pcg32_fast rng{pcg_extras::seed_seq_from<std::random_device>{}};
 
 public:
@@ -534,18 +534,18 @@ public:
 		// weights(densities), the map stays small and fast.
 		using Eigen::Vector4f;
 
-		auto adder = [accessor](double sum, const auto &p) {
+		auto adder = [accessor](double sum, const val_t &p) {
 			return sum + accessor(p);
 		};
 		const float sumWeights =
 			std::accumulate(vec.begin(), vec.end(), 0.0, adder);
 		const float pRatio = rng.max() / sumWeights;
 
-		auto comparator = [accessor](const auto &v1,
-					 const auto &v2) -> bool {
+		auto comparator = [accessor](const val_t &v1,
+					     const val_t &v2) -> bool {
 			return accessor(v1) > accessor(v2);
 		};
-		if (not std::is_sorted(vec.begin(), vec.end(),comparator)) {
+		if (not std::is_sorted(vec.begin(), vec.end(), comparator)) {
 			std::sort(vec.begin(), vec.end(), comparator);
 		}
 
@@ -685,7 +685,7 @@ double meanDistanceUniform(const Grid3D &g1, const Grid3D &g2,
 }
 
 double meanEfficiencyInv(const Grid3D &g1, const Grid3D &g2, const float R0,
-	const unsigned nsamples)
+			 const unsigned nsamples)
 {
 	// Draw points using Inverse transform sampling
 	auto el3getter = [](const Eigen::Vector4f &p) { return p[3]; };
@@ -700,7 +700,7 @@ double meanEfficiencyInv(const Grid3D &g1, const Grid3D &g2, const float R0,
 		tmp[3] = 0.0f;
 		e += FRETefficiency(tmp.norm(), R0);
 	}
-	return e/nsamples;
+	return e / nsamples;
 }
 
 double meanDistance(const Grid3D &g1, const Grid3D &g2, const unsigned nsamples)

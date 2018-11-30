@@ -7,6 +7,3 @@
 [submodule "thirdparty/pcg-cpp"]
 	path = thirdparty/pcg-cpp
 	url = https://github.com/imneme/pcg-cpp.git
-[submodule "thirdparty/pubby-flat"]
-	path = thirdparty/pubby-flat
-	url = https://github.com/pubby/flat.git
