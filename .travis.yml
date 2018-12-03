@@ -20,9 +20,7 @@ install:
 #- conda config --add channels conda-forge # hightest priority
 
 script:
-  mkdir LabelLib/build &&
-  cd LabelLib/build &&
-  cmake ..
+  mkdir LabelLib/build && cd LabelLib/build && cmake .. && make
 
 os:
 - osx
