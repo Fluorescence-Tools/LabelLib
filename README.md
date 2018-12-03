@@ -1,5 +1,11 @@
 # LabelLib
 
+[![Linux Build Status](https://travis-ci.org/mdtraj/mdtraj.svg?branch=master)](https://travis-ci.org/mdtraj/mdtraj)
+[![Windows Build status](https://ci.appveyor.com/api/projects/status/sqjgx3jh14vuxks5/branch/master?svg=true)](https://ci.appveyor.com/project/rmcgibbo/mdtraj/branch/master)
+[![PyPI Version](https://badge.fury.io/py/mdtraj.svg)](https://pypi.python.org/pypi/mdtraj)
+[![Anaconda-Server Version](https://anaconda.org/omnia/mdtraj/badges/version.svg)](https://anaconda.org/omnia/mdtraj)
+[![Anaconda-Server Downloads](https://anaconda.org/omnia/mdtraj/badges/downloads.svg)](https://anaconda.org/omnia/mdtraj)
+[![Research software impact](http://depsy.org/api/package/pypi/mdtraj/badge.svg)](http://depsy.org/package/python/mdtraj)
 
 ## General description
 LabelLib is a low-level C++ library for the simulation of small probes flexibly coupled to biomolecules for the development of higher-level applications and libraries. LabelLib can calculate the distribution of flexible labels around attachment points. Such probes are for instance dyes for fluorescence spectroscopy, spin-labels for EPR and NMR, or chemical cross-links for mass-spectrometry. Typically, these labels are fluorescent dyes. For such dyes LabelLib can calculate FRET observables. 
