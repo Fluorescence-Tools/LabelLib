@@ -1,0 +1,29 @@
+sudo: false
+language: cpp
+compiler:
+  - clang
+  - gcc
+addons:
+  apt:
+    packages:
+    - csh
+    - python-numpy
+    - libboost-dev
+    - libeigen3-dev
+    - g++
+    - clang
+
+install:
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update && brew install md5sha1sum; fi
+#- source devtools/travis-ci/install_miniconda.sh
+#- conda config --add channels omnia
+#- conda config --add channels conda-forge # hightest priority
+
+script:
+  mkdir LabelLib/build
+  cd LabelLib/build
+  cmake ..
+
+os:
+- osx
+- linux

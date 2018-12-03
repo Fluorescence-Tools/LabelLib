@@ -55,6 +55,8 @@ class CMakeBuild(build_ext):
             os.makedirs(self.build_temp)
         subprocess.check_call(['cmake', ext.sourcedir] + cmake_args, cwd=self.build_temp, env=env)
         subprocess.check_call(['cmake', '--build', '.'] + build_args, cwd=self.build_temp)
+
+
 def gitVersionString():
   try:
     out = subprocess.check_output(['git', 'show', '-s', '--format=%cd', '--date=short'])
@@ -62,6 +64,8 @@ def gitVersionString():
     return out
   except:
     return "unknown-version"
+
+
 setup(
     name='LabelLib',
     version=gitVersionString(),
