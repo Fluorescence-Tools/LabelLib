@@ -1,5 +1,6 @@
 sudo: false
 language: cpp
+dist: trusty
 python:
   - "2.7"
   - "3.7"
@@ -18,13 +19,10 @@ addons:
     - libeigen3-dev
     - g++
     - clang
-
 install:
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update && brew install md5sha1sum; fi
 #- source devtools/travis-ci/install_miniconda.sh
 #- conda config --add channels omnia
 #- conda config --add channels conda-forge # hightest priority
-
 script:
   mkdir build && cd build && cmake .. && make
-
