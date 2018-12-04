@@ -25,4 +25,6 @@ install:
 #- conda config --add channels omnia
 #- conda config --add channels conda-forge # hightest priority
 script:
-  mkdir build && cd build && cmake .. && make
+  - mkdir build && cd build
+  - cmake ..
+  - make .
