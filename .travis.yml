@@ -3,6 +3,9 @@ language: cpp
 compiler:
   - clang
   - gcc
+os:
+  - osx
+  - linux
 addons:
   apt:
     packages:
@@ -22,6 +25,3 @@ install:
 script:
   mkdir LabelLib/build && cd LabelLib/build && cmake .. && make
 
-os:
-- osx
-- linux
