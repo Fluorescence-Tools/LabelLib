@@ -1,5 +1,8 @@
 sudo: false
 language: cpp
+python:
+  - "2.7"
+  - "3.7"
 compiler:
   - clang
   - gcc
@@ -23,5 +26,5 @@ install:
 #- conda config --add channels conda-forge # hightest priority
 
 script:
-  mkdir LabelLib/build && cd LabelLib/build && cmake .. && make
+  mkdir build && cd build && cmake .. && make
 
