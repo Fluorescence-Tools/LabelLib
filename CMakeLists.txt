@@ -22,8 +22,9 @@ if(GIT_FOUND)
     gitDateVersionString(GIT_VERSION_STRING)
     # Split the version string by the hyphens, e.g., 2018.12.03-(HEAD detached at 4f65afa)-4f65afa,
     # and take the first element as a version name
-    string(REPLACE "-" ";" GIT_VERSION_STRING ${GIT_VERSION_LIST})
-    set(GIT_VERSION_STRING list(GET GIT_VERSION_LIST 0))
+    string(REPLACE "-" ";" GIT_VERSION_LIST ${GIT_VERSION_STRING})
+    message(STATUS "${GIT_VERSION_LIST}")
+    list(GET GIT_VERSION_LIST 0 GIT_VERSION_STRING)
     message(STATUS "GIT version: ${GIT_VERSION_STRING}")
 endif()
 add_definitions("-DGIT_VERSION_STRING=\"${GIT_VERSION_STRING}\"")
