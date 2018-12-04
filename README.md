@@ -1,5 +1,5 @@
 # LabelLib
-[![Linux Build Status](https://travis-ci.org/Fluorescence-Tools/LabelLib.svg?branch=master)](https://travis-ci.org/fluorescence-tools/LabelLib)
+[![Linux Build Status](https://travis-ci.org/Fluorescence-Tools/LabelLib.svg?branch=master)](https://travis-ci.org/Fluorescence-Tools/LabelLib)
 [![PyPI Version](https://badge.fury.io/py/LabelLib.svg)](https://pypi.org/project/LabelLib)
 [![Anaconda-Server Version](https://anaconda.org/tpeulen/labellib/badges/version.svg)](https://anaconda.org/tpeulen/labellib)
 [![Anaconda-Server Downloads](https://anaconda.org/tpeulen/labellib/badges/downloads.svg)](https://anaconda.org/tpeulen/labellib)
