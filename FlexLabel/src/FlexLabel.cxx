@@ -90,8 +90,7 @@ public:
 	inline void fillSpheres(const Eigen::Matrix4Xf &xyzR,
 				const float extraClash, const float gridRef);
 
-	void fillOutsideSphere(const Eigen::Vector4f &xyzR,
-			       const float gridRef);
+	void fillOutsideSphere(const Eigen::Vector4f &xyzR, const float gridRef);
 
 	void setPathLengths(const Eigen::Vector3f &source);
 
@@ -359,8 +358,7 @@ void Grid3DExt::fillSpheres(const Eigen::Matrix4Xf &xyzR,
 	}
 }
 
-void Grid3DExt::fillOutsideSphere(const Eigen::Vector4f &xyzR,
-				  const float value)
+void Grid3DExt::fillOutsideSphere(const Eigen::Vector4f &xyzR, const float value)
 {
 	const Eigen::Array4i ijk0 = getIjk(xyzR);
 	const int maxRSq = static_cast<int>(

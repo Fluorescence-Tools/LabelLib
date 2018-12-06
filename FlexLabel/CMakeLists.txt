@@ -19,13 +19,13 @@ include_directories(${EIGEN3_INCLUDE_DIR})
 
 # Problem building in Travis-CI tried fix:
 # https://github.com/pybind/pybind11/issues/236
-set(PYTHONLIBS_FOUND TRUE)
+#set(PYTHONLIBS_FOUND TRUE)
 set(PYTHON_MODULE_EXTENSION .so)
 set(PYTHON_MODULE_PREFIX "")
 find_package(pybind11 2.2 QUIET)
 if(NOT pybind11_FOUND)
-        message(STATUS "Using thirdparty/pybind11")
-        add_subdirectory(${CMAKE_SOURCE_DIR}/thirdparty/pybind11 pybind11_bin)
+    message(STATUS "Using thirdparty/pybind11")
+    add_subdirectory(${CMAKE_SOURCE_DIR}/thirdparty/pybind11 pybind11_bin)
 endif(NOT pybind11_FOUND)
 
 #PCG Random Number Generation
