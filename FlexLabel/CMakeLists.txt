@@ -21,7 +21,7 @@ include_directories(${EIGEN3_INCLUDE_DIR})
 # https://github.com/pybind/pybind11/issues/236
 # This is really a bad fix, as the Python headers 
 # won't be found in most build environments.
-# set(PYTHONLIBS_FOUND TRUE)
+set(PYTHONLIBS_FOUND TRUE) 
 set(PYTHON_MODULE_EXTENSION .so)
 set(PYTHON_MODULE_PREFIX "")
 find_package(pybind11 2.2 QUIET)
