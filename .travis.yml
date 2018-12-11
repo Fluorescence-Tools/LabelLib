@@ -1,15 +1,21 @@
 sudo: false
 language: cpp
-dist: trusty
-python:
-  - "2.7"
-  - "3.7"
+dist: xenial
 compiler:
   - clang
   - gcc
 os:
   - osx
   - linux
+env:
+  - PYTHON=2.7
+  - PYTHON=3.7
+matrix:
+  exclude:
+    - os: linux
+      compiler: clang
+    - os: osx
+      compiler: gcc
 addons:
   apt:
     packages:
@@ -20,12 +26,12 @@ addons:
     - g++
     - clang
 install:
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update && brew install md5sha1sum; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update && brew install md5sha1sum && pyenv install -s 3.7-dev; fi
 #- source devtools/travis-ci/install_miniconda.sh
 #- conda config --add channels omnia
 #- conda config --add channels conda-forge # hightest priority
 script:
-  - pyenv global 3.6
+  - pyenv global `pyenv versions | grep "^ *$PYTHON" | head -n1`
   - mkdir build && cd build
-  - cmake ..
-  - make .
+  - cmake -DPYTHON_EXECUTABLE:FILEPATH=`pyenv which python$PYTHON` ..
+  - make
