@@ -25,6 +25,7 @@ install:
 #- conda config --add channels omnia
 #- conda config --add channels conda-forge # hightest priority
 script:
+  - pyenv global 3.6
   - mkdir build && cd build
-  - cmake -DPYTHON_WORKAROUND=ON ..
+  - cmake ..
   - make .

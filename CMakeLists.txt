@@ -1,18 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
 
-option(PYTHON_WORKAROUND "Workaround for environments with multiple python versions" OFF)
-
-# Problem building in Travis-CI tried fix:
-# https://github.com/pybind/pybind11/issues/236
-# This is really a bad fix, as the Python headers
-# won't be found in most build environments.
-# See also: https://github.com/Fluorescence-Tools/LabelLib/issues/5
-if(PYTHON_WORKAROUND)
-  set(PYTHONLIBS_FOUND TRUE)
-  set(PYTHON_MODULE_EXTENSION .so)
-  set(PYTHON_MODULE_PREFIX "")
-endif(PYTHON_WORKAROUND)
-
 set(CMAKE_CXX_STANDARD 11)
 if(MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++11")
