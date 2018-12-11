@@ -19,7 +19,7 @@ function (gitDateVersionString _verStr)
   endif()
   
   execute_process(
-    COMMAND "${GIT_EXECUTABLE}" branch --contains ${hash}
+    COMMAND "${GIT_EXECUTABLE}" branch --contains ${hash} "--format=%(refname:short)" --sort=-committerdate
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     RESULT_VARIABLE res
     OUTPUT_VARIABLE branch
@@ -28,7 +28,6 @@ function (gitDateVersionString _verStr)
   if(NOT res EQUAL 0)
     set(branch "nobranch")
   endif()
-  STRING(REPLACE "* " "" branch ${branch})
   STRING(REGEX REPLACE "\n.*" "" branch ${branch})
   
   execute_process(

@@ -1,4 +1,18 @@
 cmake_minimum_required(VERSION 3.0.2)
+
+option(PYTHON_WORKAROUND "Workaround for environments with multiple python versions" OFF)
+
+# Problem building in Travis-CI tried fix:
+# https://github.com/pybind/pybind11/issues/236
+# This is really a bad fix, as the Python headers
+# won't be found in most build environments.
+# See also: https://github.com/Fluorescence-Tools/LabelLib/issues/5
+if(PYTHON_WORKAROUND)
+  set(PYTHONLIBS_FOUND TRUE)
+  set(PYTHON_MODULE_EXTENSION .so)
+  set(PYTHON_MODULE_PREFIX "")
+endif(PYTHON_WORKAROUND)
+
 set(CMAKE_CXX_STANDARD 11)
 if(MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++11")
@@ -20,11 +34,6 @@ set(GIT_VERSION_STRING "version-unknown")
 if(GIT_FOUND)
     include(GitDateVersion)
     gitDateVersionString(GIT_VERSION_STRING)
-    # Split the version string by the hyphens, e.g., 2018.12.03-(HEAD detached at 4f65afa)-4f65afa,
-    # and take the first element as a version name
-    string(REPLACE "-" ";" GIT_VERSION_LIST ${GIT_VERSION_STRING})
-    message(STATUS "${GIT_VERSION_LIST}")
-    list(GET GIT_VERSION_LIST 0 GIT_VERSION_STRING)
     message(STATUS "GIT version: ${GIT_VERSION_STRING}")
 endif()
 add_definitions("-DGIT_VERSION_STRING=\"${GIT_VERSION_STRING}\"")

@@ -26,5 +26,5 @@ install:
 #- conda config --add channels conda-forge # hightest priority
 script:
   - mkdir build && cd build
-  - cmake ..
+  - cmake -DPYTHON_WORKAROUND=ON ..
   - make .

@@ -17,13 +17,6 @@ if (NOT TARGET Eigen3::Eigen)
 endif (NOT TARGET Eigen3::Eigen)
 include_directories(${EIGEN3_INCLUDE_DIR})
 
-# Problem building in Travis-CI tried fix:
-# https://github.com/pybind/pybind11/issues/236
-# This is really a bad fix, as the Python headers 
-# won't be found in most build environments.
-set(PYTHONLIBS_FOUND TRUE) 
-set(PYTHON_MODULE_EXTENSION .so)
-set(PYTHON_MODULE_PREFIX "")
 find_package(pybind11 2.2 QUIET)
 if(NOT pybind11_FOUND)
     message(STATUS "Using thirdparty/pybind11")
