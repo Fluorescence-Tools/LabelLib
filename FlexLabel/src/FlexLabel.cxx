@@ -1,8 +1,3 @@
-///
-/// @file    FlexLabel.cxx
-/// @author  Mykola Dimura
-///
-
 #include "FlexLabel/FlexLabel.h"
 
 #include "pcg_random.hpp"
