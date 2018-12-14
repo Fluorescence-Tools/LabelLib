@@ -58,7 +58,7 @@ class CMakeBuild(build_ext):
 
 
 def gitVersionString():
-  hard_version="2018.12.12"
+  hard_version="2018.12.14"
   try:
     out = subprocess.check_output(['git', 'show', '-s', '--format=%cd', '--date=short'])
     out = out.decode().replace('-','.').strip()
