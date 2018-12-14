@@ -1,8 +1,3 @@
-///
-/// @file    FlexLabel.h
-/// @author  Mykola Dimura
-///
-
 #ifndef LABELLIB_FLEXLABEL_H
 #define LABELLIB_FLEXLABEL_H
 
