@@ -14,22 +14,23 @@ EIGEN_DEFINE_STL_VECTOR_SPECIALIZATION(Eigen::Vector4f)
 
 /// @brief   3-dimensional grid of float numbers.
 /// Can be used for density maps or other maps of scalar variables
-struct Grid3D {
+class Grid3D {
 	/// @brief   space discretization step
 	float discStep;
 
 	/// @brief   cartesian coordinates of the grid origin (grid[0,0,0]) with
 	/// respect to the origin of the atoms which were used to calculate the
-	/// AV
+	/// Grid
 	std::array<float, 3> originXYZ;
 
-	/// @brief   Number of cels in each (X, Y and Z) direction.
+	/// @brief   Number of grid points in each (X, Y and Z) direction.
 	/// {xMax, yMax, zMax}
 	std::array<uint32_t, 3> shape;
 
-	/// @brief   3D array mapped to 1D
+	/// @brief   1D array of the 3D grid
 	std::vector<float> grid;
 
+	/// constructors
 	Grid3D(const Grid3D &) = default;
 	Grid3D &operator=(const Grid3D &) = default;
 	Grid3D(Grid3D &&other) = default;
@@ -50,11 +51,15 @@ struct Grid3D {
 		grid.resize(iL * iL * iL, value);
 	}
 
+	/// @brief The scalar value of a certain grid point. The @param ix , @param iy , and @param iz
+	/// refer to the grid point
 	float value(int ix, int iy, int iz) const
 	{
 		return grid[index1D(ix, iy, iz)];
 	}
 
+	/// @brief Converts the parameter @param ix @param iy and @param iz to an the index of
+	/// the 1D value array. (3D->1D)
 	int index1D(int ix, int iy, int iz) const
 	{
 		/*assert(ix >= 0 && ix < shape[0]);
@@ -63,6 +68,8 @@ struct Grid3D {
 		return ix + shape[0] * (iy + iz * shape[1]);
 	}
 
+	/// @brief Converts the parameter @param i to an the an 3D array
+	/// that accesses the corresponding value of the 3D array (1D->3D).
 	std::array<int, 3> index3D(int i) const
 	{
 		std::array<int, 3> ijk;
@@ -75,6 +82,9 @@ struct Grid3D {
 		assert(ijk[2] >= 0 && ijk[2] < shape[2]);
 		return ijk;
 	}
+
+	/// @brief Calculates using the input indeces @param ix, @param iy, and @param iz
+	/// an 3D vector pointing to the corresponding grid point.
 	std::array<float, 3> xyz(int ix, int iy, int iz) const
 	{
 		std::array<float, 3> arr = {float(ix), float(iy), float(iz)};
@@ -83,21 +93,25 @@ struct Grid3D {
 		}
 		return arr;
 	}
+
+	/// @brief Calculates using the inputs @param ix, @param iy, and @param iz
+	/// an 3D vector pointing to the corresponding grid point. The inputs
 	Eigen::Vector4f xyz(const Eigen::Vector4i &ijk) const
 	{
 		return ijk.cast<float>() * discStep
 		       + Eigen::Vector4f(originXYZ[0], originXYZ[1],
 		                         originXYZ[2], 0.0f);
 	}
+
 	Eigen::Vector4f xyz(int i) const
 	{
 		std::array<int, 3> ijk = index3D(i);
 		Eigen::Vector4f res(ijk[0], ijk[1], ijk[2], 0.0f);
-		res *= discStep;
-		res += Eigen::Vector4f(originXYZ[0], originXYZ[1], originXYZ[2],
-		                       0.0f);
-		return res;
+		return xyz(res);
 	}
+
+	/// @brief returns a coordinate list with all coordinates having
+	/// values > 0.0
 	Eigen::Matrix4Xf points() const
 	{
 		const int gridSize = grid.size();
@@ -113,6 +127,9 @@ struct Grid3D {
 		p.conservativeResize(4, iPoint);
 		return p;
 	}
+
+	/// @brief returns a coordinate list with all coordinates having
+	/// values > 0.0
 	std::vector<Eigen::Vector4f> pointsVec() const
 	{
 		const size_t gridSize = grid.size();
