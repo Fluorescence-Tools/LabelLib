@@ -11,10 +11,11 @@ EIGEN_DEFINE_STL_VECTOR_SPECIALIZATION(Eigen::Vector4f)
 #include <numeric>
 #include <ciso646>
 
-
 /// @brief   3-dimensional grid of float numbers.
 /// Can be used for density maps or other maps of scalar variables
-class Grid3D {
+class Grid3D
+{
+public:
 	/// @brief   space discretization step
 	float discStep;
 
@@ -51,15 +52,15 @@ class Grid3D {
 		grid.resize(iL * iL * iL, value);
 	}
 
-	/// @brief The scalar value of a certain grid point. The @param ix , @param iy , and @param iz
-	/// refer to the grid point
+	/// @brief The scalar value of a certain grid point. The @param ix ,
+	/// @param iy , and @param iz refer to the grid point
 	float value(int ix, int iy, int iz) const
 	{
 		return grid[index1D(ix, iy, iz)];
 	}
 
-	/// @brief Converts the parameter @param ix @param iy and @param iz to an the index of
-	/// the 1D value array. (3D->1D)
+	/// @brief Converts the parameter @param ix @param iy and @param iz to
+	/// an the index of the 1D value array. (3D->1D)
 	int index1D(int ix, int iy, int iz) const
 	{
 		/*assert(ix >= 0 && ix < shape[0]);
@@ -83,8 +84,8 @@ class Grid3D {
 		return ijk;
 	}
 
-	/// @brief Calculates using the input indeces @param ix, @param iy, and @param iz
-	/// an 3D vector pointing to the corresponding grid point.
+	/// @brief Calculates using the input indeces @param ix, @param iy, and
+	/// @param iz an 3D vector pointing to the corresponding grid point.
 	std::array<float, 3> xyz(int ix, int iy, int iz) const
 	{
 		std::array<float, 3> arr = {float(ix), float(iy), float(iz)};
@@ -94,20 +95,21 @@ class Grid3D {
 		return arr;
 	}
 
-	/// @brief Calculates using the inputs @param ix, @param iy, and @param iz
-	/// an 3D vector pointing to the corresponding grid point. The inputs
+	/// @brief Converts the index inputs @param ix, @param iy, and
+	/// @param iz, to a 3D vector in a real space pointing to the
+	/// corresponding grid point.
 	Eigen::Vector4f xyz(const Eigen::Vector4i &ijk) const
 	{
 		return ijk.cast<float>() * discStep
 		       + Eigen::Vector4f(originXYZ[0], originXYZ[1],
-		                         originXYZ[2], 0.0f);
+					 originXYZ[2], 0.0f);
 	}
 
 	Eigen::Vector4f xyz(int i) const
 	{
 		std::array<int, 3> ijk = index3D(i);
-		Eigen::Vector4f res(ijk[0], ijk[1], ijk[2], 0.0f);
-		return xyz(res);
+		Eigen::Vector4i tmp(ijk[0], ijk[1], ijk[2], 0);
+		return xyz(tmp);
 	}
 
 	/// @brief returns a coordinate list with all coordinates having
@@ -163,7 +165,7 @@ Grid3D minLinkerLength(const Eigen::Matrix4Xf &atomsXyzr,
 Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 		  const Eigen::Vector3f &sourceXyz, const float linkerLength,
 		  const float linkerDiameter, const float dyeRadius,
-                  const float discStep);
+		  const float discStep);
 
 Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 		  const Eigen::Vector3f &sourceXyz, const float linkerLength,
@@ -176,7 +178,7 @@ Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 /// for each point
 /// @return Returns a Grid3D with modified weights.
 Grid3D addWeights(const Grid3D &grid,
-                  const Eigen::Matrix<float, 5, Eigen::Dynamic> &xyzRQ);
+		  const Eigen::Matrix<float, 5, Eigen::Dynamic> &xyzRQ);
 
 /// @brief Calculate mean inter-dye distance between two accessible volumes
 /// @param g1 (In) First grid object (donor)
@@ -186,7 +188,7 @@ Grid3D addWeights(const Grid3D &grid,
 /// in more precise <Rda>.
 /// @return Returns mean inter-dye distance (<Rda>).
 double meanDistance(const Grid3D &g1, const Grid3D &g2,
-                    const unsigned nsamples = 100000);
+		    const unsigned nsamples = 100000);
 
 /// @brief Calculate mean FRET efficiency
 /// @param g1 (In) First grid object (e.g. donor)
@@ -196,7 +198,7 @@ double meanDistance(const Grid3D &g1, const Grid3D &g2,
 /// in more precise <E>.
 /// @return Returns mean FRET efficiency (<E>).
 double meanEfficiency(const Grid3D &g1, const Grid3D &g2, const float R0,
-                      const unsigned nsamples = 100000);
+		      const unsigned nsamples = 100000);
 
 /// \todo Enable doxygen documentation
 #endif // LABELLIB_FLEXLABEL_H
