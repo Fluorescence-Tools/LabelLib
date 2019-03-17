@@ -200,5 +200,16 @@ double meanDistance(const Grid3D &g1, const Grid3D &g2,
 double meanEfficiency(const Grid3D &g1, const Grid3D &g2, const float R0,
 		      const unsigned nsamples = 100000);
 
+/// @brief Sample inter-grid distances. Inverse transform sampling is used
+/// intrinsically to generate samples, that accurately approximate underlying
+/// distribution.
+/// @param g1 (In) First grid object (e.g. donor)
+/// @param g2 (In) Second grid object (e.g. acceptor)
+/// @param nsamples (In) Number of samples to draw. Distances will be drawn
+/// stochastically by choosing random pairs of points. Higher \p nsamples
+/// results in more accurate distribution.
+/// @return Returns an array of sampled distances.
+std::vector<float> sampleDistanceDistInv(const Grid3D &g1, const Grid3D &g2,
+					 const unsigned nsamples = 1000000);
 /// \todo Enable doxygen documentation
 #endif // LABELLIB_FLEXLABEL_H

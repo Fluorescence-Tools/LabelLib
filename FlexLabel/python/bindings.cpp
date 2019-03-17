@@ -50,6 +50,9 @@ PYBIND11_MODULE(LabelLib, m)
 	m.def("meanEfficiency", &meanEfficiency,
 	      "Calculate mean FRET efficiency", py::arg("g1"), py::arg("g2"),
 	      py::arg("R0"), py::arg("nsamples"));
+	m.def("sampleDistanceDistInv", &sampleDistanceDistInv,
+		"Sample inter-grid distances", py::arg("g1"), py::arg("g2"),
+		py::arg("nsamples"));
 
 	py::class_<Grid3D>(m, "Grid3D")
 	        .def(py::init<const std::array<uint32_t, 3> &,

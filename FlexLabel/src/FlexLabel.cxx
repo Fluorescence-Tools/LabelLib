@@ -594,6 +594,28 @@ double meanDistanceInv(const Grid3D &g1, const Grid3D &g2,
 	return r / nsamples;
 }
 
+std::vector<float> sampleDistanceDistInv(const Grid3D &g1, const Grid3D &g2,
+	const unsigned nsamples)
+{
+	// Draw distances using Inverse transform sampling
+
+	std::vector<float> distances;
+	distances.reserve(nsamples);
+
+	auto el3getter = [](const Eigen::Vector4f &p) { return p[3]; };
+	using points_type = std::vector<Eigen::Vector4f>;
+	InverseSampler<points_type> sampler1(g1.pointsVec(), el3getter);
+	InverseSampler<points_type> sampler2(g2.pointsVec(), el3getter);
+
+	Eigen::Vector4f tmp;
+	for (unsigned s = 0; s < nsamples; ++s) {
+		tmp = sampler1.get_random() - sampler2.get_random();
+		tmp[3] = 0.0f;
+		distances.emplace_back(tmp.norm());
+	}
+	return distances;
+}
+
 double FRETefficiency(double R, double R0)
 {
 	// return 1.0 / (1.0 + std::pow(R / R0, 6));

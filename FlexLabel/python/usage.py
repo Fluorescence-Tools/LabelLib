@@ -52,21 +52,31 @@ source=np.array([0.0, -4.0, 0.0]).astype(float)
 av1 = ll.dyeDensityAV1(atoms, source, 20.0, 2.0, 3.5, 0.9)
 minLengthGrid = ll.minLinkerLength(atoms, source, 20.0, 2.0, 3.5, 0.9)
 
+# Grid3D initialization
+#g = ll.Grid3D(av1.shape, av1.originXYZ, av1.discStep)
+
 print('Saving AVs...')
 savePqrFromAtoms('atoms.pqr', atoms)
 savePqr('AV1.pqr', av1)
 savePqr('minLinkerLength.pqr', minLengthGrid)
 
 Emean = ll.meanEfficiency(av1,av1,52.0,100000)
-print('Emean = {}'.format(Emean))
+print('Emean = {:.3f}'.format(Emean))
 
 #Contact volume (re)weigting
-labels=np.full([1,surfaceAtoms.shape[1]],10.123) # density close to surfaceAtoms will be 10.123 units higher
+labels=np.full([1,atoms.shape[1]],10.123) # density close to surfaceAtoms will be 10.123 units higher
 surfaceAtoms=np.vstack([atoms,labels])
 surfaceAtoms[3]+=2.34 #contact radius is larger than vdW radius
 acv = ll.addWeights(av1,surfaceAtoms)
 savePqr('ACV.pqr', acv)
-print('done.')
 
-# Grid3D initialization
-g = ll.Grid3D(av1.shape, av1.originXYZ, av1.discStep)
+#Distance distribution
+distances = ll.sampleDistanceDistInv(acv,acv,1000000)
+freq, bin_edges = np.histogram(distances,bins=25)
+edge_centers=bin_edges[:-1]+(bin_edges[1]-bin_edges[0])/2.0
+meanDist=np.sum(freq * edge_centers)/np.sum(freq)
+print('Mean distance: {:.2f}'.format(meanDist))
+#print('\nDist.\tFreq.')
+#hist=np.column_stack([freq,edge_centers])
+#for f, e in hist:
+#    print('{:.2f}\t{:.0f}'.format(e,f))

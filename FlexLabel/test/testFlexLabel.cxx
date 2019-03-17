@@ -88,6 +88,28 @@ float checksum(const Grid3D &grid)
 	return sum;
 }
 
+void printDistanceHist(const std::vector<float> &distances)
+{
+	const float minD =
+		*std::min_element(distances.begin(), distances.end());
+	const float maxD =
+		*std::max_element(distances.begin(), distances.end());
+
+	const unsigned nBins = 20;
+	const float step = (maxD - minD) / (nBins - 1);
+	std::vector<int> hist(nBins, 0);
+	for (float dist : distances) {
+		int iBin = (dist - minD) / step;
+		hist[iBin]++;
+	}
+	std::cout << "Distance\tFreq.\n";
+	for (int iBin = 0; iBin < nBins; ++iBin) {
+		std::cout << step * (0.5f + iBin) + minD << "\t" << hist[iBin]
+			  << "\n";
+	}
+	std::cout << std::endl;
+}
+
 int main()
 {
 	using std::cout;
@@ -207,15 +229,16 @@ int main()
 	dtMs = std::chrono::duration<double, std::milli>(diff).count();
 	// Takes 3.8 ms on a Core i7-4930K CPU
 	cout << "meanDistance took: " << dtMs << " ms " << endl;
-	if (fabs(Rda - 14.2f) > 0.2f) {
+	const float RdaMeanRef = 14.2f;
+	if (fabs(Rda - RdaMeanRef) > 0.2f) {
 		cout << "meanDistance() produced an unexpected result\n";
 		cout << "<Rda> = " << std::setprecision(2) << std::fixed << Rda
 		     << endl;
 		return 6;
 	}
 
-	auto shiftedGrid=grid;
-	shiftedGrid.originXYZ[0]+=52.0;
+	auto shiftedGrid = grid;
+	shiftedGrid.originXYZ[0] += 52.0;
 	start = std::chrono::steady_clock::now();
 	auto E = meanEfficiency(grid, shiftedGrid, 52.0, 30000);
 	diff = std::chrono::steady_clock::now() - start;
@@ -227,6 +250,22 @@ int main()
 		cout << "<E> = " << std::setprecision(3) << std::fixed << E
 		     << endl;
 		return 7;
+	}
+
+	start = std::chrono::steady_clock::now();
+	std::vector<float> distances = sampleDistanceDistInv(grid, grid);
+	diff = std::chrono::steady_clock::now() - start;
+	dtMs = std::chrono::duration<double, std::milli>(diff).count();
+	// Takes 50 ms on a Core i5-4200U CPU
+	cout << "sampleDistanceDistInv() took: " << dtMs << " ms " << endl;
+	Rda = std::accumulate(distances.begin(), distances.end(), 0.0f)
+	      / distances.size();
+	if (fabs(Rda - RdaMeanRef) > 0.03f) {
+		cout << "sampleDistanceDistInv() produced an unexpected result\n";
+		cout << "<Rda> = " << std::setprecision(2) << std::fixed << Rda
+		     << endl;
+		printDistanceHist(distances);
+		return 8;
 	}
 
 	return 0;
