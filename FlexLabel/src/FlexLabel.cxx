@@ -92,7 +92,7 @@ public:
 	void fillOutsideSphere(const Eigen::Vector4f &xyzR,
 			       const float gridRef);
 
-	void setPathLengths(const Eigen::Vector3f &source);
+	void setPathLengths(const Eigen::Vector3f &source, const float linkerDiameterPlusgridSize);
 
 	void setAboveThreshold(const float threshold, const float rho);
 
@@ -392,7 +392,7 @@ void Grid3DExt::fillOutsideSphere(const Eigen::Vector4f &xyzR,
 	}
 }
 
-void Grid3DExt::setPathLengths(const Eigen::Vector3f &source)
+void Grid3DExt::setPathLengths(const Eigen::Vector3f &source, const float linkerDiameterPlusgridSize)
 {
 	// perform dijkstra algorithm
 	// the grid must be padded, i.e. N outermost layers of edges must be set
@@ -401,7 +401,8 @@ void Grid3DExt::setPathLengths(const Eigen::Vector3f &source)
 	using Eigen::Array4i;
 	using Eigen::Vector4f;
 	using std::vector;
-	const vector<edge1D_t> &edges = toEdges1D(essentialNeighbours());
+	const vector<edge1D_t> &edges_ess = toEdges1D(essentialNeighbours());
+	const vector<edge1D_t> &edges_source = toEdges1D(neighbourEdges(linkerDiameterPlusgridSize));
 	const Array4i ijk0 = getIjk(Vec4f(source));
 	const int i0 = index1D(ijk0[0], ijk0[1], ijk0[2]);
 	grid[i0] = 0.0f;
@@ -417,6 +418,7 @@ void Grid3DExt::setPathLengths(const Eigen::Vector3f &source)
 		if (qt.r > grid[qt.idx])
 			continue;
 		edge1D_t t;
+		const vector<edge1D_t> &edges = (qt.idx == i0) ? edges_source : edges_ess;
 		for (const edge1D_t &e : edges) {
 			t.idx = qt.idx + e.idx;
 			const float &val = grid[t.idx];
@@ -447,7 +449,7 @@ Grid3DExt minLinkerLength(const Eigen::Matrix4Xf &atomsXyzr,
 	Grid3DExt grid =
 		Grid3DExt::fromSource(sourceXyz, discStep, linkerLength, 0.0f);
 	grid.fillSpheres(atomsXyzr, linkerDiameter * 0.5f, -1.0f);
-	grid.setPathLengths(sourceXyz);
+	grid.setPathLengths(sourceXyz, linkerDiameter + discStep);
 	return grid;
 }
 
