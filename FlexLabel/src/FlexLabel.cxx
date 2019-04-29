@@ -1,7 +1,6 @@
 #include "FlexLabel/FlexLabel.h"
 
 #include "pcg_random.hpp"
-#include "halton_sampler.h"
 
 #include <map>
 #include <random>
@@ -650,41 +649,6 @@ double meanEfficiencyUniform(const Grid3D &g1, const Grid3D &g2, const float R0,
 		e += w * FRETefficiency(tmp.norm(), R0);
 	}
 	return e / totalW;
-}
-
-double meanDistanceHalton(const Grid3D &g1, const Grid3D &g2,
-			  const unsigned nsamples)
-{
-	// Draw point indexes from Halton sequence
-	Halton_sampler halton_sampler;
-	// halton_sampler.init_faure();
-
-	pcg32 rng(pcg_extras::seed_seq_from<std::random_device>{});
-	halton_sampler.init_random(rng);
-
-	Eigen::Vector4i ijk1(0, 0, 0, 0), ijk2(0, 0, 0, 0);
-	double totalW = 0.0;
-	double r = 0., w, w1, w2;
-	Eigen::Vector4f tmp;
-	for (unsigned i = 0; i < nsamples; ++i) {
-		for (int d = 0; d < 3; ++d) {
-			ijk1[d] = halton_sampler.sample(d, i) * g1.shape[d];
-			ijk2[d] = halton_sampler.sample(d + 3, i) * g2.shape[d];
-			assert(ijk1[d] < g1.shape[d] && ijk1[d] >= 0);
-			assert(ijk2[d] < g2.shape[d] && ijk2[d] >= 0);
-		}
-		w1 = g1.value(ijk1[0], ijk1[1], ijk1[2]);
-		w2 = g2.value(ijk2[0], ijk2[1], ijk2[2]);
-		if (w1 <= 0 || w2 <= 0) {
-			continue;
-		}
-		w = w1 * w2;
-		totalW += w;
-		tmp = g1.xyz(ijk1) - g2.xyz(ijk2);
-		tmp[3] = 0.0f;
-		r += w * tmp.norm();
-	}
-	return r / totalW;
 }
 
 double meanDistanceUniform(const Grid3D &g1, const Grid3D &g2,
