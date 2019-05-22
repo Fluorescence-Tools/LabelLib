@@ -111,9 +111,14 @@ public:
 		return arr;
 	}
 
-	/// @brief Converts the index inputs @param ix, @param iy, and
-	/// @param iz, to a 3D vector in a real space pointing to the
-	/// corresponding grid point.
+    /// @brief an vector of grid indices to a cartesian 3D vector pointing to corresponding coordinates
+	/*!
+	 * Converts a 3D grid index vector to a cartesian vector pointing to the coordinates of the
+	 * corresponding grid point.
+	 *
+	 * @param ijk (In) a 3D index vector
+	 * @return 3D vector pointing the the coordinates of the grid point specified by @param ijk
+	 */
 	Eigen::Vector4f xyz(const Eigen::Vector4i &ijk) const
 	{
 		return ijk.cast<float>() * discStep
@@ -121,6 +126,14 @@ public:
 					 originXYZ[2], 0.0f);
 	}
 
+    /// @brief Converts a grid index to a cartesian 3D vector pointing to corresponding coordinates
+	/*!
+	 * Converts grid index to a 3D grid index vector. The grid index vector is converted  to a cartesian
+	 * vector pointing to the coordinates of the corresponding grid point.
+	 *
+	 * @param i (In) grid index
+	 * @return 3D vector pointing the the coordinates of the grid point specified by @param ijk
+	 */
 	Eigen::Vector4f xyz(int i) const
 	{
 		std::array<int, 3> ijk = index3D(i);
@@ -128,8 +141,7 @@ public:
 		return xyz(tmp);
 	}
 
-	/// @brief returns a coordinate list with all coordinates having
-	/// values > 0.0
+	/// @brief returns a coordinate list with all coordinates having values > 0.0
 	Eigen::Matrix4Xf points() const
 	{
 		const int gridSize = grid.size();
@@ -146,8 +158,7 @@ public:
 		return p;
 	}
 
-	/// @brief returns a coordinate list with all coordinates having
-	/// values > 0.0
+	/// @brief returns a coordinate list with all coordinates having values > 0.0
 	std::vector<Eigen::Vector4f> pointsVec() const
 	{
 		const size_t gridSize = grid.size();
