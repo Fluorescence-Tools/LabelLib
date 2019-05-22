@@ -15,7 +15,9 @@ EIGEN_DEFINE_STL_VECTOR_SPECIALIZATION(Eigen::Vector4f)
 /// Can be used for density maps or other maps of scalar variables
 class Grid3D
 {
+
 public:
+
 	/// @brief   space discretization step
 	float discStep;
 
@@ -52,8 +54,15 @@ public:
 		grid.resize(iL * iL * iL, value);
 	}
 
-	/// @brief The scalar value of a certain grid point. The @param ix ,
-	/// @param iy , and @param iz refer to the grid point
+	/*!
+	 * @brief retuns the scalar value of the grid at a point specified by the
+	 * integer grid point numbers @param ix, @param iy, and @param iz.
+	 *
+	 * @param ix (In) integer specifying a Grid point
+	 * @param iy (In) integer specifying a Grid point
+	 * @param iz (In) integer specifying a Grid point
+	 * @return scalar value a the grid point (ix,iy,iz)
+	 */
 	float value(int ix, int iy, int iz) const
 	{
 		return grid[index1D(ix, iy, iz)];
@@ -84,8 +93,15 @@ public:
 		return ijk;
 	}
 
-	/// @brief Calculates using the input indeces @param ix, @param iy, and
-	/// @param iz an 3D vector pointing to the corresponding grid point.
+	/*!
+	 * @brief Calculates using the input indeces @param ix, @param iy, and
+	 * @param iz an 3D vector pointing to the corresponding grid point.
+	 *
+	 * @param ix (In) integer specifying a Grid point
+	 * @param iy (In) integer specifying a Grid point
+	 * @param iz (In) integer specifying a Grid point
+	 * @return
+	 */
 	std::array<float, 3> xyz(int ix, int iy, int iz) const
 	{
 		std::array<float, 3> arr = {float(ix), float(iy), float(iz)};
@@ -148,68 +164,98 @@ public:
 	}
 };
 
-/// \todo Describe all the parameters. Add a more detailed general explanation.
-/// @brief Returns single source shortest path lengths, given the obstacles.
-/// Implementated using Dijkstra algorithm on a 3D grid.
-/// @param atomsXyzr (In) Coordinates and collision radius for each atom in the
-/// array. Number of atoms is the number of columns.
-/// @param sourceXyz (In) Coordinates of the source point
-/// @param discStep (In) Space discretization step.
-/// The Same step is used for X, Y, and Z.
-/// @return Returns a Grid3D of shortest path lengths.
+ /*!
+  * @brief Returns single source shortest path lengths, given the obstacles.
+  * Implemented using Dijkstra algorithm on a 3D grid.
+  *
+  * @param atomsXyzr atomsXyzr (In) Coordinates and collision radius for each atom in the
+  * array. Number of atoms is the number of columns.
+  * @param sourceXyz sourceXyz (In) Coordinates of the source point
+  * @param linkerLength The maximal extension from the attachment point to the center of the dye.
+  * @param linkerDiameter The linker diameter
+  * @param dyeRadius The radius of the dye
+  * @param discStep  discStep (In) Space discretization step. The Same step is used for X, Y, and Z.
+  * @return Returns a Grid3D of shortest path lengths.
+  */
 Grid3D minLinkerLength(const Eigen::Matrix4Xf &atomsXyzr,
-		       const Eigen::Vector3f &sourceXyz,
-		       const float linkerLength, const float linkerDiameter,
-		       const float dyeRadius, const float discStep);
+                       const Eigen::Vector3f &sourceXyz,
+                       float linkerLength, float linkerDiameter,
+                       float dyeRadius, float discStep);
+Grid3D minLinkerLength(std::vector<float> &atomsXyzr,
+                       std::vector<float> &sourceXyz,
+                       float linkerLength, float linkerDiameter,
+                       float dyeRadius, float discStep);
+
 
 Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
-		  const Eigen::Vector3f &sourceXyz, const float linkerLength,
-		  const float linkerDiameter, const float dyeRadius,
-		  const float discStep);
+		  const Eigen::Vector3f &sourceXyz, float linkerLength,
+		  float linkerDiameter, float dyeRadius,
+		  float discStep);
 
-Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
-		  const Eigen::Vector3f &sourceXyz, const float linkerLength,
-		  const float linkerDiameter, const Eigen::Vector3f &dyeRadii,
-		  const float discStep);
 
-/// @brief Adds extra weights to the cells close to the specified points
-/// @param grid (In) Original grid object
-/// @param xyzRQ (In) Coordinates(xyz), "active" radius(R) and extra density(Q)
-/// for each point
-/// @return Returns a Grid3D with modified weights.
+/*!
+ * @brief Adds extra weights to the cells close to the specified points
+ *
+ * @param grid (In) Original grid object
+ * @param xyzRQ (In) Coordinates(xyz), "active" radius(R) and extra density(Q) for each point
+ * @return Returns a Grid3D with modified weights.
+ */
 Grid3D addWeights(const Grid3D &grid,
 		  const Eigen::Matrix<float, 5, Eigen::Dynamic> &xyzRQ);
 
-/// @brief Calculate mean inter-dye distance between two accessible volumes
-/// @param g1 (In) First grid object (donor)
-/// @param g2 (In) Second grid object (acceptor)
-/// @param nsamples (In) Number of samples to draw. Mean distance is determined
-/// stochastically by choosing random pairs of points. Higher nsamples results
-/// in more precise <Rda>.
-/// @return Returns mean inter-dye distance (<Rda>).
+/*!
+ * @brief Calculate mean distance between two accessible volumes
+ *
+ * Calculates the mean distance, <R>, for randomly drawn samples on the @class Grid3D specified by the parameters
+ * @param g1 and @param g2. The number of random distances is specified by the parameter @param nsamples. For a
+ * large number of random samples the mean distance between two accessible volumes represented by the @param g1
+ * and @param g2 can be approximated by <R>. The distance samples are drawn at random. Hence, by choosing
+ * random pairs of points, specified by @param nsamples, the precision of <R> can be increased.
+ *
+ * In a FRET experiment, the @class Grid3D objects @param g1 and @param g2 typically represent donor and acceptor
+ * fluorophores.
+ *
+ * @param g1 (In) First grid object
+ * @param g2 (In) Second grid object
+ * @param nsamples (In) Number random drawn samples to estimate the mean distance between @param g1 and @param g2
+ * @return Returns the mean inter-grid distance (<R>).
+ */
 double meanDistance(const Grid3D &g1, const Grid3D &g2,
-		    const unsigned nsamples = 100000);
+		    unsigned nsamples = 100000);
 
-/// @brief Calculate mean FRET efficiency
-/// @param g1 (In) First grid object (e.g. donor)
-/// @param g2 (In) Second grid object (e.g. acceptor)
-/// @param nsamples (In) Number of samples to draw. Mean distance is determined
-/// stochastically by choosing random pairs of points. Higher nsamples results
-/// in more precise <E>.
-/// @return Returns mean FRET efficiency (<E>).
-double meanEfficiency(const Grid3D &g1, const Grid3D &g2, const float R0,
-		      const unsigned nsamples = 100000);
+/*!
+ * @brief Calculate mean FRET efficiency for two fluorophores that are represented by @class Grid3D objects.
+ *
+ * The mean FRET efficiency, <E>, between two fluorophores represented by @class Grid3D objects for @param nsanmples
+ * randomly drawn distances between the two @class Grid3D objects specified by @param g1 and @param g2 is calculated.
+ * For a large number of samples @param nsamples this corresponds to <E> of the inter-Grid distance distribution.
+ * For every randomly drawn distance the FRET efficiency for that distance given the Förster radius specified
+ * by @param R0 is calculated. These FRET efficiencies are averaged and returned.
+ *
+ * @param g1 (In) First grid object (e.g. donor)
+ * @param g2 (In) Second grid object (e.g. acceptor)
+ * @param R0 (In) Förster radius of the fluorophore pair represented by the @class Grid3D objects @param g1 and @param g1.
+ * @param nsamples (In) Number of random samples to draw. Mean distance is determined
+ * @return Returns mean FRET efficiency (<E>).
+ */
+double meanEfficiency(const Grid3D &g1, const Grid3D &g2, float R0,
+        unsigned nsamples = 100000);
 
-/// @brief Sample inter-grid distances. Inverse transform sampling is used
-/// intrinsically to generate samples, that accurately approximate underlying
-/// distribution.
-/// @param g1 (In) First grid object (e.g. donor)
-/// @param g2 (In) Second grid object (e.g. acceptor)
-/// @param nsamples (In) Number of samples to draw. Distances will be drawn
-/// stochastically by choosing random pairs of points. Higher \p nsamples
-/// results in more accurate distribution.
-/// @return Returns an array of sampled distances.
+///@brief Sample the distances between two grids.
+/*!
+ * This function returns a vector of random distances between two @class Grid3D
+ * objects specified by the parameters @param g1 and @param g2. To accurately approximate the distance distribution,
+ * the distance distribution is sampled by the inverse transform sampling method. Here, the parameter @param nsamples
+ * determines the number of random drawn distances. The accuraty of the sampling can be increased by
+ * increasing the number of samples specified by @param nsamples.
+
+ * @param g1 (In) First grid object (e.g. donor)
+ * @param g2 (In) Second grid object (e.g. acceptor)
+ * @param nsamples (In) Number of random samples.
+ * @return Returns an array of sampled distances.
+ * @see https://en.wikipedia.org/wiki/Inverse_transform_sampling
+ */
 std::vector<float> sampleDistanceDistInv(const Grid3D &g1, const Grid3D &g2,
-					 const unsigned nsamples = 1000000);
+					 unsigned nsamples = 1000000);
 /// \todo Enable doxygen documentation
 #endif // LABELLIB_FLEXLABEL_H

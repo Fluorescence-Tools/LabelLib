@@ -157,5 +157,5 @@ Additional information is available in FPS toolkit paper: [![DOI for citing FPS]
 > Kalinin, S., Peulen, T., Sindbert, S., Rothwell, P.J., Berger, S., Restle, T., Goody, R.S., Gohlke, H. and Seidel, C.A., 2012. A toolkit and benchmark study for FRET-restrained high-precision structural modeling. Nature methods, 9(12), pp.1218-1225.
 
 [1]: https://pymol.org/ "Pymol"
-[2]: FlexLabel/doc/pymol_example.png "dsDNA and an AV surface"
-[3]: FlexLabel/doc/software_overview.svg "LabelLib and other software/libraries"
+[2]: docs/images/pymol_example.png "dsDNA and an AV surface"
+[3]: docs/images/software_overview.svg "LabelLib and other software/libraries"

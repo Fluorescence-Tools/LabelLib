@@ -70,6 +70,15 @@ def gitVersionString():
     return hard_version
 
 
+if 'doc' in sys.argv:
+    cwd = os.getcwd()
+    subprocess.call(
+        "doxygen ./FlexLabel/include/FlexLabel/Doxyfile",
+        shell=True
+    )
+    os.chdir(cwd)
+
+
 setup(
     name='LabelLib',
     version=gitVersionString(),
