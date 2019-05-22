@@ -1,9 +1,9 @@
 # LabelLib
 [![Linux Build Status](https://travis-ci.org/Fluorescence-Tools/LabelLib.svg?branch=master)](https://travis-ci.org/Fluorescence-Tools/LabelLib)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3b300f9db3ae42688619acfde63b1907)](https://www.codacy.com/app/tpeulen/LabelLib?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Fluorescence-Tools/LabelLib&amp;utm_campaign=Badge_Grade)
 [![PyPI Version](https://badge.fury.io/py/LabelLib.svg)](https://pypi.org/project/LabelLib)
 [![Anaconda-Server Version](https://anaconda.org/tpeulen/labellib/badges/version.svg)](https://anaconda.org/tpeulen/labellib)
 [![Anaconda-Server Downloads](https://anaconda.org/tpeulen/labellib/badges/downloads.svg)](https://anaconda.org/tpeulen/labellib)
-
 
 ## General description
 LabelLib is a low-level C++ library for the simulation of small probes flexibly coupled to biomolecules for the 
