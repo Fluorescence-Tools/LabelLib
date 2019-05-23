@@ -450,21 +450,6 @@ Grid3DExt minLinkerLength(const Eigen::Matrix4Xf &atomsXyzr,
 	return grid;
 }
 
-Grid3D minLinkerLength(std::vector<float> &atomsXyzr,
-                       std::vector<float> &sourceXyz,
-                       const float linkerLength, const float linkerDiameter,
-                       const float dyeRadius, const float discStep)
-{
-    Eigen::Map<Eigen::Matrix4f> atomsXyzr_eigen(atomsXyzr.data());
-    Eigen::Map<Eigen::Vector3f> sourceXyz_eigen(atomsXyzr.data());
-	return minLinkerLength(
-            atomsXyzr_eigen,
-            sourceXyz_eigen,
-            linkerLength, linkerDiameter,
-            dyeRadius, discStep
-	        );
-}
-
 Grid3DExt dyeDensityExt(const Eigen::Matrix4Xf &atomsXyzr,
 			const Eigen::Vector3f &sourceXyz,
 			const float linkerLength, const float linkerDiameter,
@@ -486,7 +471,7 @@ Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 	Eigen::VectorXf dyeRadii(1);
 	dyeRadii << dyeRadius;
 	return dyeDensityExt(atomsXyzr, sourceXyz, linkerLength, linkerDiameter,
-			     dyeRadii, discStep);
+	        dyeRadii, discStep);
 }
 
 Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,

@@ -68,7 +68,7 @@ public:
 		return grid[index1D(ix, iy, iz)];
 	}
 
-	/// @brief Converts the parameter @param ix @param iy and @param iz to
+	/// @brief Converts the parameters @param ix @param iy and @param iz to
 	/// an the index of the 1D value array. (3D->1D)
 	int index1D(int ix, int iy, int iz) const
 	{
@@ -93,10 +93,9 @@ public:
 		return ijk;
 	}
 
+	/// @brief Calculates using the input indeces @param ix, @param iy, and iz an
+	/// 3D vector pointing to the corresponding grid point.
 	/*!
-	 * @brief Calculates using the input indeces @param ix, @param iy, and
-	 * @param iz an 3D vector pointing to the corresponding grid point.
-	 *
 	 * @param ix (In) integer specifying a Grid point
 	 * @param iy (In) integer specifying a Grid point
 	 * @param iz (In) integer specifying a Grid point
@@ -141,7 +140,7 @@ public:
 		return xyz(tmp);
 	}
 
-	/// @brief returns a coordinate list with all coordinates having values > 0.0
+	/// @brief returns the coordinates of all grid points with values > 0.0
 	Eigen::Matrix4Xf points() const
 	{
 		const int gridSize = grid.size();
@@ -158,7 +157,7 @@ public:
 		return p;
 	}
 
-	/// @brief returns a coordinate list with all coordinates having values > 0.0
+	/// @brief returns the coordinates of all grid points with values > 0.0
 	std::vector<Eigen::Vector4f> pointsVec() const
 	{
 		const size_t gridSize = grid.size();
@@ -175,42 +174,51 @@ public:
 	}
 };
 
- /*!
-  * @brief Returns a @class Grid3D object containing the shortest path lengths from
-  * a specified starting point considering a set of obstacles.
-  *
-  * Calculates for a probe with a radius of @param dyeRadius attached by a linker
-  * of the length @param linkerLength at the position @param sourceXyz the shortest
-  * path length from the attachment point considering a set of obstacles described
-  * by the parameter @param atomsXyzr. The path length are calculated using Dijkstra
-  * algorithm on a 3D grid. The shortest path length are stored an returned as
-  * a @class Grid3D object with a grid spacing defined by the parameter @param discStep.
-  *
-  * The linker length @param linkerLength is the maximum extension of the linker
-  * to the center of the probe. The attachment point @param sourceXyz is
-  * a starting point specified by the by a vector of cartesian coordinates @param sourceXyz.
-  * The obstacles are spheres. The cartesian coordinates and the radii of the obstacles
-  * are provided by the parameter @param atomsXyzr.
-  *
-  * @param atomsXyzr (In) Coordinates and radii for all obstacles. The number of
-  * obstacles is the number of columns.
-  * @param sourceXyz (In) Coordinates of the source point
-  * @param linkerLength (In) The maximal extension from the attachment point to the center of the probe.
-  * @param linkerDiameter (In) The linker diameter
-  * @param dyeRadius (In) The radius of the dye
-  * @param discStep (In) Grid spacing in X, Y, and Z.
-  * @return Returns a Grid3D with a grid spacing @param discStep containing shortest path lengths.
-  */
+/*!
+ * @brief Returns a @class Grid3D object containing the shortest path lengths from
+ * a specified starting point considering a set of obstacles.
+ *
+ * Calculates for a probe with a radius of @param dyeRadius attached by a linker
+ * of the length @param linkerLength at the position @param sourceXyz the shortest
+ * path length from the attachment point considering a set of obstacles described
+ * by the parameter @param atomsXyzr. The path length are calculated using Dijkstra
+ * algorithm on a 3D grid. The shortest path length are stored an returned as
+ * a @class Grid3D object with a grid spacing defined by the parameter @param discStep.
+ *
+ * The linker length @param linkerLength is the maximum extension of the linker
+ * to the center of the probe. The attachment point @param sourceXyz is
+ * a starting point specified by the by a vector of cartesian coordinates @param sourceXyz.
+ * The obstacles are spheres. The cartesian coordinates and the radii of the obstacles
+ * are provided by the parameter @param atomsXyzr.
+ *
+ * @param atomsXyzr (In) Coordinates and radii for all obstacles. The number of
+ * obstacles is the number of columns.
+ * @param sourceXyz (In) Coordinates of the source point
+ * @param linkerLength (In) The maximal extension from the attachment point to the center of the probe.
+ * @param linkerDiameter (In) The linker diameter
+ * @param dyeRadius (In) The radius of the dye
+ * @param discStep (In) Grid spacing in X, Y, and Z.
+ * @return Returns a Grid3D with a grid spacing of @param discStep containing shortest path lengths.
+ */
 Grid3D minLinkerLength(const Eigen::Matrix4Xf &atomsXyzr,
                        const Eigen::Vector3f &sourceXyz,
                        float linkerLength, float linkerDiameter,
                        float dyeRadius, float discStep);
-Grid3D minLinkerLength(std::vector<float> &atomsXyzr,
-                       std::vector<float> &sourceXyz,
-                       float linkerLength, float linkerDiameter,
-                       float dyeRadius, float discStep);
 
 
+/*!
+ * @brief Computes the accessible volume (AV) for a probe with a single radius and returns the AV as
+ * a @class Grid3D object. Accessible grid points contain positive values.
+ *
+ * @param atomsXyzr (In) Coordinates and radii for all obstacles. The number of
+ * obstacles is the number of columns.
+ * @param sourceXyz (In) Coordinates of the source point
+ * @param linkerLength (In) The maximal extension from the attachment point to the center of the probe.
+ * @param linkerDiameter (In) The linker diameter
+ * @param dyeRadius (In) The radius of the dye
+ * @param discStep (In) Grid spacing in X, Y, and Z.
+ * @return Returns a Grid3D with a grid spacing of @param discStep containing the density of the probe.
+ */
 Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 		  const Eigen::Vector3f &sourceXyz, float linkerLength,
 		  float linkerDiameter, float dyeRadius,
@@ -227,8 +235,8 @@ Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 Grid3D addWeights(const Grid3D &grid,
 		  const Eigen::Matrix<float, 5, Eigen::Dynamic> &xyzRQ);
 
+/// @brief Calculate mean distance between two accessible volumes
 /*!
- * @brief Calculate mean distance between two accessible volumes
  *
  * Calculates the mean distance, <R>, for randomly drawn samples on the @class Grid3D specified by the parameters
  * @param g1 and @param g2. The number of random distances is specified by the parameter @param nsamples. For a
@@ -247,8 +255,8 @@ Grid3D addWeights(const Grid3D &grid,
 double meanDistance(const Grid3D &g1, const Grid3D &g2,
 		    unsigned nsamples = 100000);
 
+/// @brief Calculate mean FRET efficiency for two fluorophores that are represented by @class Grid3D objects.
 /*!
- * @brief Calculate mean FRET efficiency for two fluorophores that are represented by @class Grid3D objects.
  *
  * The mean FRET efficiency, <E>, between two fluorophores represented by @class Grid3D objects for @param nsanmples
  * randomly drawn distances between the two @class Grid3D objects specified by @param g1 and @param g2 is calculated.
@@ -281,5 +289,5 @@ double meanEfficiency(const Grid3D &g1, const Grid3D &g2, float R0,
  */
 std::vector<float> sampleDistanceDistInv(const Grid3D &g1, const Grid3D &g2,
 					 unsigned nsamples = 1000000);
-/// \todo Enable doxygen documentation
+
 #endif // LABELLIB_FLEXLABEL_H
