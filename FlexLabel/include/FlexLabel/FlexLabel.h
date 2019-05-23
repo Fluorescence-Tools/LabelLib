@@ -55,7 +55,7 @@ public:
 	}
 
 	/*!
-	 * @brief retuns the scalar value of the grid at a point specified by the
+	 * @brief returns the scalar value of the grid at a point specified by the
 	 * integer grid point numbers @param ix, @param iy, and @param iz.
 	 *
 	 * @param ix (In) integer specifying a Grid point
@@ -176,17 +176,30 @@ public:
 };
 
  /*!
-  * @brief Returns single source shortest path lengths, given the obstacles.
-  * Implemented using Dijkstra algorithm on a 3D grid.
+  * @brief Returns a @class Grid3D object containing the shortest path lengths from
+  * a specified starting point considering a set of obstacles.
   *
-  * @param atomsXyzr atomsXyzr (In) Coordinates and collision radius for each atom in the
-  * array. Number of atoms is the number of columns.
-  * @param sourceXyz sourceXyz (In) Coordinates of the source point
-  * @param linkerLength The maximal extension from the attachment point to the center of the dye.
-  * @param linkerDiameter The linker diameter
-  * @param dyeRadius The radius of the dye
-  * @param discStep  discStep (In) Space discretization step. The Same step is used for X, Y, and Z.
-  * @return Returns a Grid3D of shortest path lengths.
+  * Calculates for a probe with a radius of @param dyeRadius attached by a linker
+  * of the length @param linkerLength at the position @param sourceXyz the shortest
+  * path length from the attachment point considering a set of obstacles described
+  * by the parameter @param atomsXyzr. The path length are calculated using Dijkstra
+  * algorithm on a 3D grid. The shortest path length are stored an returned as
+  * a @class Grid3D object with a grid spacing defined by the parameter @param discStep.
+  *
+  * The linker length @param linkerLength is the maximum extension of the linker
+  * to the center of the probe. The attachment point @param sourceXyz is
+  * a starting point specified by the by a vector of cartesian coordinates @param sourceXyz.
+  * The obstacles are spheres. The cartesian coordinates and the radii of the obstacles
+  * are provided by the parameter @param atomsXyzr.
+  *
+  * @param atomsXyzr (In) Coordinates and radii for all obstacles. The number of
+  * obstacles is the number of columns.
+  * @param sourceXyz (In) Coordinates of the source point
+  * @param linkerLength (In) The maximal extension from the attachment point to the center of the probe.
+  * @param linkerDiameter (In) The linker diameter
+  * @param dyeRadius (In) The radius of the dye
+  * @param discStep (In) Grid spacing in X, Y, and Z.
+  * @return Returns a Grid3D with a grid spacing @param discStep containing shortest path lengths.
   */
 Grid3D minLinkerLength(const Eigen::Matrix4Xf &atomsXyzr,
                        const Eigen::Vector3f &sourceXyz,
