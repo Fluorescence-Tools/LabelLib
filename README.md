@@ -87,9 +87,23 @@ To access the functionality of LabelLib in PyMOL two basic prerequisites need to
   2) The file [LabelLib_pymol.py](FlexLabel/python/LabelLib_pymol.py) needs to be downloaded and executed from 
   PyMOL's command line interace. 
 
-The file "LabelLib_pymol.py" is executed from PyMOL's command line interface by entering "run LabelLib_pymol.py". 
-Once "LabelLib_pymol.py" is executed Accessible Volumes(AV) can be simulated from PyMOL's command line. The procedure 
-of running "LabelLib_pymol.py" and simulating an AV is shown below for an example:
+These two prerequisite can be fulfiled manually, by copying LabelLib into
+your PyMOL installation folder or by installing both, PyMol and LabelLib
+in the same [conda](https://docs.conda.io/en/latest/miniconda.html) environment
+using precompiled distributions for both.
+
+```bash
+conda install -c tpeulen labellib
+conda install -c schrodinger pymol
+```
+
+Using a PyMol installation that has access to a LabelLib installation, 
+the PyMol script file "LabelLib_pymol.py" is executed from PyMOL's 
+command line interface by entering "run LabelLib_pymol.py". Once, 
+"LabelLib_pymol.py" is executed Accessible Volumes(AV) can be simulated 
+from PyMOL's command line. The procedure of running "LabelLib_pymol.py" 
+and simulating an AV is shown below for an example:
+
 ```python
 cmd.do('run ./LabelLib/FlexLabel/python/LabelLib_pymol.py')
 cmd.fetch('1BNA', async=0)
