@@ -49,8 +49,24 @@ atoms=np.array([
 [0.0, -4.0, 95.0, 1.5]]).astype(float).T
 source=np.array([0.0, -4.0, 0.0]).astype(float)
 
-av1 = ll.dyeDensityAV1(atoms, source, 20.0, 2.0, 3.5, 0.9)
-minLengthGrid = ll.minLinkerLength(atoms, source, 20.0, 2.0, 3.5, 0.9)
+linker_length = 20.0
+linker_width = 2.0
+dye_radius_1 = 3.5
+simulation_grid_spaceing = 0.9
+av1 = ll.dyeDensityAV1(
+  atoms, source, 
+  linker_length, 
+  linker_width, 
+  dye_radius_1, 
+  simulation_grid_spaceing
+)
+minLengthGrid = ll.minLinkerLength(
+  atoms, source, 
+  linker_length, 
+  linker_width, 
+  dye_radius_1, 
+  simulation_grid_spaceing
+)
 
 # Grid3D initialization
 #g = ll.Grid3D(av1.shape, av1.originXYZ, av1.discStep)
