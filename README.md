@@ -1,4 +1,5 @@
 # LabelLib
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2855c47992414fb2b9622309897f7621)](https://app.codacy.com/app/tpeulen/LabelLib?utm_source=github.com&utm_medium=referral&utm_content=Fluorescence-Tools/LabelLib&utm_campaign=Badge_Grade_Dashboard)
 [![Linux Build Status](https://travis-ci.org/Fluorescence-Tools/LabelLib.svg?branch=master)](https://travis-ci.org/Fluorescence-Tools/LabelLib)
 [![PyPI Version](https://badge.fury.io/py/LabelLib.svg)](https://pypi.org/project/LabelLib)
 [![Anaconda-Server Version](https://anaconda.org/tpeulen/labellib/badges/version.svg)](https://anaconda.org/tpeulen/labellib)
