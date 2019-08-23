@@ -60,5 +60,6 @@ PYBIND11_MODULE(LabelLib, m)
 	        .def_readwrite("discStep", &Grid3D::discStep)
 	        .def_readwrite("originXYZ", &Grid3D::originXYZ)
 	        .def_readwrite("shape", &Grid3D::shape)
-	        .def_readwrite("grid", &Grid3D::grid);
+	        .def_readwrite("grid", &Grid3D::grid)
+	        .def("points",&Grid3D::points);
 }

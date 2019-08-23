@@ -112,8 +112,8 @@ public:
 		return xyz(tmp);
 	}
 
-	/// @brief returns a coordinate list with all coordinates having
-	/// values > 0.0
+	/// @brief returns a list of cartesian points and corresponding
+	/// weights for cells, that have density values > 0.0
 	Eigen::Matrix4Xf points() const
 	{
 		const int gridSize = grid.size();

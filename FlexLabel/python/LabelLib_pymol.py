@@ -86,38 +86,16 @@ def makeAtom(index, xyz, vdw, name='AV'):
 
 def avToModel(av):
   m = chempy.models.Indexed()
-  
-  area = av.shape[0] * av.shape[1]
-  nx, ny, nz = av.shape
-  ox, oy, oz = av.originXYZ
-  dx = av.discStep
-  g = np.array(av.grid).reshape((nx, ny, nz),order='F')
-  
-  MP=np.array([0.0,0.0,0.0])
-  vol=0.0
-  iat = 0
-  for iz in range(nz):
-    for iy in range(ny):
-      for ix in range(nx):
-        val = g[ix, iy, iz]
-        if val <= 0.0:
-          continue
-        
-        iat += 1
-        resi = int(iat / 10)
-        
-        x = ix * dx + ox
-        y = iy * dx + oy
-        z = iz * dx + oz
-        
-        MP+=np.array([x,y,z])*val
-        vol+=val
-        
-        m.add_atom(makeAtom(iat,[x,y,z],dx * 0.5))
-  
-  MP=MP/vol
-  if iat>0:
-    m.add_atom(makeAtom(iat+1,list(MP),2.0,'AVmp'))
+  points = av.points()
+  r = av.discStep * 0.5
+
+  for i, p in enumerate(points.T):
+    x, y, z, w = p
+    m.add_atom(makeAtom(i+1, [x, y, z], r))
+
+  MP = np.average(points[:3,:],axis=1,weights=points[3])
+  if points.shape[1]>0:
+    m.add_atom(makeAtom(points.shape[1]+1,list(MP),2.0,'AVmp'))
   
   m.update_index()
   return m

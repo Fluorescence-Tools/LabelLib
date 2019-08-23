@@ -2,31 +2,14 @@ import LabelLib as ll
 import numpy as np
 
 def savePqr(fileName, grid):
+  points = grid.points()
+  template = 'ATOM{0: 7}   AV  AV{1: 6}{2:12.1f}{3:8.1f}{4:8.1f}{5:8.2f}{6:7.3f}\n'
+  r = grid.discStep * 0.5
   with open(fileName, "w") as out:
-      area = grid.shape[0] * grid.shape[1]
-      nx, ny, nz = grid.shape
-      ox, oy, oz = grid.originXYZ
-      dx = grid.discStep
-      g = np.array(grid.grid).reshape((nx, ny, nz),order='F')
-      
-      iat = 0
-      for iz in range(nz):
-        for iy in range(ny):
-          for ix in range(nx):
-            val = g[ix, iy, iz]
-            if val <= 0.0:
-              continue
-            
-            iat += 1
-            resi = int(iat / 10)
-            
-            x = ix * dx + ox
-            y = iy * dx + oy
-            z = iz * dx + oz
-            
-            sz = 'ATOM{0: 7}   AV  AV{1: 6}{2:12.1f}{3:8.1f}{4:8.1f}{5:8.2f}{6:7.3f}\n'
-            sz = sz.format(iat, resi, x, y, z, val, dx * 0.5)
-            out.write(sz)
+    for i, p in enumerate(points.T):
+      x, y, z, w = p
+      sz = template.format(i + 1, 1, x, y, z, w, r)
+      out.write(sz)
 
 def savePqrFromAtoms(fileName, atoms):
   sz = 'ATOM{0: 7}    X   X{1: 6}{2:12.1f}{3:8.1f}{4:8.1f}{5:8.2f}{6:7.3f}\n'
