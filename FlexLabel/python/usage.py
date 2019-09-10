@@ -16,8 +16,8 @@ def savePqrFromAtoms(fileName, atoms):
   with open(fileName, "w") as out:
     for i,at in enumerate(atoms.T):
       out.write(sz.format(i, i, at[0], at[1], at[2], 1.0, at[3]))
-    
-  
+
+
 atoms=np.array([
 [0.0, -4.0, 22.0, 1.5],
 [9.0, 0.0, 0.0, 3.0],
@@ -37,17 +37,17 @@ linker_width = 2.0
 dye_radius_1 = 3.5
 simulation_grid_spaceing = 0.9
 av1 = ll.dyeDensityAV1(
-  atoms, source, 
-  linker_length, 
-  linker_width, 
-  dye_radius_1, 
+  atoms, source,
+  linker_length,
+  linker_width,
+  dye_radius_1,
   simulation_grid_spaceing
 )
 minLengthGrid = ll.minLinkerLength(
-  atoms, source, 
-  linker_length, 
-  linker_width, 
-  dye_radius_1, 
+  atoms, source,
+  linker_length,
+  linker_width,
+  dye_radius_1,
   simulation_grid_spaceing
 )
 

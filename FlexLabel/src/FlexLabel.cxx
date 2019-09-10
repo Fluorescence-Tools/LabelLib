@@ -61,7 +61,7 @@ public:
 			std::numeric_limits<int>::max();
 	}
 
-	Grid3DExt(const Grid3D &grid) : Grid3D(grid)
+	explicit Grid3DExt(const Grid3D &grid) : Grid3D(grid)
 	{
 		originAdj = Vec4f(originXYZ).array() - 0.5f * discStep;
 		originAdj[3] = 0.0f;
@@ -104,7 +104,7 @@ public:
 private:
 	Eigen::Vector4f originAdj; // originXYZ - discStep*0.5
 	Eigen::Array4i shape4i;
-	float devNull;
+	float devNull = 0.0f;
 
 	Eigen::Array4i getIjk(const Eigen::Vector4f &xyz);
 
@@ -154,9 +154,8 @@ std::vector<Grid3DExt::edge_t> Grid3DExt::essentialNeighbours()
 	allowedDist << 1.0f, 2.0f, 3.0f, 5.0f, 6.0f;
 	allowedDist = allowedDist.cwiseSqrt() * discStep;
 	std::vector<edge_t> edges;
-	float minDiff;
 	for (const edge_t &e : fullList) {
-		minDiff = (allowedDist.array() - e.r).cwiseAbs().minCoeff();
+		float minDiff = (allowedDist.array() - e.r).cwiseAbs().minCoeff();
 		if (minDiff < discStep * 0.01f) {
 			edges.push_back(e);
 		}
@@ -257,10 +256,9 @@ void Grid3DExt::excludeConcentricSpheres(const Eigen::Matrix4Xf &xyzR,
 	const float l2out = std::pow(maxL + maxRclash, 2.0f);
 
 	Vector4f at;
-	float rAt;
 	for (int iAtom = 0; iAtom < xyzR.cols(); ++iAtom) {
 		at = xyzR.col(iAtom);
-		rAt = at[3];
+		float rAt = at[3];
 		at[3] = 0.0f;
 		const float dist2 = (center - at).squaredNorm();
 		if (dist2 > l2out) {
@@ -594,7 +592,7 @@ double meanDistanceInv(const Grid3D &g1, const Grid3D &g2,
 }
 
 std::vector<float> sampleDistanceDistInv(const Grid3D &g1, const Grid3D &g2,
-	const unsigned nsamples)
+					 const unsigned nsamples)
 {
 	// Draw distances using Inverse transform sampling
 
@@ -636,13 +634,12 @@ double meanEfficiencyUniform(const Grid3D &g1, const Grid3D &g2, const float R0,
 	const unsigned size2 = p2.cols();
 
 	double totalW = 0.0;
-	double e = 0., w;
-	unsigned i, j;
+	double e = 0.;
 	Eigen::Vector4f tmp;
 	for (unsigned s = 0; s < nsamples; s++) {
-		i = rng(size1);
-		j = rng(size2);
-		w = p1(3, i) * p2(3, j);
+		unsigned i = rng(size1);
+		unsigned j = rng(size2);
+		double w = p1(3, i) * p2(3, j);
 		totalW += w;
 		tmp = p1.col(i) - p2.col(j);
 		tmp[3] = 0.0f;
@@ -664,13 +661,12 @@ double meanDistanceUniform(const Grid3D &g1, const Grid3D &g2,
 	const unsigned size2 = p2.cols();
 
 	double totalW = 0.0;
-	double r = 0., w;
-	unsigned i, j;
+	double r = 0.;
 	Eigen::Vector4f tmp;
 	for (unsigned s = 0; s < nsamples; s++) {
-		i = rng(size1);
-		j = rng(size2);
-		w = p1(3, i) * p2(3, j);
+		unsigned i = rng(size1);
+		unsigned j = rng(size2);
+		double w = p1(3, i) * p2(3, j);
 		totalW += w;
 		tmp = p1.col(i) - p2.col(j);
 		tmp[3] = 0.0f;
