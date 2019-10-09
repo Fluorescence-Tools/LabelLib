@@ -1,0 +1,17 @@
+name: labellib
+
+channels:
+  - fluorescence-tools
+  - tpeulen
+  - conda-forge
+  - defaults
+
+dependencies:
+  - cmake
+  - eigen
+  - pybind11
+  - setuptools
+  - numpy >=1.10
+  - libcxx
+  - python=3.7
+  - setuptools
