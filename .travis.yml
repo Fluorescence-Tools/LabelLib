@@ -27,9 +27,6 @@ addons:
     - clang
 install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update && brew install md5sha1sum && pyenv install -s 3.7-dev; fi
-#- source devtools/travis-ci/install_miniconda.sh
-#- conda config --add channels omnia
-#- conda config --add channels conda-forge # hightest priority
 script:
   - pyenv global `pyenv versions | grep "^ *$PYTHON" | head -n1`
   - mkdir build && cd build
