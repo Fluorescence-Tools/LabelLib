@@ -78,14 +78,11 @@ Eigen::Matrix4Xf readPqr(const std::string &fName)
 
 float checksum(const Grid3D &grid)
 {
-	float sum = grid.discStep * grid.grid.size();
-	for (int i = 0; i < 3; ++i) {
-		sum += grid.originXYZ[i] + grid.shape[i];
-	}
-	for (const float &v : grid.grid) {
-		sum += v;
-	}
-	return sum;
+	using std::accumulate;
+	return grid.discStep * grid.grid.size()
+		+ accumulate(grid.originXYZ.begin(), grid.originXYZ.end(), 0.0f)
+		+ accumulate(grid.shape.begin(), grid.shape.end(), 0)
+		+ accumulate(grid.grid.begin(), grid.grid.end(), 0.0f);
 }
 
 void printDistanceHist(const std::vector<float> &distances)
@@ -138,7 +135,6 @@ int main()
 		atoms.col(iat) = atoms.col(10);
 	}
 
-
 	/*atoms= readPqr("short_helix.pqr");
 	atoms(3, 56) = 0.0f; //remove the attachment atom itself
 	source = atoms.col(56).head<3>();*/
@@ -152,7 +148,7 @@ int main()
 	Grid3D grid = minLinkerLength(atoms, source, linkerL, linkerD, dyeR,
 				      discStep);
 	// savePqr("testMinL.pqr", grid);
-	if (fabs(checksum(grid) - 667073.62500f) > 0.00001f) {
+	if (fabs(checksum(grid) - 667076.87500f) > 0.00001f) {
 		cout << "minLinkerLength() produced an unexpected result\n";
 		cout << "checksum = " << std::setprecision(5) << std::fixed
 		     << checksum(grid) << endl;
@@ -167,7 +163,7 @@ int main()
 	cout << "AV1 calculation took: " << dtMs << " ms" << endl;
 	// savePqr("testDensityAV1.pqr", grid);
 
-	if (fabs(checksum(grid) - 50183.00000f) > 0.00001f) {
+	if (fabs(checksum(grid) - 50182.99219f) > 0.00001f) {
 		cout << "dyeDensity() AV1 produced an unexpected result\n";
 		cout << "checksum = " << std::setprecision(5) << std::fixed
 		     << checksum(grid) << endl;
@@ -194,7 +190,7 @@ int main()
 	// Takes 16 ms on a Core i7-4930K CPU
 	cout << "AV3 calculation took: " << dtMs << " ms" << endl;
 	// savePqr("testDensityAV3.pqr", grid);
-	if (fabs(checksum(grid) - 49989.75391f) > 0.00001f) {
+	if (fabs(checksum(grid) - 49991.96094f) > 0.00001f) {
 		cout << "dyeDensity() AV3 produced an unexpected result\n";
 		cout << "checksum = " << std::setprecision(5) << std::fixed
 		     << checksum(grid) << endl;
@@ -216,7 +212,7 @@ int main()
 	// Takes 4.5 ms on a Core i7-4930K CPU
 	cout << "addWeights took: " << dtMs << " ms " << endl;
 	// savePqr("testContactDensityAV3.pqr", grid);
-	if (fabs(checksum(grid) - 117905.71875f) > 0.00001f) {
+	if (fabs(checksum(grid) - 117907.15625f) > 0.00001f) {
 		cout << "addWeights() produced an unexpected result\n";
 		cout << "checksum = " << std::setprecision(5) << std::fixed
 		     << checksum(grid) << endl;
