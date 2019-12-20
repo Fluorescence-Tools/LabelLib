@@ -217,6 +217,8 @@ std::vector<Grid3DExt::edge_t> Grid3DExt::neighbourEdges(const float maxR) const
 		}
 	}
 	idxs.shrink_to_fit();
+	// change sort to stable_sort to preserve order of equivalent distances (for debugging)
+	// std::stable_sort(idxs.begin(), idxs.end(),
 	std::sort(idxs.begin(), idxs.end(),
 		  [](const edge_t &lhs, const edge_t &rhs) {
 			  return lhs.r < rhs.r;
