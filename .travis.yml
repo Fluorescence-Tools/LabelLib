@@ -25,8 +25,14 @@ addons:
     - libeigen3-dev
     - g++
     - clang
+  homebrew:
+    packages:
+      - md5sha1sum
+    update: true
+
+addons:
 install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update && brew unlink md5sha1sum && brew install coreutils && pyenv install -s 3.7-dev; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install -s 3.7-dev; fi
 script:
   - pyenv global `pyenv versions | grep "^ *$PYTHON" | head -n1`
   - mkdir build && cd build
