@@ -33,5 +33,6 @@ repository: https://upload.pypi.org/legacy/
 username: $PYPI_USER
 password: $PYPI_PASS
 EOF
-/opt/_internal/*/bin/twine upload /io/wheelhouse/*
+( cd /io; git submodule update --init; ${PYBIN}/python3 setup.py sdist)
+/opt/_internal/*/bin/twine upload /io/wheelhouse/* /io/dist/*.tar.gz
 fi
