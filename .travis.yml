@@ -1,40 +1,53 @@
-sudo: false
+sudo: required
 language: cpp
-dist: xenial
-compiler:
-  - clang
-  - gcc
-os:
-  - osx
-  - linux
-env:
-  - PYTHON=2.7
-  - PYTHON=3.7
-matrix:
-  exclude:
-    - os: linux
+dist: focal
+#addons:
+  #apt:
+    #packages:
+    #- python-numpy
+    #- libboost-dev
+    #- libeigen3-dev
+    #- g++
+homebrew_addons:
+    addons: &homebrew
+        packages:
+            - md5sha1sum
+        update: true
+    
+jobs:
+  include:
+    - name: Ubuntu-python2-make
+      stage: make
+      services: docker
+      script: docker run --user $(id -u):$(id -g) --rm -v ${TRAVIS_BUILD_DIR}:/io:rw quay.io/pypa/manylinux1_x86_64 /io/build_wheels.sh 2
+    - name: Ubuntu-python3-make
+      stage: make
+      services: docker
+      script: docker run --user $(id -u):$(id -g) --rm -v ${TRAVIS_BUILD_DIR}:/io:rw quay.io/pypa/manylinux1_x86_64 /io/build_wheels.sh 3
+    - name: macOS-python2-make
+      stage: make
+      os: osx
+      env: PYTHON=2.7
       compiler: clang
-    - os: osx
-      compiler: gcc
-addons:
-  apt:
-    packages:
-    - csh
-    - python-numpy
-    - libboost-dev
-    - libeigen3-dev
-    - g++
-    - clang
-  homebrew:
-    packages:
-      - md5sha1sum
-    update: true
-
-addons:
-install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install -s 3.7-dev; fi
-script:
-  - pyenv global `pyenv versions | grep "^ *$PYTHON" | head -n1`
-  - mkdir build && cd build
-  - cmake -DPYTHON_EXECUTABLE:FILEPATH=`pyenv which python$PYTHON` ..
-  - make
+      addons: *homebrew
+      install: pyenv install -s 3.7-dev
+      script: ./make_osx.sh
+    - name: macOS-python3
+      stage: make
+      os: osx
+      env: PYTHON=3.7
+      compiler: clang
+      addons: *homebrew
+      install: pyenv install -s 3.7-dev
+      script: ./make_osx.sh
+    - name: deploy pypi
+      stage: deploy
+      services: docker
+      script: docker run --user $(id -u):$(id -g) --rm -v ${TRAVIS_BUILD_DIR}:/io:rw quay.io/pypa/manylinux1_x86_64 /io/upload_pypi.sh
+      
+stages:
+    - make
+    - name: deploy
+      on:
+        branch = master
+        tags: true
