@@ -1,13 +1,7 @@
 sudo: required
 language: cpp
 dist: focal
-#addons:
-  #apt:
-    #packages:
-    #- python-numpy
-    #- libboost-dev
-    #- libeigen3-dev
-    #- g++
+
 homebrew_addons:
     addons: &homebrew
         packages:
@@ -44,10 +38,10 @@ jobs:
       stage: deploy
       services: docker
       script: docker run --user $(id -u):$(id -g) --rm -v ${TRAVIS_BUILD_DIR}:/io:rw quay.io/pypa/manylinux1_x86_64 /io/upload_pypi.sh
-      
+
 stages:
     - make
     - name: deploy
       on:
-        branch = master
+        branch: master
         tags: true
