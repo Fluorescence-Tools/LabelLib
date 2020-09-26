@@ -13,11 +13,11 @@ jobs:
     - name: Ubuntu-python2-make
       stage: make
       services: docker
-      script: docker run --user $(id -u):$(id -g) --rm -v ${TRAVIS_BUILD_DIR}:/io:rw quay.io/pypa/manylinux1_x86_64 ls /io
+      script: docker run --user $(id -u):$(id -g) --rm -v ${TRAVIS_BUILD_DIR}:/io:rw quay.io/pypa/manylinux1_x86_64 /io/build-wheels.sh 2
     - name: Ubuntu-python3-make
       stage: make
       services: docker
-      script: docker run --user $(id -u):$(id -g) --rm -v ${TRAVIS_BUILD_DIR}:/io:rw quay.io/pypa/manylinux1_x86_64 /io/build_wheels.sh 3
+      script: docker run --rm -v ${TRAVIS_BUILD_DIR}:/io:rw quay.io/pypa/manylinux1_x86_64 /io/build-wheels.sh 3
     - name: macOS-python2-make
       stage: make
       os: osx
