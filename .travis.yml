@@ -1,40 +1,52 @@
-sudo: false
 language: cpp
-dist: xenial
-compiler:
-  - clang
-  - gcc
-os:
-  - osx
-  - linux
-env:
-  - PYTHON=2.7
-  - PYTHON=3.7
-matrix:
-  exclude:
-    - os: linux
+os: linux
+dist: focal
+  
+jobs:
+  include:
+    - name: Ubuntu-python2-make
+      stage: make
+      services: docker
+      script: docker run --rm -v ${TRAVIS_BUILD_DIR}:/io:rw -w="/io" quay.io/pypa/manylinux1_x86_64 /io/build-wheels.sh 2
+      workspaces:
+        create:
+          name: wheels2
+          paths:
+            - wheelhouse
+    - name: Ubuntu-python3-make
+      stage: make
+      services: docker
+      script: docker run --rm -v ${TRAVIS_BUILD_DIR}:/io:rw -w="/io" quay.io/pypa/manylinux1_x86_64 /io/build-wheels.sh 3
+      workspaces:
+        create:
+          name: wheels3
+          paths:
+            - wheelhouse
+            - dist
+    - name: macOS-python2-make
+      stage: make
+      os: osx
+      env: PYTHON=2.7
       compiler: clang
-    - os: osx
-      compiler: gcc
-addons:
-  apt:
-    packages:
-    - csh
-    - python-numpy
-    - libboost-dev
-    - libeigen3-dev
-    - g++
-    - clang
-  homebrew:
-    packages:
-      - md5sha1sum
-    update: true
+      install: pyenv install -s 3.7-dev
+      script: ./make_osx.sh
+    - name: macOS-python3
+      stage: make
+      os: osx
+      env: PYTHON=3.7
+      compiler: clang
+      install: pyenv install -s 3.7-dev
+      script: ./make_osx.sh
+    - name: deploy pypi
+      stage: deploy
+      services: docker
+      workspaces:
+        use:
+          - wheels3
+          - wheels2
+      script: docker run --rm -e PYPI_USER -e PYPI_PASS -v ${TRAVIS_BUILD_DIR}:/io:rw -w="/io" quay.io/pypa/manylinux1_x86_64 /io/pypi-upload.sh
 
-addons:
-install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install -s 3.7-dev; fi
-script:
-  - pyenv global `pyenv versions | grep "^ *$PYTHON" | head -n1`
-  - mkdir build && cd build
-  - cmake -DPYTHON_EXECUTABLE:FILEPATH=`pyenv which python$PYTHON` ..
-  - make
+stages:
+    - make
+    - name: deploy
+      if: tag IS present
