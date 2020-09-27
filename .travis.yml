@@ -13,10 +13,7 @@ jobs:
     - name: Ubuntu-python2-make
       stage: make
       services: docker
-      script: 
-        - docker run --rm -v ${TRAVIS_BUILD_DIR}:/io:rw -w="/io" quay.io/pypa/manylinux1_x86_64 /io/build-wheels.sh 2
-        - ls wheelhouse
-        - ls dist
+      script: docker run --rm -v ${TRAVIS_BUILD_DIR}:/io:rw -w="/io" quay.io/pypa/manylinux1_x86_64 /io/build-wheels.sh 2
     - name: Ubuntu-python3-make
       stage: make
       services: docker
@@ -40,7 +37,10 @@ jobs:
     - name: deploy pypi
       stage: deploy
       services: docker
-      script: docker run --rm -e PYPI_USER -e PYPI_PASS -v ${TRAVIS_BUILD_DIR}:/io:rw -w="/io" quay.io/pypa/manylinux1_x86_64 /io/pypi-upload.sh
+      script:
+        - ls
+        - ls dist wheelhouse
+        - docker run --rm -e PYPI_USER -e PYPI_PASS -v ${TRAVIS_BUILD_DIR}:/io:rw -w="/io" quay.io/pypa/manylinux1_x86_64 /io/pypi-upload.sh
 
 stages:
     - make
