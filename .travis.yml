@@ -1,13 +1,7 @@
-sudo: required
 language: cpp
+os: linux
 dist: focal
-
-homebrew_addons:
-    addons: &homebrew
-        packages:
-            - md5sha1sum
-        update: true
-    
+  
 jobs:
   include:
     - name: Ubuntu-python2-make
@@ -23,7 +17,6 @@ jobs:
       os: osx
       env: PYTHON=2.7
       compiler: clang
-      addons: *homebrew
       install: pyenv install -s 3.7-dev
       script: ./make_osx.sh
     - name: macOS-python3
@@ -31,13 +24,11 @@ jobs:
       os: osx
       env: PYTHON=3.7
       compiler: clang
-      addons: *homebrew
       install: pyenv install -s 3.7-dev
       script: ./make_osx.sh
     - name: deploy pypi
       stage: deploy
       services: docker
-      skip_cleanup: true
       script:
         - ls
         - ls dist wheelhouse
@@ -46,5 +37,5 @@ jobs:
 stages:
     - make
     - name: deploy
-      if: tag = true
+      if: tag IS present
     
