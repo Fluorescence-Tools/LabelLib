@@ -37,14 +37,14 @@ jobs:
     - name: deploy pypi
       stage: deploy
       services: docker
+      skip_cleanup: true
       script:
         - ls
         - ls dist wheelhouse
-        - docker run --rm -e PYPI_USER -e PYPI_PASS -v ${TRAVIS_BUILD_DIR}:/io:rw -w="/io" quay.io/pypa/manylinux1_x86_64 /io/pypi-upload.sh
+        - echo docker run --rm -e PYPI_USER -e PYPI_PASS -v ${TRAVIS_BUILD_DIR}:/io:rw -w="/io" quay.io/pypa/manylinux1_x86_64 /io/pypi-upload.sh
 
 stages:
     - make
     - name: deploy
-      on:
-        branch: master
-        tags: true
+      if: branch = master AND tag = true
+    
