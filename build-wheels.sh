@@ -21,15 +21,10 @@ ${DEFAULT_BIN}/python3 setup.py sdist
 # Compile wheels
 for PYBIN in /opt/python/cp${VERSION_PREFIX}*/bin; do
     "${PYBIN}/pip" install numpy
-    "${PYBIN}/pip" wheel ./ -w wheelhouse/ 
+    "${PYBIN}/pip" wheel ./ -w wheelhouse_tmp/ 
 done
 
 # Bundle external shared libraries into the wheels
-for whl in wheelhouse/LabelLib-*.whl; do
+for whl in wheelhouse_tmp/LabelLib-*.whl; do
     auditwheel repair "$whl" -w ./wheelhouse/
 done
-
-#DEBUG
-echo "PYPI_USER:<${PYPI_USER}>"
-pwd
-ls
