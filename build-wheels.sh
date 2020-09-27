@@ -15,7 +15,7 @@ DEFAULT_BIN=/opt/python/cp37-cp37m/bin
 ln -s /opt/_internal/*/bin/cmake /usr/bin/cmake
 
 #create the source package
-git submodule update --init; 
+git submodule update --init
 ${DEFAULT_BIN}/python3 setup.py sdist
 
 # Compile wheels
@@ -31,3 +31,5 @@ done
 
 #DEBUG
 echo "PYPI_USER:<${PYPI_USER}>"
+pwd
+ls

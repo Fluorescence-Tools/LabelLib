@@ -14,12 +14,12 @@ jobs:
       stage: make
       services: docker
       script: 
-        - docker run --rm -e PYPI_USER -v ${TRAVIS_BUILD_DIR}:/io:rw quay.io/pypa/manylinux1_x86_64 /io/build-wheels.sh 2
+        - docker run --rm -e PYPI_USER -v ${TRAVIS_BUILD_DIR}:/io:rw -w="/io" quay.io/pypa/manylinux1_x86_64 /io/build-wheels.sh 2
         - ls wheels
     - name: Ubuntu-python3-make
       stage: make
       services: docker
-      script: docker run --rm -v ${TRAVIS_BUILD_DIR}:/io:rw quay.io/pypa/manylinux1_x86_64 /io/build-wheels.sh 3
+      script: docker run --rm -v ${TRAVIS_BUILD_DIR}:/io:rw -w="/io" quay.io/pypa/manylinux1_x86_64 /io/build-wheels.sh 3
     - name: macOS-python2-make
       stage: make
       os: osx
