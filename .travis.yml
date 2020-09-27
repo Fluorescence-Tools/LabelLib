@@ -8,10 +8,21 @@ jobs:
       stage: make
       services: docker
       script: docker run --rm -v ${TRAVIS_BUILD_DIR}:/io:rw -w="/io" quay.io/pypa/manylinux1_x86_64 /io/build-wheels.sh 2
+      workspaces:
+        create:
+          name: wheels2
+          paths:
+            - wheelhouse
     - name: Ubuntu-python3-make
       stage: make
       services: docker
       script: docker run --rm -v ${TRAVIS_BUILD_DIR}:/io:rw -w="/io" quay.io/pypa/manylinux1_x86_64 /io/build-wheels.sh 3
+      workspaces:
+        create:
+          name: wheels3
+          paths:
+            - wheelhouse
+            - dist
     - name: macOS-python2-make
       stage: make
       os: osx
@@ -29,6 +40,10 @@ jobs:
     - name: deploy pypi
       stage: deploy
       services: docker
+      workspaces:
+        use:
+          - wheels3
+          - wheels2
       script:
         - ls
         - ls dist wheelhouse
