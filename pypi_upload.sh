@@ -26,4 +26,4 @@ password = $PYPI_PASS
 EOF
 
 "${DEFAULT_BIN}/pip" install twine
-"${DEFAULT_BIN}/twine" upload ./wheelhouse/LabelLib-*.whl ./dist/LabelLib-*.tar.gz
+"${DEFAULT_BIN}/twine" upload ./wheelhouse/LabelLib-*.whl ./wheelhouse/LabelLib-*.tar.gz

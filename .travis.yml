@@ -4,47 +4,47 @@ dist: focal
   
 jobs:
   include:
-    - name: Ubuntu-python2-make
+    - name: Linux
       stage: make
       services: docker
-      script: docker run --rm -v ${TRAVIS_BUILD_DIR}:/io:rw -w="/io" quay.io/pypa/manylinux1_x86_64 /io/build-wheels.sh 2
+      script: docker run --rm -v ${TRAVIS_BUILD_DIR}:/io:rw -w="/io" quay.io/pypa/manylinux1_x86_64 /io/build_linux.sh
       workspaces:
         create:
-          name: wheels2
-          paths:
-            - wheelhouse
-    - name: Ubuntu-python3-make
-      stage: make
-      services: docker
-      script: docker run --rm -v ${TRAVIS_BUILD_DIR}:/io:rw -w="/io" quay.io/pypa/manylinux1_x86_64 /io/build-wheels.sh 3
-      workspaces:
-        create:
-          name: wheels3
-          paths:
-            - wheelhouse
-            - dist
-    - name: macOS-python2-make
+          name: linux
+          paths: wheelhouse
+    - name: macOS-python2
       stage: make
       os: osx
       env: PYTHON=2.7
       compiler: clang
       install: pyenv install -s 3.7-dev
-      script: ./make_osx.sh
+      script: ./build_osx.sh
     - name: macOS-python3
       stage: make
       os: osx
       env: PYTHON=3.7
       compiler: clang
       install: pyenv install -s 3.7-dev
-      script: ./make_osx.sh
+      script: ./build_osx.sh
+    - name: Windows
+      stage: make
+      os: windows
+      language: sh
+      script: ./build_win.sh
+      workspaces:
+        create:
+          name: windows
+          paths: C:/wheelhouse
     - name: deploy pypi
       stage: deploy
       services: docker
       workspaces:
         use:
-          - wheels3
-          - wheels2
-      script: docker run --rm -e PYPI_USER -e PYPI_PASS -v ${TRAVIS_BUILD_DIR}:/io:rw -w="/io" quay.io/pypa/manylinux1_x86_64 /io/pypi-upload.sh
+          - linux
+          - windows
+      script: 
+        - mv C:/wheelhouse/* wheelhouse/
+        - docker run --rm -e PYPI_USER -e PYPI_PASS -v ${TRAVIS_BUILD_DIR}:/io:rw -w="/io" quay.io/pypa/manylinux1_x86_64 /io/pypi_upload.sh
 
 stages:
     - make

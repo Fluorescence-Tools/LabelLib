@@ -58,16 +58,17 @@ class CMakeBuild(build_ext):
 
 
 def gitVersionString():
-  hard_version="2018.12.14"
   try:
-    out = check_output(['git', 'show', '-s', '--format=%cd', '--date=short'])
-    out = out.decode().replace('-','.').strip()
-    if out != hard_version:
-        print("WARNING: git-based version ({}) "
-              "does not match the default version ({})!".format(out,hard_version))
+    out = check_output(['git', 'show', '-s', '--format=%cd', '--date=short']).decode()
+    out = out.replace('-','.').strip()
+    tag_version = check_output(['git', 'describe', '--tags']).decode()
+    if out != tag_version:
+        print("WARNING: date-based version ({}) "
+              "does not match the tag ({})!".format(out,tag_version))
     return out
   except CalledProcessError:
-    return hard_version
+    #sys.exit(1)
+    return "unknown"
 
 
 setup(
