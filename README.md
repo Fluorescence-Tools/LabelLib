@@ -1,5 +1,4 @@
 # LabelLib
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2855c47992414fb2b9622309897f7621)](https://app.codacy.com/app/tpeulen/LabelLib?utm_source=github.com&utm_medium=referral&utm_content=Fluorescence-Tools/LabelLib&utm_campaign=Badge_Grade_Dashboard)
 [![Linux Build Status](https://github.com/Fluorescence-Tools/LabelLib/actions/workflows/build.yml/badge.svg?branch=dev)](https://github.com/Fluorescence-Tools/LabelLib/actions)
 [![macOS Build Status](https://github.com/Fluorescence-Tools/LabelLib/actions/workflows/build.yml/badge.svg?branch=dev)](https://github.com/Fluorescence-Tools/LabelLib/actions)
 [![Windows Build Status](https://github.com/Fluorescence-Tools/LabelLib/actions/workflows/build.yml/badge.svg?branch=dev)](https://github.com/Fluorescence-Tools/LabelLib/actions)
