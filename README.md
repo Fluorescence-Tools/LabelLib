@@ -1,7 +1,5 @@
 # LabelLib
-[![Linux Build Status](https://github.com/Fluorescence-Tools/LabelLib/actions/workflows/build.yml/badge.svg?branch=dev)](https://github.com/Fluorescence-Tools/LabelLib/actions)
-[![macOS Build Status](https://github.com/Fluorescence-Tools/LabelLib/actions/workflows/build.yml/badge.svg?branch=dev)](https://github.com/Fluorescence-Tools/LabelLib/actions)
-[![Windows Build Status](https://github.com/Fluorescence-Tools/LabelLib/actions/workflows/build.yml/badge.svg?branch=dev)](https://github.com/Fluorescence-Tools/LabelLib/actions)
+[![Build Status](https://github.com/Fluorescence-Tools/LabelLib/actions/workflows/build.yml/badge.svg?branch=dev)](https://github.com/Fluorescence-Tools/LabelLib/actions)
 [![PyPI Version](https://badge.fury.io/py/LabelLib.svg)](https://pypi.org/project/LabelLib)
 [![Anaconda-Server Version](https://anaconda.org/tpeulen/labellib/badges/version.svg)](https://anaconda.org/tpeulen/labellib)
 [![Anaconda-Server Downloads](https://anaconda.org/tpeulen/labellib/badges/downloads.svg)](https://anaconda.org/tpeulen/labellib)
