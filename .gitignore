@@ -22,3 +22,29 @@ cmake-build-*
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+wheelhouse/
+
+# scikit-build-core
+SKC-Build/
+skbuild/
+cmake-build-*/
+
+# Ruff
+.ruff_cache/
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# editable install
+labellib.egg-info/
