@@ -148,25 +148,53 @@ public:
 	}
 };
 
-/// \todo Describe all the parameters. Add a more detailed general explanation.
-/// @brief Returns single source shortest path lengths, given the obstacles.
-/// Implementated using Dijkstra algorithm on a 3D grid.
-/// @param atomsXyzr (In) Coordinates and collision radius for each atom in the
-/// array. Number of atoms is the number of columns.
-/// @param sourceXyz (In) Coordinates of the source point
-/// @param discStep (In) Space discretization step.
-/// The Same step is used for X, Y, and Z.
-/// @return Returns a Grid3D of shortest path lengths.
+/// @brief Compute shortest linker-path lengths around steric obstacles.
+///
+/// The linker diffusion problem is discretized on a 3D grid and solved with
+/// Dijkstra's algorithm from @p sourceXyz. Cells blocked by atoms plus linker
+/// thickness are excluded. The returned grid stores shortest path length from
+/// the source for each accessible cell.
+///
+/// @param atomsXyzr Atom coordinates and radii (xyzr) in columns.
+/// @param sourceXyz Attachment/source point in Cartesian coordinates.
+/// @param linkerLength Maximum linker extension from source to probe center.
+/// @param linkerDiameter Linker diameter used for steric exclusion.
+/// @param dyeRadius Probe radius used to define effective obstacle size.
+/// @param discStep Isotropic grid spacing in x, y, and z.
+/// @return Grid3D with shortest path lengths for accessible cells.
 Grid3D minLinkerLength(const Eigen::Matrix4Xf &atomsXyzr,
 		       const Eigen::Vector3f &sourceXyz,
 		       const float linkerLength, const float linkerDiameter,
 		       const float dyeRadius, const float discStep);
 
+/// @brief Compute accessible-volume density for a spherical probe model.
+///
+/// Returns a grid where positive values indicate accessible cells. For this
+/// overload, the probe is described by a single radius.
+///
+/// @param atomsXyzr Atom coordinates and radii (xyzr) in columns.
+/// @param sourceXyz Attachment/source point in Cartesian coordinates.
+/// @param linkerLength Maximum linker extension from source to probe center.
+/// @param linkerDiameter Linker diameter used for steric exclusion.
+/// @param dyeRadius Spherical probe radius.
+/// @param discStep Isotropic grid spacing in x, y, and z.
+/// @return Grid3D containing accessible-volume density values.
 Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 		  const Eigen::Vector3f &sourceXyz, const float linkerLength,
 		  const float linkerDiameter, const float dyeRadius,
 		  const float discStep);
 
+/// @brief Compute accessible-volume density for a quasi-ellipsoidal probe.
+///
+/// This overload models probe geometry with directional radii.
+///
+/// @param atomsXyzr Atom coordinates and radii (xyzr) in columns.
+/// @param sourceXyz Attachment/source point in Cartesian coordinates.
+/// @param linkerLength Maximum linker extension from source to probe center.
+/// @param linkerDiameter Linker diameter used for steric exclusion.
+/// @param dyeRadii Probe radii along principal axes.
+/// @param discStep Isotropic grid spacing in x, y, and z.
+/// @return Grid3D containing accessible-volume density values.
 Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 		  const Eigen::Vector3f &sourceXyz, const float linkerLength,
 		  const float linkerDiameter, const Eigen::Vector3f &dyeRadii,
@@ -180,36 +208,29 @@ Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 Grid3D addWeights(const Grid3D &grid,
 		  const Eigen::Matrix<float, 5, Eigen::Dynamic> &xyzRQ);
 
-/// @brief Calculate mean inter-dye distance between two accessible volumes
-/// @param g1 (In) First grid object (donor)
-/// @param g2 (In) Second grid object (acceptor)
-/// @param nsamples (In) Number of samples to draw. Mean distance is determined
-/// stochastically by choosing random pairs of points. Higher nsamples results
-/// in more precise <Rda>.
-/// @return Returns mean inter-dye distance (<Rda>).
+/// @brief Estimate mean inter-grid distance from stochastic samples.
+/// @param g1 First grid object (typically donor AV).
+/// @param g2 Second grid object (typically acceptor AV).
+/// @param nsamples Number of random samples; higher values improve precision.
+/// @return Mean inter-grid distance.
 double meanDistance(const Grid3D &g1, const Grid3D &g2,
 		    const unsigned nsamples = 100000);
 
-/// @brief Calculate mean FRET efficiency
-/// @param g1 (In) First grid object (e.g. donor)
-/// @param g2 (In) Second grid object (e.g. acceptor)
-/// @param nsamples (In) Number of samples to draw. Mean distance is determined
-/// stochastically by choosing random pairs of points. Higher nsamples results
-/// in more precise <E>.
-/// @return Returns mean FRET efficiency (<E>).
+/// @brief Estimate mean FRET efficiency from stochastic distance samples.
+/// @param g1 First grid object (typically donor AV).
+/// @param g2 Second grid object (typically acceptor AV).
+/// @param R0 Forster radius used in efficiency computation.
+/// @param nsamples Number of random samples; higher values improve precision.
+/// @return Mean FRET efficiency.
 double meanEfficiency(const Grid3D &g1, const Grid3D &g2, const float R0,
 		      const unsigned nsamples = 100000);
 
-/// @brief Sample inter-grid distances. Inverse transform sampling is used
-/// intrinsically to generate samples, that accurately approximate underlying
-/// distribution.
-/// @param g1 (In) First grid object (e.g. donor)
-/// @param g2 (In) Second grid object (e.g. acceptor)
-/// @param nsamples (In) Number of samples to draw. Distances will be drawn
-/// stochastically by choosing random pairs of points. Higher \p nsamples
-/// results in more accurate distribution.
-/// @return Returns an array of sampled distances.
+/// @brief Sample inter-grid distances using inverse transform sampling.
+/// @param g1 First grid object (typically donor AV).
+/// @param g2 Second grid object (typically acceptor AV).
+/// @param nsamples Number of distances to sample.
+/// @return Array of sampled distances.
 std::vector<float> sampleDistanceDistInv(const Grid3D &g1, const Grid3D &g2,
 					 const unsigned nsamples = 1000000);
-/// \todo Enable doxygen documentation
+
 #endif // LABELLIB_FLEXLABEL_H
