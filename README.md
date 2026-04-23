@@ -1,9 +1,11 @@
 # LabelLib
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/2855c47992414fb2b9622309897f7621)](https://app.codacy.com/app/tpeulen/LabelLib?utm_source=github.com&utm_medium=referral&utm_content=Fluorescence-Tools/LabelLib&utm_campaign=Badge_Grade_Dashboard)
-[![Linux Build Status](https://github.com/Fluorescence-Tools/LabelLib/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/Fluorescence-Tools/LabelLib/actions/workflows/build.yml)
+[![Linux Build Status](https://github.com/Fluorescence-Tools/LabelLib/actions/workflows/build.yml/badge.svg?branch=dev)](https://github.com/Fluorescence-Tools/LabelLib/actions)
+[![macOS Build Status](https://github.com/Fluorescence-Tools/LabelLib/actions/workflows/build.yml/badge.svg?branch=dev)](https://github.com/Fluorescence-Tools/LabelLib/actions)
+[![Windows Build Status](https://github.com/Fluorescence-Tools/LabelLib/actions/workflows/build.yml/badge.svg?branch=dev)](https://github.com/Fluorescence-Tools/LabelLib/actions)
 [![PyPI Version](https://badge.fury.io/py/LabelLib.svg)](https://pypi.org/project/LabelLib)
-[![Anaconda-Server Version](https://anaconda.org/tpeulen/labellib/badges/version.svg)](https://anaconda.org/tpeulen/labellib)
-[![Anaconda-Server Downloads](https://anaconda.org/tpeulen/labellib/badges/downloads.svg)](https://anaconda.org/tpeulen/labellib)
+[![Conda Version](https://img.shields.io/conda/vn/conda-forge/labellib.svg)](https://anaconda.org/conda-forge/labellib)
+[![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/labellib.svg)](https://anaconda.org/conda-forge/labellib)
 [![DOI](https://zenodo.org/badge/114786286.svg)](https://zenodo.org/badge/latestdoi/114786286)
 
 ## General description
