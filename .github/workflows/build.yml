@@ -33,6 +33,8 @@ jobs:
       - name: Build wheels (Linux)
         if: matrix.platform == 'linux'
         uses: pypa/cibuildwheel@v2.21
+        env:
+          CIBW_BUILD: cp310-manylinux* cp311-manylinux* cp312-manylinux*
         with:
           platform: linux
           python-version: ${{ matrix.python }}
@@ -41,6 +43,8 @@ jobs:
       - name: Build wheels (macOS)
         if: matrix.platform == 'macos'
         uses: pypa/cibuildwheel@v2.21
+        env:
+          CIBW_BUILD: cp310-macosx* cp311-macosx* cp312-macosx*
         with:
           platform: macos
           python-version: ${{ matrix.python }}
@@ -50,6 +54,8 @@ jobs:
       - name: Build wheels (Windows)
         if: matrix.platform == 'windows'
         uses: pypa/cibuildwheel@v2.21
+        env:
+          CIBW_BUILD: cp310-win* cp311-win* cp312-win*
         with:
           platform: windows
           python-version: ${{ matrix.python }}
