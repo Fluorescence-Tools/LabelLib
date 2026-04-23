@@ -46,13 +46,13 @@ PYBIND11_MODULE(LabelLib, m)
 	      py::arg("xyzRQ"));
 	m.def("meanDistance", &meanDistance,
 	      "Estimate mean inter-grid distance by stochastic sampling.",
-	      py::arg("g1"), py::arg("g2"), py::arg("nsamples"));
+	      py::arg("g1"), py::arg("g2"), py::arg("nsamples") = 100000);
 	m.def("meanEfficiency", &meanEfficiency,
 	      "Estimate mean FRET efficiency by stochastic sampling.", py::arg("g1"), py::arg("g2"),
-	      py::arg("R0"), py::arg("nsamples"));
+	      py::arg("R0"), py::arg("nsamples") = 100000);
 	m.def("sampleDistanceDistInv", &sampleDistanceDistInv,
 		"Sample inter-grid distances with inverse transform sampling.", py::arg("g1"), py::arg("g2"),
-		py::arg("nsamples"));
+		py::arg("nsamples") = 1000000);
 
 	py::class_<Grid3D>(m, "Grid3D",
 		      "3D scalar grid used for path-length and density representations.")

@@ -10,6 +10,7 @@ EIGEN_DEFINE_STL_VECTOR_SPECIALIZATION(Eigen::Vector4f)
 #include <array>
 #include <numeric>
 #include <ciso646>
+#include <cassert>
 
 /// @brief   3-dimensional grid of float numbers.
 /// Can be used for density maps or other maps of scalar variables
