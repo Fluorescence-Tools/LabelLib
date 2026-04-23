@@ -63,7 +63,7 @@ jobs:
           retention-days: 30
 
   build_conda:
-    name: Build conda (Python ${{ matrix.python }}})
+    name: Build conda (Python ${{ matrix.python }})
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -75,12 +75,18 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Build conda package
-        uses: conda-ecosystem/gha-conda-build@v1
+      - name: Set up Miniconda
+        uses: conda-incubator/setup-miniconda@v3
         with:
           python-version: ${{ matrix.python }}
-          channel: conda-forge
-          label: dev
+          miniforge-version: latest
+          channels: conda-forge
+
+      - name: Build conda package
+        shell: bash -l {0}
+        run: |
+          conda install -y conda-build
+          conda build recipe/ --python ${{ matrix.python }}
 
       - name: Upload conda package
         uses: actions/upload-artifact@v4
