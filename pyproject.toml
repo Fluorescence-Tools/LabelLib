@@ -15,6 +15,7 @@ description = "Python bindings for LabelLib - Library for coarse-grained simulat
 readme = "README.md"
 license = "MPL-2.0"
 authors = [
+    {name = "Mykola Dimura", email = "mykola.dimura@gmail.com"},
     {name = "Thomas-Otavio Peulen", email = "thomas.otavio.peulen@gmail.com"},
 ]
 requires-python = ">=3.9"
@@ -42,8 +43,3 @@ version = {attr = "labellib.__version__"}
 testpaths = ["test"]
 python_files = ["test_*.py"]
 python_functions = ["test_*"]
-
-[tool.cibuildwheel]
-build = "cp{9,10,11,12,13}-manylinux*_x86_64 cp{9,10,11,12,13}-macosx*_x86_64 cp{9,10,11,12,13}-macosx*_arm64 cp{9,10,11,12,13}-win_amd64"
-manylinux-image = "manylinux2014"
-macos-deployment-target = "11.0"
