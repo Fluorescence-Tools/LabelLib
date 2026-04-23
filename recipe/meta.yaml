@@ -16,13 +16,13 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - python
-    - pip
     - cmake
     - ninja
     - pybind11
     - numpy
   host:
     - python
+    - pip
     - numpy
   run:
     - numpy
