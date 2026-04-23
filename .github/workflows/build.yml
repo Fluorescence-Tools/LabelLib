@@ -122,21 +122,21 @@ jobs:
         shell: bash -l {0}
         run: |
           conda install -y conda-build
-          conda build recipe/ -v 2>&1 | tee conda_build.log || (cat conda_build.log && exit 1)
+          conda build recipe/ 2>&1 | tee conda_build.log || (cat conda_build.log && exit 1)
 
       - name: Build conda package (macOS)
         if: matrix.platform == 'macos'
         shell: bash -l {0}
         run: |
           conda install -y conda-build
-          conda build recipe/ -v 2>&1 | tee conda_build.log || (cat conda_build.log && exit 1)
+          conda build recipe/ 2>&1 | tee conda_build.log || (cat conda_build.log && exit 1)
 
       - name: Build conda package (Windows)
         if: matrix.platform == 'windows'
         shell: bash -l {0}
         run: |
           conda install -y conda-build
-          conda build recipe/ -v 2>&1 | tee conda_build.log || (type conda_build.log && exit 1)
+          conda build recipe/ 2>&1 | tee conda_build.log || (type conda_build.log && exit 1)
 
       - name: Upload conda package
         uses: actions/upload-artifact@v4
