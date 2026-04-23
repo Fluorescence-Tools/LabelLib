@@ -10,7 +10,7 @@ source:
 
 build:
   number: 0
-  script: "python -m pip install . --no-deps -v"
+  script: "{{ PYTHON }} -m pip install . --no-deps -v"
 
 requirements:
   build:
@@ -38,5 +38,3 @@ about:
 extra:
   recipe-maintainers:
     - tpeulen
-  channels:
-    - conda-forge
