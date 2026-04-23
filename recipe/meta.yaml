@@ -38,3 +38,5 @@ about:
 extra:
   recipe-maintainers:
     - tpeulen
+  channels:
+    - conda-forge
