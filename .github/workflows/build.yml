@@ -1,29 +1,66 @@
 name: Build & Publish
 
 on:
+  push:
+    branches: [dev, main]
   pull_request:
   release:
     types: [published]
 
 jobs:
   build_wheels:
-    name: Build wheels
-    runs-on: ubuntu-latest
+    name: Build wheels (${{ matrix.platform }})
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: linux
+            runner: ubuntu-latest
+            python: '3.12'
+          - platform: macos
+            runner: macos-latest
+            python: '3.12'
+          - platform: windows
+            runner: windows-latest
+            python: '3.12'
+
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - name: Build wheels
+      - name: Build wheels (Linux)
+        if: matrix.platform == 'linux'
         uses: pypa/cibuildwheel@v2.21
         with:
+          platform: linux
+          python-version: ${{ matrix.python }}
+          output-dir: ./wheelhouse
+
+      - name: Build wheels (macOS)
+        if: matrix.platform == 'macos'
+        uses: pypa/cibuildwheel@v2.21
+        with:
+          platform: macos
+          python-version: ${{ matrix.python }}
+          macos-deployment-target: '11.0'
+          output-dir: ./wheelhouse
+
+      - name: Build wheels (Windows)
+        if: matrix.platform == 'windows'
+        uses: pypa/cibuildwheel@v2.21
+        with:
+          platform: windows
+          python-version: ${{ matrix.python }}
           output-dir: ./wheelhouse
 
       - name: Upload wheels
         uses: actions/upload-artifact@v4
         with:
-          name: wheels
+          name: wheels-${{ matrix.platform }}
           path: ./wheelhouse/*.whl
+          retention-days: 30
 
   test:
     name: Test (Python 3.12)
@@ -47,7 +84,6 @@ jobs:
       - name: Download wheels
         uses: actions/download-artifact@v4
         with:
-          name: wheels
           path: wheelhouse
 
       - name: Install and test
@@ -63,7 +99,6 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: wheels
           path: wheelhouse
 
       - name: Publish to TestPyPI
@@ -76,12 +111,11 @@ jobs:
   publish_pypi:
     name: Publish to PyPI
     needs: [build_wheels, test]
-    if: github.event_name == 'release'
+    if: github.event_name == 'release' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: wheels
           path: wheelhouse
 
       - name: Publish to PyPI
