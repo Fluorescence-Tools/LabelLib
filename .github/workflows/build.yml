@@ -62,9 +62,36 @@ jobs:
           path: ./wheelhouse/*.whl
           retention-days: 30
 
+  build_conda:
+    name: Build conda (Python ${{ matrix.python }}})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.10', '3.11', '3.12']
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Build conda package
+        uses: conda-ecosystem/gha-conda-build@v1
+        with:
+          python-version: ${{ matrix.python }}
+          channel: conda-forge
+          label: dev
+
+      - name: Upload conda package
+        uses: actions/upload-artifact@v4
+        with:
+          name: conda-${{ matrix.python }}
+          path: build/conda/linux-64/*.tar.bz2
+          retention-days: 30
+
   test:
     name: Test (Python 3.12)
-    needs: build_wheels
+    needs: [build_wheels, build_conda]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
