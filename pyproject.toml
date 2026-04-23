@@ -13,9 +13,10 @@ name = "labellib"
 version = "1.0.0"
 description = "Python bindings for LabelLib - Library for coarse-grained simulations of probes flexibly coupled to biomolecules"
 readme = "README.md"
-license = {text = "MPL-2.0"}
+license = "MPL-2.0"
 authors = [
     {name = "Mykola Dimura", email = "mykola.dimura@gmail.com"},
+    {name = "Thomas-Otavio Peulen", email = "thomas.otavio.peulen@gmail.com"},
 ]
 requires-python = ">=3.9"
 dependencies = [
@@ -28,10 +29,12 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
-    "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
     "Operating System :: OS Independent",
 ]
 urls = {Homepage = "https://github.com/Fluorescence-Tools/LabelLib"}
+
+[tool.setuptools]
+packages = ["labellib"]
 
 [tool.setuptools.dynamic]
 version = {attr = "labellib.__version__"}
@@ -40,20 +43,3 @@ version = {attr = "labellib.__version__"}
 testpaths = ["test"]
 python_files = ["test_*.py"]
 python_functions = ["test_*"]
-
-[tool.cibuildwheel]
-build = "cp{9,10,11,12,13}-manylinux*_x86_64 cp{9,10,11,12,13}-macosx*_x86_64 cp{9,10,11,12,13}-macosx*_arm64 cp{9,10,11,12,13}-win_amd64"
-manylinux-image = "manylinux2014"
-macos-deployment-target = "11.0"
-
-[tool.cibuildwheel.options]
-  [tool.cibuildwheel.options.cp39-manylinux]
-    before-build = "pip install cmake"
-  [tool.cibuildwheel.options.cp310-manylinux]
-    before-build = "pip install cmake"
-  [tool.cibuildwheel.options.cp311-manylinux]
-    before-build = "pip install cmake"
-  [tool.cibuildwheel.options.cp312-manylinux]
-    before-build = "pip install cmake"
-  [tool.cibuildwheel.options.cp313-manylinux]
-    before-build = "pip install cmake"

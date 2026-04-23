@@ -87,6 +87,8 @@ setup(
     version=get_version(),
     author="Mykola Dimura",
     author_email="mykola.dimura@gmail.com",
+    maintainer="Thomas-Otavio Peulen",
+    maintainer_email="thomas.otavio.peulen@gmail.com",
     description="Python bindings for LabelLib",
     long_description="Library for coarse-grained simulations of probes flexibly coupled to biomolecules.",
     url="https://github.com/Fluorescence-Tools/LabelLib",
