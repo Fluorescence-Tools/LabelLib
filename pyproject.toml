@@ -1,11 +1,12 @@
 [build-system]
 requires = [
-    "setuptools>=61.0",
-    "wheel",
-    "cmake>=3.1",
+    "scikit-build-core>=0.10",
+    "cmake>=3.30",
+    "ninja",
+    "pybind11>=2.13",
     "numpy",
 ]
-build-backend = "setuptools.build_meta"
+build-backend = "scikit_build_core.build"
 
 [project]
 name = "labellib"
