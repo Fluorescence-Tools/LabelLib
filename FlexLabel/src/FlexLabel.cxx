@@ -459,6 +459,16 @@ Grid3D minLinkerLength(const Eigen::Matrix4Xf &atomsXyzr,
 	return grid;
 }
 
+Grid3D minLinkerLength_arr(const Eigen::Matrix4Xf &atomsXyzr,
+			   const Eigen::Vector3f &sourceXyz,
+			   const float linkerLength,
+			   const float linkerDiameter,
+			   const float dyeRadius, const float discStep)
+{
+	return minLinkerLength(atomsXyzr, sourceXyz, linkerLength,
+			       linkerDiameter, dyeRadius, discStep);
+}
+
 Grid3DExt dyeDensityExt(const Eigen::Matrix4Xf &atomsXyzr,
 			const Eigen::Vector3f &sourceXyz,
 			const float linkerLength, const float linkerDiameter,
@@ -483,6 +493,15 @@ Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 			     dyeRadii, discStep);
 }
 
+Grid3D dyeDensity_arr(const Eigen::Matrix4Xf &atomsXyzr,
+		      const Eigen::Vector3f &sourceXyz,
+		      const float linkerLength, const float linkerDiameter,
+		      const float dyeRadius, const float discStep)
+{
+	return dyeDensity(atomsXyzr, sourceXyz, linkerLength, linkerDiameter,
+			 dyeRadius, discStep);
+}
+
 Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 		  const Eigen::Vector3f &sourceXyz, const float linkerLength,
 		  const float linkerDiameter, const Eigen::Vector3f &dyeRadii,
@@ -492,11 +511,26 @@ Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 			     Eigen::VectorXf(dyeRadii), discStep);
 }
 
+Grid3D dyeDensity_arr(const Eigen::Matrix4Xf &atomsXyzr,
+		      const Eigen::Vector3f &sourceXyz,
+		      const float linkerLength, const float linkerDiameter,
+		      const Eigen::Vector3f &dyeRadii,
+		      const float discStep)
+{
+	return dyeDensity(atomsXyzr, sourceXyz, linkerLength, linkerDiameter,
+			 dyeRadii, discStep);
+}
+
 Grid3D addWeights(const Grid3D &grid, const Matrix5Xf &xyzRQ)
 {
 	Grid3DExt ext(grid);
 	ext.addDensity(xyzRQ);
 	return ext;
+}
+
+Grid3D addWeights_arr(const Grid3D &grid, const Matrix5Xf &xyzRQ)
+{
+	return addWeights(grid, xyzRQ);
 }
 
 template <typename T> class InverseSampler
@@ -699,8 +733,27 @@ double meanDistance(const Grid3D &g1, const Grid3D &g2, const unsigned nsamples)
 	return meanDistanceInv(g1, g2, nsamples);
 }
 
+double meanDistance_arr(const Grid3D &g1, const Grid3D &g2,
+			const unsigned nsamples)
+{
+	return meanDistance(g1, g2, nsamples);
+}
+
 double meanEfficiency(const Grid3D &g1, const Grid3D &g2, const float R0,
 		      const unsigned nsamples)
 {
 	return meanEfficiencyInv(g1, g2, R0, nsamples);
+}
+
+double meanEfficiency_arr(const Grid3D &g1, const Grid3D &g2,
+			  const float R0, const unsigned nsamples)
+{
+	return meanEfficiency(g1, g2, R0, nsamples);
+}
+
+std::vector<float> sampleDistanceDistInv_arr(const Grid3D &g1,
+				     const Grid3D &g2,
+				     const unsigned nsamples)
+{
+	return sampleDistanceDistInv(g1, g2, nsamples);
 }

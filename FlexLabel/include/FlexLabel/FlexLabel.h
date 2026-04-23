@@ -168,6 +168,13 @@ Grid3D minLinkerLength(const Eigen::Matrix4Xf &atomsXyzr,
 		       const float linkerLength, const float linkerDiameter,
 		       const float dyeRadius, const float discStep);
 
+/// @brief Array-oriented alias of minLinkerLength.
+Grid3D minLinkerLength_arr(const Eigen::Matrix4Xf &atomsXyzr,
+			   const Eigen::Vector3f &sourceXyz,
+			   const float linkerLength,
+			   const float linkerDiameter,
+			   const float dyeRadius, const float discStep);
+
 /// @brief Compute accessible-volume density for a spherical probe model.
 ///
 /// Returns a grid where positive values indicate accessible cells. For this
@@ -185,6 +192,12 @@ Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 		  const float linkerDiameter, const float dyeRadius,
 		  const float discStep);
 
+/// @brief Array-oriented alias of spherical dyeDensity.
+Grid3D dyeDensity_arr(const Eigen::Matrix4Xf &atomsXyzr,
+		      const Eigen::Vector3f &sourceXyz,
+		      const float linkerLength, const float linkerDiameter,
+		      const float dyeRadius, const float discStep);
+
 /// @brief Compute accessible-volume density for a quasi-ellipsoidal probe.
 ///
 /// This overload models probe geometry with directional radii.
@@ -201,6 +214,13 @@ Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 		  const float linkerDiameter, const Eigen::Vector3f &dyeRadii,
 		  const float discStep);
 
+/// @brief Array-oriented alias of quasi-ellipsoidal dyeDensity.
+Grid3D dyeDensity_arr(const Eigen::Matrix4Xf &atomsXyzr,
+		      const Eigen::Vector3f &sourceXyz,
+		      const float linkerLength, const float linkerDiameter,
+		      const Eigen::Vector3f &dyeRadii,
+		      const float discStep);
+
 /// @brief Adds extra weights to the cells close to the specified points
 /// @param grid (In) Original grid object
 /// @param xyzRQ (In) Coordinates(xyz), "active" radius(R) and extra density(Q)
@@ -209,6 +229,10 @@ Grid3D dyeDensity(const Eigen::Matrix4Xf &atomsXyzr,
 Grid3D addWeights(const Grid3D &grid,
 		  const Eigen::Matrix<float, 5, Eigen::Dynamic> &xyzRQ);
 
+/// @brief Array-oriented alias of addWeights.
+Grid3D addWeights_arr(const Grid3D &grid,
+		      const Eigen::Matrix<float, 5, Eigen::Dynamic> &xyzRQ);
+
 /// @brief Estimate mean inter-grid distance from stochastic samples.
 /// @param g1 First grid object (typically donor AV).
 /// @param g2 Second grid object (typically acceptor AV).
@@ -216,6 +240,10 @@ Grid3D addWeights(const Grid3D &grid,
 /// @return Mean inter-grid distance.
 double meanDistance(const Grid3D &g1, const Grid3D &g2,
 		    const unsigned nsamples = 100000);
+
+/// @brief Array-oriented alias of meanDistance.
+double meanDistance_arr(const Grid3D &g1, const Grid3D &g2,
+			const unsigned nsamples = 100000);
 
 /// @brief Estimate mean FRET efficiency from stochastic distance samples.
 /// @param g1 First grid object (typically donor AV).
@@ -226,6 +254,11 @@ double meanDistance(const Grid3D &g1, const Grid3D &g2,
 double meanEfficiency(const Grid3D &g1, const Grid3D &g2, const float R0,
 		      const unsigned nsamples = 100000);
 
+/// @brief Array-oriented alias of meanEfficiency.
+double meanEfficiency_arr(const Grid3D &g1, const Grid3D &g2,
+			  const float R0,
+			  const unsigned nsamples = 100000);
+
 /// @brief Sample inter-grid distances using inverse transform sampling.
 /// @param g1 First grid object (typically donor AV).
 /// @param g2 Second grid object (typically acceptor AV).
@@ -233,5 +266,10 @@ double meanEfficiency(const Grid3D &g1, const Grid3D &g2, const float R0,
 /// @return Array of sampled distances.
 std::vector<float> sampleDistanceDistInv(const Grid3D &g1, const Grid3D &g2,
 					 const unsigned nsamples = 1000000);
+
+/// @brief Array-oriented alias of sampleDistanceDistInv.
+std::vector<float> sampleDistanceDistInv_arr(const Grid3D &g1,
+				     const Grid3D &g2,
+				     const unsigned nsamples = 1000000);
 
 #endif // LABELLIB_FLEXLABEL_H

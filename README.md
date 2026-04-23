@@ -129,29 +129,40 @@ Possible output:
 The LabelLib can be used from python as shown below in a code example.
 LabelLib requires the Cartesian-coordinates, xyz, and van der Waals radii, vdW, of the biomolecule the label is 
 attached to. The Cartesian coordinates and the vdW radii are passed to LabelLib as a single array (see example below). 
+The array-oriented API uses an `_arr` suffix and validates input shapes for NumPy users:
+
+- `atomsXyzr`: `(4, N)` or `(N, 4)`
+- `sourceXyz`: `(3,)`, `(1, 3)`, or `(3, 1)`
+- `xyzRQ`: `(5, N)` or `(N, 5)`
+
 ```python
 import LabelLib as ll
 import numpy as np
 
-atoms_xyz = np.zeros((3,11))
-atoms_vdw = np.zeros(11)
-atoms = np.vstack([atoms_xyz, atoms_vdw])
+atoms_nx4 = np.zeros((11, 4), dtype=np.float32)  # [x, y, z, r] rows
 
 linker_length = 20.0
 linker_width = 2.0
 dye_radius = 3.5
 simulation_grid_spacing = 0.9
 dye_attachment_point = np.zeros(3)
-av1 = ll.dyeDensityAV1(atoms, dye_attachment_point, linker_length, linker_width, dye_radius, simulation_grid_spacing)
+av1 = ll.dyeDensityAV1_arr(
+    atoms_nx4,
+    dye_attachment_point,
+    linker_length,
+    linker_width,
+    dye_radius,
+    simulation_grid_spacing,
+)
 
 # The object av1 has the property grid, which stores
 # the dye densities within the reach of the dye linker as a positive number. 
 # For points out of out reach of the linker, the the 
 # grid contains negative numbers.
-grid = av1.grid
+grid = av1.grid_arr()
 
 # The shape of the grid is defined by the property '.shape'
-shape = av1.shape
+shape = av1.shape_arr()
 
 # The 3D grid is a flat 1D python list in 'Fortran' order
 grid3d = np.array(grid).reshape(shape, order='F')
