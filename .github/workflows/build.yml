@@ -117,6 +117,12 @@ jobs:
           channels: conda-forge
           conda-remove-defaults: true
 
+      - name: Download conda-forge pinning config
+        shell: bash -l {0}
+        run: |
+          mkdir -p recipe
+          curl -sL https://raw.githubusercontent.com/conda-forge/conda-forge-pinning-feedstock/main/recipe/conda_build_config.yaml -o recipe/conda_build_config.yaml
+
       - name: Build conda package (Linux)
         if: matrix.platform == 'linux'
         shell: bash -l {0}

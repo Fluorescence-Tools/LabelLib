@@ -10,22 +10,24 @@ source:
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps -v"
+  script: "{{ PYTHON }} -m pip install . --no-deps --no-build-isolation -v"
 
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - cmake
+    - ninja
+  host:
     - python
+    - pip
+    - scikit-build-core
     - cmake
     - ninja
     - pybind11
     - numpy
-  host:
-    - python
-    - pip
-    - numpy
   run:
-    - numpy
+    - python
+    - {{ pin_compatible('numpy') }}
 
 test:
   imports:
