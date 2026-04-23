@@ -10,12 +10,15 @@ source:
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps -v"
+  script:
+    - "{{ PYTHON }} -m pip install . --no-deps -v" if pip
+    - "{{ PYTHON }} -m pip --version || {{ PYTHON }} -m ensurepip && {{ PYTHON }} -m pip install . --no-deps -v"
 
 requirements:
   build:
     - {{ compiler('cxx') }}
     - pip
+    - python
     - cmake
     - ninja
     - pybind11
