@@ -97,6 +97,7 @@ jobs:
           python-version: ${{ matrix.python }}
           miniforge-version: latest
           channels: conda-forge
+          conda-remove-defaults: true
 
       - name: Set up Miniforge (macOS)
         if: matrix.platform == 'macos'
@@ -105,6 +106,7 @@ jobs:
           python-version: ${{ matrix.python }}
           miniforge-version: latest
           channels: conda-forge
+          conda-remove-defaults: true
 
       - name: Set up Miniforge (Windows)
         if: matrix.platform == 'windows'
@@ -113,33 +115,42 @@ jobs:
           python-version: ${{ matrix.python }}
           miniforge-version: latest
           channels: conda-forge
+          conda-remove-defaults: true
 
       - name: Build conda package (Linux)
         if: matrix.platform == 'linux'
         shell: bash -l {0}
         run: |
           conda install -y conda-build
-          conda build recipe/ --python ${{ matrix.python }}
+          conda build recipe/ -v 2>&1 | tee conda_build.log || (cat conda_build.log && exit 1)
 
       - name: Build conda package (macOS)
         if: matrix.platform == 'macos'
         shell: bash -l {0}
         run: |
           conda install -y conda-build
-          conda build recipe/ --python ${{ matrix.python }}
+          conda build recipe/ -v 2>&1 | tee conda_build.log || (cat conda_build.log && exit 1)
 
       - name: Build conda package (Windows)
         if: matrix.platform == 'windows'
         shell: bash -l {0}
         run: |
           conda install -y conda-build
-          conda build recipe/ --python ${{ matrix.python }}
+          conda build recipe/ -v 2>&1 | tee conda_build.log || (type conda_build.log && exit 1)
 
       - name: Upload conda package
         uses: actions/upload-artifact@v4
         with:
           name: conda-${{ matrix.platform }}
           path: build/conda/*/*.tar.bz2
+          retention-days: 30
+
+      - name: Upload conda build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: conda-build-log-${{ matrix.platform }}
+          path: conda_build.log
           retention-days: 30
 
   test:
