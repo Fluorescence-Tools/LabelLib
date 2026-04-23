@@ -10,7 +10,8 @@ source:
 
 build:
   number: 0
-  script: python -m pip install . --no-deps -v
+  entry_points:
+    - labellib = labellib:main
 
 requirements:
   build:
@@ -19,10 +20,11 @@ requirements:
     - pip
     - cmake
     - ninja
+    - pybind11
+    - numpy
   host:
     - python
     - numpy
-    - pybind11
   run:
     - numpy
 

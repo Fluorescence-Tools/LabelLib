@@ -29,7 +29,11 @@ if(GIT_FOUND)
 endif()
 add_definitions("-DGIT_VERSION_STRING=\"${GIT_VERSION_STRING}\"")
 
-enable_testing() # needed on top-level CMakeLists.txt
+# Disable testing by default - only enable for local builds
+option(BUILD_TESTING "Build C++ tests" OFF)
+if(BUILD_TESTING)
+    enable_testing()
+endif()
 
 # Target doc definition
 # The sub projects must all define a custom target but with different names to avoid
