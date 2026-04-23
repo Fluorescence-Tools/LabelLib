@@ -15,7 +15,6 @@ description = "Python bindings for LabelLib - Library for coarse-grained simulat
 readme = "README.md"
 license = "MPL-2.0"
 authors = [
-    {name = "Mykola Dimura", email = "mykola.dimura@gmail.com"},
     {name = "Thomas-Otavio Peulen", email = "thomas.otavio.peulen@gmail.com"},
 ]
 requires-python = ">=3.9"
