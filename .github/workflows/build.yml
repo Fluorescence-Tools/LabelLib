@@ -63,26 +63,67 @@ jobs:
           retention-days: 30
 
   build_conda:
-    name: Build conda (Python ${{ matrix.python }})
-    runs-on: ubuntu-latest
+    name: Build conda (${{ matrix.platform }})
+    runs-on: ${{ matrix.runner }}
     strategy:
       fail-fast: false
       matrix:
-        python: ['3.10', '3.11', '3.12']
+        include:
+          - platform: linux
+            runner: ubuntu-latest
+            python: '3.12'
+          - platform: macos
+            runner: macos-latest
+            python: '3.12'
+          - platform: windows
+            runner: windows-latest
+            python: '3.12'
 
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - name: Set up Miniconda
+      - name: Set up Miniconda (Linux)
+        if: matrix.platform == 'linux'
         uses: conda-incubator/setup-miniconda@v3
         with:
           python-version: ${{ matrix.python }}
           miniforge-version: latest
           channels: conda-forge
 
-      - name: Build conda package
+      - name: Set up Miniforge (macOS)
+        if: matrix.platform == 'macos'
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          python-version: ${{ matrix.python }}
+          miniforge-version: latest
+          channels: conda-forge
+
+      - name: Set up Miniforge (Windows)
+        if: matrix.platform == 'windows'
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          python-version: ${{ matrix.python }}
+          miniforge-version: latest
+          channels: conda-forge
+
+      - name: Build conda package (Linux)
+        if: matrix.platform == 'linux'
+        shell: bash -l {0}
+        run: |
+          conda install -y conda-build
+          conda build recipe/ --python ${{ matrix.python }}
+
+      - name: Build conda package (macOS)
+        if: matrix.platform == 'macos'
+        shell: bash -l {0}
+        run: |
+          conda install -y conda-build
+          conda build recipe/ --python ${{ matrix.python }}
+
+      - name: Build conda package (Windows)
+        if: matrix.platform == 'windows'
         shell: bash -l {0}
         run: |
           conda install -y conda-build
@@ -91,8 +132,8 @@ jobs:
       - name: Upload conda package
         uses: actions/upload-artifact@v4
         with:
-          name: conda-${{ matrix.python }}
-          path: build/conda/linux-64/*.tar.bz2
+          name: conda-${{ matrix.platform }}
+          path: build/conda/*/*.tar.bz2
           retention-days: 30
 
   test:
