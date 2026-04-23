@@ -4,7 +4,6 @@ requires = [
     "wheel",
     "cmake>=3.1",
     "numpy",
-    "pybind11>=2.2",
 ]
 build-backend = "setuptools.build_meta"
 
@@ -43,3 +42,8 @@ version = {attr = "labellib.__version__"}
 testpaths = ["test"]
 python_files = ["test_*.py"]
 python_functions = ["test_*"]
+
+[tool.cibuildwheel]
+build = "cp{9,10,11,12,13}-manylinux*_x86_64 cp{9,10,11,12,13}-macosx*_x86_64 cp{9,10,11,12,13}-macosx*_arm64 cp{9,10,11,12,13}-win_amd64"
+manylinux-image = "manylinux2014"
+macos-deployment-target = "11.0"
