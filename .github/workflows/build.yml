@@ -25,6 +25,33 @@ jobs:
           name: wheels
           path: ./wheelhouse/*.whl
 
+  build_conda:
+    name: Build conda
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install miniforge
+        uses: conda-continuous/setup-miniconda@v3
+        with:
+          miniforge-version: latest
+          python-version: "3.12"
+          environment-file: environment.yaml
+
+      - name: Build conda package
+        shell: bash -l {0}
+        run: |
+          conda install -y conda-build
+          conda build recipe/ --python 3.12
+
+      - name: Upload conda package
+        uses: actions/upload-artifact@v4
+        with:
+          name: conda-package
+          path: build/conda/linux-64/*.tar.bz2
+
   test:
     name: Test (Python 3.12)
     needs: build_wheels
@@ -89,3 +116,22 @@ jobs:
         with:
           user: __token__
           password: ${{ secrets.PYPI_TOKEN }}
+
+  publish_conda:
+    name: Publish to Conda
+    needs: [build_conda, test]
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: conda-package
+          path: conda-package
+
+      - name: Upload to conda-forge
+        if: github.event_name == 'release'
+        run: |
+          conda install -c conda-forge miniforge
+          miniforge add conda-forge/labellib/*.tar.bz2
+          # Create PR to conda-forge/pkgs-secondary instead
+          # This requires a conda-forge token

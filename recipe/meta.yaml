@@ -1,0 +1,41 @@
+{% set name = "labellib" %}
+{% set version = "1.0.0" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  path: .
+
+build:
+  number: 0
+  script: python -m pip install . --no-deps -v
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pip
+    - cmake
+    - ninja
+  host:
+    - python
+    - numpy
+    - pybind11
+  run:
+    - numpy
+
+test:
+  imports:
+    - labellib
+
+about:
+  home: https://github.com/Fluorescence-Tools/LabelLib
+  license: MPL-2.0
+  summary: Python bindings for LabelLib
+
+extra:
+  recipe-maintainers:
+    - tpeulen
+    - mdimura
