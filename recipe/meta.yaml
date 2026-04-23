@@ -10,10 +10,11 @@ source:
 
 build:
   number: 0
+  script: "python -m pip install . --no-deps -v"
 
 requirements:
   build:
-    - python
+    - {{ compiler('cxx') }}
     - pip
     - cmake
     - ninja
