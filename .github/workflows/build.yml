@@ -234,7 +234,7 @@ jobs:
   publish_conda:
     name: Publish conda to tpeulen
     needs: [build_conda, test]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/dev') || (github.event_name == 'release' && github.event.release.target_commitish == 'main')
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -265,7 +265,13 @@ jobs:
             echo "No labellib conda packages found to upload."
             exit 1
           fi
-          anaconda --site anaconda.org upload -u tpeulen --skip-existing "${files[@]}"
+          if [ "$GITHUB_EVENT_NAME" = "push" ] && [ "$GITHUB_REF" = "refs/heads/dev" ]; then
+            echo "Uploading dev build with conda label: dev"
+            anaconda --site anaconda.org upload -u tpeulen --skip-existing --label dev "${files[@]}"
+          else
+            echo "Uploading release build without extra conda label"
+            anaconda --site anaconda.org upload -u tpeulen --skip-existing "${files[@]}"
+          fi
 
   publish_testpypi:
     name: Publish to TestPyPI
