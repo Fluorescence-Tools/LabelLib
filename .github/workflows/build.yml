@@ -125,41 +125,27 @@ jobs:
         shell: bash -l {0}
         run: |
           conda install -y conda-build
-          conda build recipe/ 2>&1 | tee conda_build.log || (cat conda_build.log && exit 1)
+          conda build recipe/ --output-folder dist/conda 2>&1 | tee conda_build.log || (cat conda_build.log && exit 1)
 
       - name: Build conda package (macOS)
         if: matrix.platform == 'macos'
         shell: bash -l {0}
         run: |
           conda install -y conda-build
-          conda build recipe/ 2>&1 | tee conda_build.log || (cat conda_build.log && exit 1)
+          conda build recipe/ --output-folder dist/conda 2>&1 | tee conda_build.log || (cat conda_build.log && exit 1)
 
       - name: Build conda package (Windows)
         if: matrix.platform == 'windows'
         shell: bash -l {0}
         run: |
           conda install -y conda-build
-          conda build recipe/ 2>&1 | tee conda_build.log || (type conda_build.log && exit 1)
-
-      - name: Collect conda artifacts
-        shell: bash -l {0}
-        run: |
-          BASE_DIR="$(conda info --base)"
-          mkdir -p dist/conda
-          shopt -s nullglob
-          files=("$BASE_DIR"/conda-bld/*/labellib-*.tar.bz2 "$BASE_DIR"/conda-bld/*/labellib-*.conda)
-          if [ ${#files[@]} -eq 0 ]; then
-            echo "No conda package artifacts found in $BASE_DIR/conda-bld"
-            exit 1
-          fi
-          cp "${files[@]}" dist/conda/
-          ls -lah dist/conda/
+          conda build recipe/ --output-folder dist/conda 2>&1 | tee conda_build.log || (type conda_build.log && exit 1)
 
       - name: Upload conda package
         uses: actions/upload-artifact@v4
         with:
           name: conda-${{ matrix.platform }}
-          path: dist/conda/*
+          path: dist/conda/**/*
           retention-days: 30
 
       - name: Upload conda build log
@@ -259,8 +245,8 @@ jobs:
           ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
         run: |
           python -m pip install --upgrade anaconda-client
-          shopt -s nullglob
-          files=(dist/conda/labellib-*.tar.bz2 dist/conda/labellib-*.conda)
+          shopt -s nullglob globstar
+          files=(dist/conda/**/labellib-*.tar.bz2 dist/conda/**/labellib-*.conda)
           if [ ${#files[@]} -eq 0 ]; then
             echo "No labellib conda packages found to upload."
             exit 1
