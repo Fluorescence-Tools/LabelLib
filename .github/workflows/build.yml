@@ -220,12 +220,14 @@ jobs:
   publish_testpypi:
     name: Publish to TestPyPI
     needs: [build_wheels, test]
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
         with:
-          path: wheelhouse
+          pattern: wheels-*
+          path: dist
+          merge-multiple: true
 
       - name: Publish to TestPyPI
         uses: pypa/gh-action-pypi-publish@release/v1
@@ -237,12 +239,14 @@ jobs:
   publish_pypi:
     name: Publish to PyPI
     needs: [build_wheels, test]
-    if: github.event_name == 'release' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'release' && github.event.release.target_commitish == 'main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
         with:
-          path: wheelhouse
+          pattern: wheels-*
+          path: dist
+          merge-multiple: true
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
