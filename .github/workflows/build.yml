@@ -288,6 +288,7 @@ jobs:
           repository-url: https://test.pypi.org/legacy/
           packages-dir: dist
           skip-existing: true
+          attestations: false
           user: __token__
           password: ${{ secrets.TEST_PYPI_TOKEN }}
 
@@ -319,5 +320,6 @@ jobs:
         with:
           packages-dir: dist
           skip-existing: true
+          attestations: false
           user: __token__
           password: ${{ secrets.PYPI_TOKEN }}
