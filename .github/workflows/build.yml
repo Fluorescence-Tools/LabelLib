@@ -222,6 +222,8 @@ jobs:
     needs: [build_wheels, test]
     if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -229,10 +231,18 @@ jobs:
           path: dist
           merge-multiple: true
 
+      - name: Validate TestPyPI token is configured
+        if: ${{ !secrets.TEST_PYPI_TOKEN }}
+        run: |
+          echo "Missing TEST_PYPI_TOKEN secret; cannot publish to TestPyPI."
+          exit 1
+
       - name: Publish to TestPyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           repository-url: https://test.pypi.org/legacy/
+          packages-dir: dist
+          skip-existing: true
           user: __token__
           password: ${{ secrets.TEST_PYPI_TOKEN }}
 
@@ -241,6 +251,8 @@ jobs:
     needs: [build_wheels, test]
     if: github.event_name == 'release' && github.event.release.target_commitish == 'main'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -248,8 +260,16 @@ jobs:
           path: dist
           merge-multiple: true
 
+      - name: Validate PyPI token is configured
+        if: ${{ !secrets.PYPI_TOKEN }}
+        run: |
+          echo "Missing PYPI_TOKEN secret; cannot publish to PyPI."
+          exit 1
+
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
+          packages-dir: dist
+          skip-existing: true
           user: __token__
           password: ${{ secrets.PYPI_TOKEN }}
