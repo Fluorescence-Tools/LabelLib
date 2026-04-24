@@ -185,7 +185,32 @@ jobs:
 
       - name: Install and test
         run: |
-          pip install --find-links wheelhouse labellib
+          python - <<'PY'
+          import glob
+          import os
+          import subprocess
+          import sys
+
+          wheels = sorted(glob.glob("wheelhouse/**/*.whl", recursive=True))
+          print("Discovered wheels:")
+          for wheel in wheels:
+              print(f"- {wheel}")
+
+          linux_cp312 = [
+              wheel
+              for wheel in wheels
+              if os.path.basename(wheel).startswith("labellib-")
+              and "cp312" in os.path.basename(wheel)
+              and "linux" in os.path.basename(wheel)
+          ]
+
+          if not linux_cp312:
+              raise SystemExit("No Linux cp312 labellib wheel found in downloaded artifacts")
+
+          wheel = linux_cp312[0]
+          print(f"Installing wheel artifact: {wheel}")
+          subprocess.check_call([sys.executable, "-m", "pip", "install", "--no-index", wheel])
+          PY
           pytest
 
   publish_testpypi:
