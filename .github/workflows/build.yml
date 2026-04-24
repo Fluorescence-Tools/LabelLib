@@ -1,5 +1,8 @@
 name: Build & Publish
 
+env:
+  MAIN_TEST_PYTHON: '3.12'
+
 on:
   push:
     branches: [dev, main]
@@ -17,13 +20,10 @@ jobs:
         include:
           - platform: linux
             runner: ubuntu-latest
-            python: '3.12'
           - platform: macos
             runner: macos-latest
-            python: '3.12'
           - platform: windows
             runner: windows-latest
-            python: '3.12'
 
     steps:
       - uses: actions/checkout@v4
@@ -37,7 +37,7 @@ jobs:
           CIBW_BUILD: cp310-manylinux_x86_64 cp311-manylinux_x86_64 cp312-manylinux_x86_64
         with:
           platform: linux
-          python-version: ${{ matrix.python }}
+          python-version: ${{ env.MAIN_TEST_PYTHON }}
           output-dir: ./wheelhouse
 
       - name: Build wheels (macOS)
@@ -47,7 +47,7 @@ jobs:
           CIBW_BUILD: cp310-macosx* cp311-macosx* cp312-macosx*
         with:
           platform: macos
-          python-version: ${{ matrix.python }}
+          python-version: ${{ env.MAIN_TEST_PYTHON }}
           macos-deployment-target: '11.0'
           output-dir: ./wheelhouse
 
@@ -58,7 +58,7 @@ jobs:
           CIBW_BUILD: cp310-win* cp311-win* cp312-win*
         with:
           platform: windows
-          python-version: ${{ matrix.python }}
+          python-version: ${{ env.MAIN_TEST_PYTHON }}
           output-dir: ./wheelhouse
 
       - name: Upload wheels
@@ -77,13 +77,10 @@ jobs:
         include:
           - platform: linux
             runner: ubuntu-latest
-            python: '3.12'
           - platform: macos
             runner: macos-latest
-            python: '3.12'
           - platform: windows
             runner: windows-latest
-            python: '3.12'
 
     steps:
       - uses: actions/checkout@v4
@@ -94,7 +91,7 @@ jobs:
         if: matrix.platform == 'linux'
         uses: conda-incubator/setup-miniconda@v3
         with:
-          python-version: ${{ matrix.python }}
+          python-version: ${{ env.MAIN_TEST_PYTHON }}
           miniforge-version: latest
           channels: conda-forge
           conda-remove-defaults: true
@@ -103,7 +100,7 @@ jobs:
         if: matrix.platform == 'macos'
         uses: conda-incubator/setup-miniconda@v3
         with:
-          python-version: ${{ matrix.python }}
+          python-version: ${{ env.MAIN_TEST_PYTHON }}
           miniforge-version: latest
           channels: conda-forge
           conda-remove-defaults: true
@@ -112,7 +109,7 @@ jobs:
         if: matrix.platform == 'windows'
         uses: conda-incubator/setup-miniconda@v3
         with:
-          python-version: ${{ matrix.python }}
+          python-version: ${{ env.MAIN_TEST_PYTHON }}
           miniforge-version: latest
           channels: conda-forge
           conda-remove-defaults: true
@@ -171,7 +168,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: ${{ env.MAIN_TEST_PYTHON }}
 
       - name: Install dependencies
         run: |
