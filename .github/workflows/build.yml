@@ -327,3 +327,46 @@ jobs:
           attestations: false
           user: __token__
           password: ${{ secrets.PYPI_TOKEN }}
+
+  attach_release_assets:
+    name: Attach wheel and conda artifacts to release
+    needs: [build_wheels, build_conda, test]
+    if: github.event_name == 'release' && github.event.release.target_commitish == 'main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download wheel artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: wheels-*
+          path: dist/wheels
+          merge-multiple: true
+
+      - name: Download conda artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: conda-*
+          path: dist/conda
+          merge-multiple: true
+
+      - name: Show collected release artifacts
+        shell: bash
+        run: |
+          shopt -s nullglob globstar
+          files=(dist/wheels/*.whl dist/conda/**/labellib-*.tar.bz2 dist/conda/**/labellib-*.conda)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No wheel or conda artifacts found to attach to release."
+            exit 1
+          fi
+          printf '%s\n' "${files[@]}"
+
+      - name: Upload artifacts to GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.release.tag_name }}
+          files: |
+            dist/wheels/*.whl
+            dist/conda/**/labellib-*.tar.bz2
+            dist/conda/**/labellib-*.conda
+          fail_on_unmatched_files: true
