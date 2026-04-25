@@ -37,6 +37,7 @@ deprecated software FPS is independent of LabelLib.
 
 [Labelizer](https://labelizer.org/welcome) is a web application for accessible-volume and labeling workflows,
 including FRET-oriented setup and analysis built on top of the LabelLib ecosystem.
+Labelizer paper: https://www.nature.com/articles/s41467-025-58602-y
 
 [AvTraj](https://github.com/Fluorescence-Tools/avtraj)
 AvTraj is a Python library for the calculation of accessible volumes (AVs), screening. AvTraj facilitates the 
@@ -49,6 +50,7 @@ experimental restraints.
 [IMP.bff](https://github.com/Fluorescence-Tools/IMP.bff) is IMP's Bayesian Fluorescence Framework. It extends IMP
 with fluorescence/FRET functionality, including Accessible Volume (AV) calculations and FRET restraints that can be
 combined with other restraints in integrative modeling workflows. Documentation: https://docs.peulen.xyz/bff
+IMP.bff preprint: https://www.biorxiv.org/content/10.1101/2023.10.26.564048v1
 
 [FPS](http://www.mpc.hhu.de/software/fps.html) is a software with a graphical user interface for the FRET-based 
 structural modeling. FPS can calculate accessible volumes (AVs), screen a set of structural models against experimental 
@@ -187,6 +189,10 @@ If you have used LabelLib in a scientific publication, we would appreciate citat
 
 Additional information is available in FPS toolkit paper: [![DOI for citing FPS](https://img.shields.io/badge/DOI-10.1038%2Fnmeth.2222-blue.svg)](https://doi.org/10.1038/nmeth.2222)
 > Kalinin, S., Peulen, T., Sindbert, S., Rothwell, P.J., Berger, S., Restle, T., Goody, R.S., Gohlke, H. and Seidel, C.A., 2012. A toolkit and benchmark study for FRET-restrained high-precision structural modeling. Nature methods, 9(12), pp.1218-1225.
+
+Related software papers:
+- Labelizer: https://www.nature.com/articles/s41467-025-58602-y
+- IMP.bff preprint: https://www.biorxiv.org/content/10.1101/2023.10.26.564048v1
 
 [1]: https://pymol.org/ "Pymol"
 [2]: FlexLabel/doc/pymol_example.png "dsDNA and an AV surface"
