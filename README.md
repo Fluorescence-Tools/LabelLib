@@ -40,6 +40,13 @@ AvTraj is a Python library for the calculation of accessible volumes (AVs), scre
 development of new analytical approaches for FRET-based structural models. Avtraj facilitates processing of 
 MD-simulations and the development of Python scripts handling FRET-based structural models. 
 
+[IMP](https://integrativemodeling.org/) is a framework for integrative structural modeling that combines multiple
+experimental restraints.
+
+[IMP.bff](https://github.com/Fluorescence-Tools/IMP.bff) is IMP's Bayesian Fluorescence Framework. It extends IMP
+with fluorescence/FRET functionality, including Accessible Volume (AV) calculations and FRET restraints that can be
+combined with other restraints in integrative modeling workflows. Documentation: https://docs.peulen.xyz/bff
+
 [FPS](http://www.mpc.hhu.de/software/fps.html) is a software with a graphical user interface for the FRET-based 
 structural modeling. FPS can calculate accessible volumes (AVs), screen a set of structural models against experimental 
 observables, and can generate new structural models by rigid-body docking using experimental FRET data.
