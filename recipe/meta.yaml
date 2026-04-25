@@ -24,7 +24,7 @@ requirements:
     - cmake
     - ninja
     - pybind11
-    - eigen
+    - eigen 3.4.*
     - numpy
   run:
     - python

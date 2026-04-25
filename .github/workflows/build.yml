@@ -46,7 +46,8 @@ jobs:
         uses: pypa/cibuildwheel@v2.21
         env:
           CIBW_BUILD: cp310-macosx* cp311-macosx* cp312-macosx*
-          CIBW_BEFORE_ALL_MACOS: brew install eigen
+          CIBW_ENVIRONMENT_MACOS: CMAKE_INCLUDE_PATH=/tmp/eigen3
+          CIBW_BEFORE_ALL_MACOS: python -c "import pathlib, shutil, tarfile, tempfile, urllib.request; url='https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz'; tmp=tempfile.mkdtemp(); archive=pathlib.Path(tmp)/'eigen.tar.gz'; archive.write_bytes(urllib.request.urlopen(url).read()); src_root=pathlib.Path(tmp)/'src'; src_root.mkdir(); tarfile.open(archive).extractall(src_root); src=next(src_root.glob('eigen-*')); dst=pathlib.Path('/tmp/eigen3'); shutil.rmtree(dst, ignore_errors=True); shutil.copytree(src, dst)"
         with:
           platform: macos
           python-version: ${{ env.MAIN_TEST_PYTHON }}

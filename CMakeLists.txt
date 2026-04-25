@@ -1,9 +1,11 @@
 cmake_minimum_required(VERSION 3.15)
 project("LabelLib")
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 if(MSVC)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++11")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++14")
     if(BIT MATCHES "64")
         add_definitions(-DMS_WIN64)
     endif(BIT MATCHES "64")
