@@ -1,0 +1,21 @@
+{
+  "title": "LabelLib",
+  "description": "Library for coarse-grained simulations of probes flexibly coupled to biomolecules.",
+  "license": "MPL-2.0",
+  "upload_type": "software",
+  "access_right": "open",
+  "keywords": [
+    "FRET",
+    "accessible volume",
+    "structural modeling",
+    "fluorescence"
+  ],
+  "creators": [
+    {
+      "name": "Dimura, Mykola"
+    },
+    {
+      "name": "Peulen, Thomas-Otavio"
+    }
+  ]
+}
