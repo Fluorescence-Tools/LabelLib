@@ -3,7 +3,7 @@
 [![PyPI Version](https://img.shields.io/pypi/v/labellib.svg)](https://pypi.org/project/labellib)
 [![Anaconda-Server Version](https://img.shields.io/badge/conda-1!1.0.0-blue.svg)](https://anaconda.org/tpeulen/labellib)
 [![Anaconda-Server Downloads](https://anaconda.org/tpeulen/labellib/badges/downloads.svg)](https://anaconda.org/tpeulen/labellib)
-[![DOI](https://zenodo.org/badge/114786286.svg)](https://doi.org/10.5281/zenodo.3517287)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3517287.svg)](https://doi.org/10.5281/zenodo.3517287)
 
 ## General description
 LabelLib is a low-level C++ library for the simulation of small probes flexibly coupled to biomolecules for the 
