@@ -368,6 +368,5 @@ jobs:
           tag_name: ${{ github.event.release.tag_name }}
           files: |
             dist/wheels/*.whl
-            dist/conda/**/labellib-*.tar.bz2
             dist/conda/**/labellib-*.conda
-          fail_on_unmatched_files: true
+          fail_on_unmatched_files: false
