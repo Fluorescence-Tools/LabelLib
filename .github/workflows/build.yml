@@ -35,6 +35,7 @@ jobs:
         uses: pypa/cibuildwheel@v2.21
         env:
           CIBW_BUILD: cp310-manylinux_x86_64 cp311-manylinux_x86_64 cp312-manylinux_x86_64
+          CIBW_BEFORE_ALL_LINUX: yum install -y eigen3-devel
         with:
           platform: linux
           python-version: ${{ env.MAIN_TEST_PYTHON }}
@@ -45,6 +46,7 @@ jobs:
         uses: pypa/cibuildwheel@v2.21
         env:
           CIBW_BUILD: cp310-macosx* cp311-macosx* cp312-macosx*
+          CIBW_BEFORE_ALL_MACOS: brew install eigen
         with:
           platform: macos
           python-version: ${{ env.MAIN_TEST_PYTHON }}
@@ -56,6 +58,8 @@ jobs:
         uses: pypa/cibuildwheel@v2.21
         env:
           CIBW_BUILD: cp310-win* cp311-win* cp312-win*
+          CIBW_ENVIRONMENT_WINDOWS: CMAKE_INCLUDE_PATH=C:/eigen3
+          CIBW_BEFORE_ALL_WINDOWS: python -c "import io, pathlib, shutil, tempfile, urllib.request, zipfile; url='https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.zip'; data=urllib.request.urlopen(url).read(); tmp=tempfile.mkdtemp(); zipfile.ZipFile(io.BytesIO(data)).extractall(tmp); src=next(pathlib.Path(tmp).glob('eigen-*')); dst=pathlib.Path('C:/eigen3'); shutil.rmtree(dst, ignore_errors=True); shutil.copytree(src, dst)"
         with:
           platform: windows
           python-version: ${{ env.MAIN_TEST_PYTHON }}
