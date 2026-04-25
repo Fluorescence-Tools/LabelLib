@@ -10,7 +10,7 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "labellib"
-version = "1.0.0"
+version = "1!1.0.0"
 description = "Python bindings for LabelLib - Library for coarse-grained simulations of probes flexibly coupled to biomolecules"
 readme = "README.md"
 license = "MPL-2.0"
