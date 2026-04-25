@@ -69,6 +69,8 @@ cd LabelLib/build
 cmake ..
 sudo make install
 ```
+If you build from a source archive without git submodules (for example GitHub/Zenodo tarballs), install
+`Eigen3` and `pybind11` in your build environment first.
 On Linux you can build and install a package instead (prefered):
 ```bash
 ...
