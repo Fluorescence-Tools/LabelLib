@@ -35,6 +35,9 @@ deprecated software FPS is independent of LabelLib.
  graphical user interface for the calculation of accessible volumes (AVs), screen a set of structural models against 
  experimental observables, rigid-body docking, and the optimal design of new FRET experiments. 
 
+[Labelizer](https://labelizer.org/welcome) is a web application for accessible-volume and labeling workflows,
+including FRET-oriented setup and analysis built on top of the LabelLib ecosystem.
+
 [AvTraj](https://github.com/Fluorescence-Tools/avtraj)
 AvTraj is a Python library for the calculation of accessible volumes (AVs), screening. AvTraj facilitates the 
 development of new analytical approaches for FRET-based structural models. Avtraj facilitates processing of 
